@@ -25,7 +25,7 @@ function LoginPage() {
                                         </MDBCol>
                                         <MDBCol md='12' lg='7' className="d-flex align-items-center">
                                              <CardBody addClass="p-4 p-lg-5 text-black">
-                                                  {/* <form action="">
+                                                  <form action="">
                                                        <div className="align-items-center pb-1 mb-2">
                                                             <span className="h2">Arsip surat digital</span>
                                                        </div>
@@ -36,7 +36,7 @@ function LoginPage() {
                                                        <div class="mb-4 d-grid">
                                                             <MDBBtn color='dark' size='lg'>Login</MDBBtn>
                                                        </div>
-                                                  </form> */}
+                                                  </form>
                                                   {my_data}
                                              </CardBody>
                                         </MDBCol>

@@ -1,0 +1,93 @@
+[
+     {
+       "id": 1,
+       "nama": "Grace Mandey",
+       "user": "gmandey",
+       "level": "administrator",
+       "status": "aktif",
+       "tanggal_register": "2023-05-12",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 2,
+       "nama": "Reynold Wowor",
+       "user": "rwowor",
+       "level": "user",
+       "status": "nonaktif",
+       "tanggal_register": "2024-02-28",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 3,
+       "nama": "Novita Tumiwa",
+       "user": "ntumiwa",
+       "level": "spectator",
+       "status": "aktif",
+       "tanggal_register": "2023-11-20",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 4,
+       "nama": "Mario Waleleng",
+       "user": "mwaleleng",
+       "level": "administrator",
+       "status": "aktif",
+       "tanggal_register": "2022-08-05",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 5,
+       "nama": "Astrid Supit",
+       "user": "asupit",
+       "level": "user",
+       "status": "aktif",
+       "tanggal_register": "2024-01-15",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 6,
+       "nama": "Jerry Oroh",
+       "user": "joroh",
+       "level": "spectator",
+       "status": "nonaktif",
+       "tanggal_register": "2023-09-03",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 7,
+       "nama": "Cynthia Tumbel",
+       "user": "ctumbel",
+       "level": "user",
+       "status": "aktif",
+       "tanggal_register": "2023-06-27",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 8,
+       "nama": "Billy Kawengian",
+       "user": "bkawengian",
+       "level": "administrator",
+       "status": "aktif",
+       "tanggal_register": "2022-12-18",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 9,
+       "nama": "Ruth Senduk",
+       "user": "rsenduk",
+       "level": "user",
+       "status": "nonaktif",
+       "tanggal_register": "2024-03-10",
+       "nomor_telepon" : "087702282053"
+     },
+     {
+       "id": 10,
+       "nama": "Andre Lumenta",
+       "user": "alumenta",
+       "level": "spectator",
+       "status": "aktif",
+       "tanggal_register": "2023-07-19",
+       "nomor_telepon" : "087702282053"
+     }
+   ]
+   

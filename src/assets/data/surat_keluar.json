@@ -1,0 +1,146 @@
+[
+     {
+       "id": 1,
+       "nomor_agenda": 1,
+       "tanggal_surat": "2023-01-15",
+       "tujuan_surat": "Dinas Pendidikan dan Kebudayaan Manado",
+       "nomor_surat": "001/KCMB/I/23",
+       "perihal": "Permohonan Bantuan Sarana Prasarana Pendidikan",
+       "file_surat": "001_Permohonan_Bantuan.pdf"
+     },
+     {
+       "id": 2,
+       "nomor_agenda": 2,
+       "tanggal_surat": "2023-02-03",
+       "tujuan_surat": "Lurah Motoling Satu",
+       "nomor_surat": "002/KCMB/II/23",
+       "perihal": "Pemberitahuan Pelaksanaan Musyawarah Pembangunan Kelurahan",
+       "file_surat": "002_Pemberitahuan_Musrenbang.pdf"
+     },
+     {
+       "id": 3,
+       "nomor_agenda": 3,
+       "tanggal_surat": "2023-03-10",
+       "tujuan_surat": "Kepala Dinas Kesehatan Manado",
+       "nomor_surat": "003/KCMB/III/23",
+       "perihal": "Laporan Kejadian Luar Biasa (KLB) Demam Berdarah",
+       "file_surat": "003_Laporan_KLB_DBD.pdf"
+     },
+     {
+       "id": 4,
+       "nomor_agenda": 4,
+       "tanggal_surat": "2023-04-22",
+       "tujuan_surat": "Ketua RW se-Kecamatan Motoling Barat",
+       "nomor_surat": "004/KCMB/IV/23",
+       "perihal": "Undangan Rapat Koordinasi Keamanan dan Ketertiban",
+       "file_surat": "004_Undangan_Rapat_Kordinasi.pdf"
+     },
+     {
+       "id": 5,
+       "nomor_agenda": 5,
+       "tanggal_surat": "2023-05-08",
+       "tujuan_surat": "Kepala Dinas Lingkungan Hidup Manado",
+       "nomor_surat": "005/KCMB/V/23",
+       "perihal": "Permohonan Penanganan Sampah di Area Pasar Tradisional Motoling",
+       "file_surat": "005_Permohonan_Penanganan_Sampah.pdf"
+     },
+     {
+       "id": 6,
+       "nomor_agenda": 6,
+       "tanggal_surat": "2023-06-12",
+       "tujuan_surat": "Kepala Dinas Sosial Manado",
+       "nomor_surat": "006/KCMB/VI/23",
+       "perihal": "Usulan Bantuan Sosial bagi Masyarakat Terdampak Banjir",
+       "file_surat": "006_Usulan_Bantuan_Sosial.pdf"
+     },
+     {
+       "id": 7,
+       "nomor_agenda": 7,
+       "tanggal_surat": "2023-07-25",
+       "tujuan_surat": "Kepala Dinas Pekerjaan Umum Manado",
+       "nomor_surat": "007/KCMB/VII/23",
+       "perihal": "Permohonan Perbaikan Jalan dan Jembatan Rusak",
+       "file_surat": "007_Permohonan_Perbaikan_Jalan.pdf"
+     },
+     {
+       "id": 8,
+       "nomor_agenda": 8,
+       "tanggal_surat": "2023-08-18",
+       "tujuan_surat": "Kepala Dinas Perhubungan Manado",
+       "nomor_surat": "008/KCMB/VIII/23",
+       "perihal": "Permohonan Pemasangan Rambu Lalu Lintas",
+       "file_surat": "008_Permohonan_Rambu_Lalin.pdf"
+     },
+     {
+       "id": 9,
+       "nomor_agenda": 9,
+       "tanggal_surat": "2023-09-05",
+       "tujuan_surat": "Kepala Dinas Pariwisata Manado",
+       "nomor_surat": "009/KCMB/IX/23",
+       "perihal": "Laporan Potensi Wisata di Kecamatan Motoling Barat",
+       "file_surat": "009_Laporan_Potensi_Wisata.pdf"
+     },
+     {
+       "id": 10,
+       "nomor_agenda": 10,
+       "tanggal_surat": "2023-10-11",
+       "tujuan_surat": "Kepala Badan Penanggulangan Bencana Daerah Manado",
+       "nomor_surat": "010/KCMB/X/23",
+       "perihal": "Permohonan Bantuan Logistik Bencana Banjir",
+       "file_surat": "010_Permohonan_Bantuan_Logistik.pdf"
+     },
+     {
+       "id": 11,
+       "nomor_agenda": 11,
+       "tanggal_surat": "2023-11-28",
+       "tujuan_surat": "Kepala Dinas Pemberdayaan Perempuan dan Perlindungan Anak Manado",
+       "nomor_surat": "011/KCMB/XI/23",
+       "perihal": "Laporan Kasus Kekerasan Terhadap Anak",
+       "file_surat": "011_Laporan_Kekerasan_Anak.pdf"
+     },
+     {
+       "id": 12,
+       "nomor_agenda": 12,
+       "tanggal_surat": "2023-12-04",
+       "tujuan_surat": "Kepala Dinas Kependudukan dan Pencatatan Sipil Manado",
+       "nomor_surat": "012/KCMB/XII/23",
+       "perihal": "Permohonan Perekaman KTP Elektronik bagi Penduduk Baru",
+       "file_surat": "012_Permohonan_Perekaman_KTP-el.pdf"
+     },
+     {
+       "id": 13,
+       "nomor_agenda": 13,
+       "tanggal_surat": "2024-01-19",
+       "tujuan_surat": "Kepala Dinas Perindustrian dan Perdagangan Manado",
+       "nomor_surat": "013/KCMB/I/24",
+       "perihal": "Laporan Perkembangan UMKM di Kecamatan Motoling Barat",
+       "file_surat": "013_Laporan_UMKM.pdf"
+     },
+     {
+       "id": 14,
+       "nomor_agenda": 14,
+       "tanggal_surat": "2024-02-14",
+       "tujuan_surat": "Kepala Dinas Pertanian dan Peternakan Manado",
+       "nomor_surat": "014/KCMB/II/24",
+       "perihal": "Permohonan Penyuluhan Pertanian bagi Kelompok Tani",
+       "file_surat": "014_Permohonan_Penyuluhan_Pertanian.pdf"
+     },
+     {
+       "id": 15,
+       "nomor_agenda": 15,
+       "tanggal_surat": "2024-03-06",
+       "tujuan_surat": "Kepala Dinas Koperasi dan UMKM Manado",
+       "nomor_surat": "015/KCMB/III/24",
+       "perihal": "Usulan Pembentukan Koperasi Unit Desa",
+       "file_surat": "015_Usulan_Koperasi.pdf"
+     },
+     {
+       "id": 16,
+       "nomor_agenda": 16,
+       "tanggal_surat": "2024-04-17",
+       "tujuan_surat": "Kepala Dinas Perumahan dan Kawasan Permukiman Manado",
+       "nomor_surat": "016/KCMB/IV/24",
+       "perihal": "Permohonan Bantuan Perbaikan Rumah Tidak Layak Huni",
+       "file_surat": "016_Permohonan_Bantuan_RTLH.pdf"
+     }
+]

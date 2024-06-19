@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "nomor_agenda": "YX-9876",
+    "nomor_surat": "08.15/05/2023",
+    "tanggal_surat": "2023-08-06",
+    "tanggal_terima": "2023-08-09",
+    "asal_surat": "Pemerintah Kota Manado",
+    "perihal": "Undangan Rapat Koordinasi Pembangunan",
+    "file_surat": "laporan.pdf",
+    "penerima": "Rey Mandey"
+  },
+  {
+    "id": 2,
+    "nomor_agenda": "LL-7504",
+    "nomor_surat": "12.99/02/2023",
+    "tanggal_surat": "2023-08-29",
+    "tanggal_terima": "2023-09-01",
+    "asal_surat": "Universitas Sam Ratulangi",
+    "perihal": "Pengumuman Beasiswa Unggulan",
+    "file_surat": "proposal.pdf",
+    "penerima": "Olivia Wowor"
+  },
+  {
+    "id": 3,
+    "nomor_agenda": "DB-3232",
+    "nomor_surat": "15.46/07/2023",
+    "tanggal_surat": "2023-02-03",
+    "tanggal_terima": "2023-02-07",
+    "asal_surat": "Polresta Manado",
+    "perihal": "Laporan Kejadian Tindak Pidana",
+    "file_surat": "dokumen.pdf",
+    "penerima": "Mario Kawengian"
+  },
+  {
+    "id": 4,
+    "nomor_agenda": "VB-3370",
+    "nomor_surat": "17.78/03/2023",
+    "tanggal_surat": "2023-05-08",
+    "tanggal_terima": "2023-05-12",
+    "asal_surat": "Bank SulutGo",
+    "perihal": "Pemberitahuan Perubahan Suku Bunga",
+    "file_surat": "surat.pdf",
+    "penerima": "Claudia Tumbel"
+  },
+  {
+    "id": 5,
+    "nomor_agenda": "YQ-9879",
+    "nomor_surat": "19.95/06/2023",
+    "tanggal_surat": "2022-11-18",
+    "tanggal_terima": "2022-11-23",
+    "asal_surat": "Rumah Sakit Siloam Manado",
+    "perihal": "Hasil Pemeriksaan Kesehatan",
+    "file_surat": "kontrak.pdf",
+    "penerima": "Adrian Tumiwa"
+  },
+  {
+    "id": 6,
+    "nomor_agenda": "MV-6848",
+    "nomor_surat": "01.10/03/2023",
+    "tanggal_surat": "2023-06-26",
+    "tanggal_terima": "2023-06-29",
+    "asal_surat": "Dinas Pendidikan Manado",
+    "perihal": "Jadwal Ujian Nasional",
+    "file_surat": "perjanjian.pdf",
+    "penerima": "Astrid Lumentut"
+  },
+  {
+    "id": 7,
+    "nomor_agenda": "JG-7140",
+    "nomor_surat": "11.67/01/2023",
+    "tanggal_surat": "2023-03-21",
+    "tanggal_terima": "2023-03-25",
+    "asal_surat": "Kantor Imigrasi Manado",
+    "perihal": "Permohonan Paspor Baru",
+    "file_surat": "presentasi.pdf",
+    "penerima": "Raymond Rompas"
+  },
+  {
+    "id": 8,
+    "nomor_agenda": "GT-1188",
+    "nomor_surat": "05.63/01/2023",
+    "tanggal_surat": "2022-12-22",
+    "tanggal_terima": "2022-12-27",
+    "asal_surat": "PT. Air Manado",
+    "perihal": "Tagihan Rekening Air",
+    "file_surat": "pengumuman.pdf",
+    "penerima": "Grace Sanger"
+  },
+  {
+    "id": 9,
+    "nomor_agenda": "TI-4997",
+    "nomor_surat": "13.96/06/2023",
+    "tanggal_surat": "2023-04-20",
+    "tanggal_terima": "2023-04-25",
+    "asal_surat": "PLN Wilayah Suluttenggo",
+    "perihal": "Pemberitahuan Pemadaman Listrik",
+    "file_surat": "undangan.pdf",
+    "penerima": "Billy Senduk"
+  },
+  {
+    "id": 10,
+    "nomor_agenda": "GQ-6921",
+    "nomor_surat": "02.26/09/2023",
+    "tanggal_surat": "2023-06-17",
+    "tanggal_terima": "2023-06-21",
+    "asal_surat": "Badan Pusat Statistik Manado",
+    "perihal": "Permintaan Data Kependudukan",
+    "file_surat": "formulir.pdf",
+    "penerima": "Merry Inkiriwang"
+  }
+]

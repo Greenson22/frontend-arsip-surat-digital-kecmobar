@@ -12,18 +12,23 @@ import AddIncomingMailModal from "../Fragments/Modals/AddIncomingMailModal"
 import EditIncomingMailModal from "../Fragments/Modals/EditIncomingMailModal"
 import ViewMailModal from "../Fragments/Modals/ViewMailModal"
 
-import surat_masuk from '../../assets/data/surat_masuk.json'
 const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", 
 "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
 
 import axios from 'axios'
+
 const url = 'http://localhost:8000/incoming_mail/'
+const token = '856d190761d67926abf3976d0269795d681fed9f';
 
 const IncomingMailPage = ()=>{
      const [data, setData] = useState([])
 
      useEffect(()=>{
-          axios.get(url)
+          axios.get(url, {
+               headers: {
+                    'Authorization': `Token ${token}`
+               }
+          })
           .then((response)=>{
                setData(response.data)
           })
@@ -31,10 +36,10 @@ const IncomingMailPage = ()=>{
                // alert("Error")
           })
      }, [])
-
      return(
           <div>
                <TitleBar>Surat masuk</TitleBar>
+               
                <Card>
                     <CardHeader>
                          <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal"/>
@@ -62,24 +67,6 @@ const IncomingMailPage = ()=>{
                                              </tr>
                                         )
                                    })}
-                                   {/* {surat_masuk.map((surat, index)=>{
-                                        return(
-                                             <tr key={surat.id}>
-                                                  <td>{index+1}</td>
-                                                  <td >{surat.nomor_agenda}</td>
-                                                  <td >{surat.nomor_agenda}</td>
-                                                  <td >{surat.tanggal_surat}</td>
-                                                  <td >{surat.tanggal_terima}</td>
-                                                  <td >{surat.asal_surat}</td>
-                                                  <td >{surat.perihal}</td>
-                                                  <td >{surat.file_surat}</td>
-                                                  <td >{surat.penerima}</td>
-                                                  <td>
-                                                       <RowAction lihat_target='#viewMailModal' ubah_target='#editMailModal'/>
-                                                  </td>
-                                             </tr>
-                                        )
-                                   })} */}
                               </TableBody>
                          </Table>
                     </CardBody>
@@ -87,7 +74,8 @@ const IncomingMailPage = ()=>{
 
                {/* Modal */}
                <AddIncomingMailModal/>
-               <EditIncomingMailModal data={surat_masuk}/>
+               
+               <EditIncomingMailModal data={data}/>
                <ViewMailModal title='Surat masuk'/>
                <ExportModal title="Ekspor daftar surat masuk"/>
           </div>

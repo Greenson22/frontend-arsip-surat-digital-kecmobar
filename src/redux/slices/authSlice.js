@@ -3,7 +3,7 @@ import { createSlice} from "@reduxjs/toolkit";
 const authSlice = createSlice({
      name: "auth",
      initialState: {
-          token: '',
+          token: '856d190761d67926abf3976d0269795d681fed9f',
           username: 'endy',
           phone_number: '08529893764'
      },

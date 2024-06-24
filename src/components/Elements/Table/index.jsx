@@ -51,11 +51,11 @@ export const TableBody = (props)=>{
 }
 
 export const RowAction = (props)=>{
-     const {lihat_target, ubah_target} = props
+     const {view_target, edit_target, edit_function} = props
      return (
           <div className="btn-group">
-               <MDBBtn outline color='primary' size='sm' data-bs-toggle="modal" data-bs-target={lihat_target}>Lihat</MDBBtn>
-               <MDBBtn outline color='warning' size='sm' data-bs-toggle="modal" data-bs-target={ubah_target}>Ubah</MDBBtn>
+               <MDBBtn outline color='primary' size='sm' data-bs-toggle="modal" data-bs-target={view_target}>Lihat</MDBBtn>
+               <MDBBtn outline color='warning' size='sm' data-bs-toggle="modal" data-bs-target={edit_target} onClick={edit_function}>Ubah</MDBBtn>
                <MDBBtn outline color='danger' size='sm'>Hapus</MDBBtn>
           </div>
      )

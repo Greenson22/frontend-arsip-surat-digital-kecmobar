@@ -13,20 +13,8 @@ import pengguna from "../../assets/data/pengguna.json"
 
 const columns = ["Nama", "User", "Level", "Status", "Tanggal Register", "Nomor Telepon"]
 
-import axios from 'axios'
-const url = 'http://localhost:8000/user_management/'
-
 const ProfileBox = ()=>{
    const [data, setData] = useState([])
-   useEffect(()=>{
-        axios.get(url)
-        .then((response)=>{
-             setData(response.data)
-        })
-        .catch((error)=>{
-             // alert("Error")
-        })
-   }, [])
 
    return (
       <div className="col-12 col-md-4">

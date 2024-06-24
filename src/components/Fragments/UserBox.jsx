@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import {Card, CardBody, CardHeader} from '../Elements/Card'
 import TableFilter from './TableFilter'
 import { Table, TableHead, TableBody, RowAction } from '../Elements/Table'
@@ -10,14 +11,17 @@ const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Tanggal Registr
 
 const UserBox = ()=>{
      const [data, setData] = useState([])
+     const usermanagement_api = useSelector(state=>state.api.usermanagement)
+     const token = useSelector(state=>state.auth.token)
 
      useEffect(()=>{
-          axios.get(url)
+          axios.get(usermanagement_api, {
+               headers: {
+                    'Authorization': `Token ${token}`
+               }
+          })
           .then((response)=>{
                setData(response.data)
-          })
-          .catch((error)=>{
-               // alert("Error")
           })
      }, [])
 

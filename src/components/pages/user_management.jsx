@@ -1,34 +1,22 @@
-import React from "react"
-import { useState, useEffect } from "react"
-
-import Container from "../Layouts/ContainerLayout"
+import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import {Card, CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead, TableBody, RowAction} from "../Elements/Table"
-
-import TitleBar from '../Fragments/TitleBar'
-import TableFilter from "../Fragments/TableFilter"
-import TableAction from "../Fragments/TableAction"
-import AddUserModal from "../Fragments/Modals/AddUserModal"
-import ExportModal from "../Fragments/Modals/ExportModal"
-import EditUserModal from "../Fragments/Modals/EditUserModal"
+import { TitleBar, TableFilter, TableAction, AddUserModal, ExportModal, EditUserModal } from '../Fragments'
 
 import pengguna from "../../assets/data/pengguna.json"
 import ViewProfileModal from "../Fragments/Modals/ViewProfileModal"
-const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
-
-import axios from 'axios'
-const url = 'http://localhost:8000/user_management/'
+import fetchData from '../../hooks/useFetchData'
 
 const UserManagementPage = ()=>{
+     const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
      const [data, setData] = useState([])
+     const token = useSelector((state) => state.auth.token)
+     const usermanagement_api = useSelector((state) => state.api.usermanagement)
 
      useEffect(()=>{
-          axios.get(url)
-          .then((response)=>{
+          fetchData(usermanagement_api, token, (response)=>{
                setData(response.data)
-          })
-          .catch((error)=>{
-               // alert("Error")
           })
      }, [])
 

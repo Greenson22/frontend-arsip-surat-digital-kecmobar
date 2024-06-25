@@ -1,8 +1,4 @@
-import TitleBar from '../Fragments/TitleBar'
-import ProfileBox from '../Fragments/ProfileBox'
-import UserBox from '../Fragments/UserBox'
-import InfoBox from '../Fragments/InfoBox'
-
+import { TitleBar, ProfileBox, UserBox, InfoBox } from '../Fragments'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserTie, faUsers, faUserCheck, faUserXmark } from '@fortawesome/free-solid-svg-icons'
 

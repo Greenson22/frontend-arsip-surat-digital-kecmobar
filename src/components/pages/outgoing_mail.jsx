@@ -1,13 +1,8 @@
 import {Card, CardBody, CardHeader} from '../Elements/Card'
 import { Table, TableHead, TableBody, RowAction } from "../Elements/Table"
 
-import TitleBar from '../Fragments/TitleBar'
-import TableAction from "../Fragments/TableAction"
-import TableFilter from "../Fragments/TableFilter"
-import AddOutgoingMailModal from "../Fragments/Modals/AddOutgoingMailModal"
-import EditOutgoingMailModal from '../Fragments/Modals/EditOutgoingMailModal'
-import ViewMailModal from '../Fragments/Modals/ViewMailModal'
-import ExportModal from "../Fragments/Modals/ExportModal"
+import { TitleBar, TableAction, TableFilter, 
+     AddOutgoingMailModal, EditOutgoingMailModal, ViewMailModal, ExportModal } from '../Fragments'
 
 import surat_keluar from "../../assets/data/surat_keluar.json"
 const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Berkas surat", "Tindakan"]

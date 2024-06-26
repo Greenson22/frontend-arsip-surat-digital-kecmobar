@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const fetch_data = (url, token, call_back)=>{
+export const fetch_data = (url, token, call_back)=>{
      axios.get(url, {
           headers: {
                'Authorization': `Token ${token}`
@@ -9,4 +9,11 @@ const fetch_data = (url, token, call_back)=>{
      .then(call_back)
 }
 
-export default fetch_data
+export const delete_data = (url, token, call_back)=>{
+     axios.delete(url, {
+          headers: {
+               'Authorization': `Token ${token}`
+          }
+     })
+     .then(call_back)
+}

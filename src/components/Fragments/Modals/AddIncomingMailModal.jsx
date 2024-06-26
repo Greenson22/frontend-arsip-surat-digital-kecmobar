@@ -1,9 +1,6 @@
 import React from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
-
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
-
-
 import AnalisisIndicator from "../AnalisisIndicator"
 
 const AddIncomingMailModal = ()=>{

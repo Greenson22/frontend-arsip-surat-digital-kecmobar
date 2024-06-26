@@ -1,7 +1,10 @@
+import React, { useState, useEffect} from 'react'
 import {TableBody, RowAction} from '../Elements/Table'
+import { delete_data } from '../../hooks/useFetchData'
 
 const IncomingMailTableBody = (props)=>{
-     const {data, setIData} = props
+     const {data, setIData, get_id} = props
+
      return(
           <TableBody>
                {data.map((surat, index)=>{
@@ -17,7 +20,9 @@ const IncomingMailTableBody = (props)=>{
                                    <td >{surat.file_url}</td>
                                    <td >{surat.recipient.name}</td>
                                    <td>
-                                        <RowAction view_target='#viewMailModal' edit_target='#editMailModal' edit_function={()=>{setIData(index)}} />
+                                        <RowAction view_target='#viewMailModal' 
+                                                  edit_target='#editMailModal' edit_function={()=>{setIData(index)}} 
+                                                  get_id={get_id} id={surat.id}/>
                                    </td>
                               </tr>
                          )
@@ -27,3 +32,12 @@ const IncomingMailTableBody = (props)=>{
 } 
 
 export default IncomingMailTableBody
+
+// ()=>{
+//      if (confirm("Konfirmasi hapus ?"+incomingmail_api)){
+//           const url = incomingmail_api+surat.id+'/'
+//           delete_data(url, token, ()=>{
+//                window.location.reload(false);
+//           })
+//      }
+//      }

@@ -14,7 +14,7 @@ const ViewMailModal = (props)=>{
                </ModalBody>
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                    <MDBBtn size='sm' color='primary' disabled>Simpan perubahan</MDBBtn>
+                    <MDBBtn size='sm' color='primary'>Simpan perubahan</MDBBtn>
                </ModalFooter>
           </Modal>
      )

@@ -4,6 +4,7 @@ import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
 
 const AddIncomingMailModal = ()=>{
+
      return(
           <Modal id="addMailModal">
                <ModalHeader title="Tambah surat masuk"/>
@@ -17,16 +18,17 @@ const AddIncomingMailModal = ()=>{
 
                          <div className="row">
                               <div className="col-6">
-                                   <MDBInput label="Nomor agenda" type="text" className='mb-2'/>
-                                   <MDBInput label="Nomor surat" type="text" className='mb-2'/>
+                                   <MDBInput id='agenda_number' label="Nomor agenda" type="text" className='mb-2'/>
+                                   <MDBInput id='letter_number' label="Nomor surat" type="text" className='mb-2'/>
+                                   <MDBInput id='source' label="Asal surat" type="text" className='mb-2'/>
                               </div>
                               <div className="col-6">
-                                   <MDBInput label="Tanggal surat" type="text" className='mb-2'/>
-                                   <MDBInput label="Tanggal terima" type="text" className='mb-2'/>
+                                   <MDBInput id='letter_date' label="Tanggal surat" type="date" className='mb-2'/>
+                                   <MDBInput id='received_date' label="Tanggal terima" type="date" className='mb-2'/>
+                                   <MDBInput id='recipient' label="Penerima" type="text" className='mb-2'/>
                               </div>
                          </div>
-                         <MDBInput label="Asal surat" type="text" className='mb-2'/>
-                         <MDBInput label="Perihal" type="text" />
+                         <MDBInput id='subject' label="Perihal" type="text" />
                     </form>
                </ModalBody>
                <ModalFooter>

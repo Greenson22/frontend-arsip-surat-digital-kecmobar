@@ -51,13 +51,19 @@ export const TableBody = (props)=>{
 }
 
 export const RowAction = (props)=>{
-     const {view_target, edit_target, edit_function, get_id, id} = props
+     const {view_target, edit_target, get_data, id, index} = props
      return (
           <div className="btn-group">
                <MDBBtn outline color='primary' size='sm' data-bs-toggle="modal" data-bs-target={view_target}>Lihat</MDBBtn>
-               <MDBBtn outline color='warning' size='sm' data-bs-toggle="modal" data-bs-target={edit_target} onClick={edit_function}>Ubah</MDBBtn>
+               <MDBBtn outline color='warning' size='sm' data-bs-toggle="modal" data-bs-target={edit_target} onClick={()=>{
+                    get_data({
+                         'id':id,
+                         'command':'view_data',
+                         'index': index
+                    })
+               }}>Ubah</MDBBtn>
                <MDBBtn outline color='danger' size='sm' onClick={()=>{
-                    get_id({
+                    get_data({
                          'id':id,
                          'command':'delete'
                     })

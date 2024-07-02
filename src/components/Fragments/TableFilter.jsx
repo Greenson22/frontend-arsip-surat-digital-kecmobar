@@ -1,10 +1,13 @@
-const TableFilter = ()=>{
+import { usePageSizeSelect } from "../../hooks"
+
+const TableFilter = (props)=>{
+     const {link, setUrl} = props
      return(
           <div className="row">
                <div className="col-12 col-md-2 d-flex">
                     <sub className="mt-3">Show</sub>
                     <div className="col-2 col-md-9 ms-1 me-1">
-                         <select className="form-select form-select-sm" name="" id="">
+                         <select className="form-select form-select-sm" name="" id="page_size" onClick={(event)=>{usePageSizeSelect(event, link, setUrl)}}>
                               <option value="5">5</option>
                               <option value="10">10</option>
                               <option value="15">15</option>

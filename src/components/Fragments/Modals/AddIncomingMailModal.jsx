@@ -4,12 +4,17 @@ import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
 
 const AddIncomingMailModal = ()=>{
+     const get_data = ()=>{
+          const form = document.getElementById('addIncomingMailForm')
+          const agenda_number = form.querySelector('#agenda_number')
+          console.log(agenda_number)
+     }
 
      return(
           <Modal id="addMailModal">
                <ModalHeader title="Tambah surat masuk"/>
                <ModalBody>
-                    <form action="">
+                    <form action="" id='addIncomingMailForm'>
                          <label htmlFor="" className="from-label">Unggah file surat</label>
                          <br/><sub className="">*pdf, png, jpeg, jpg</sub>
                          <input type="file" name="" className="form-control mt-2"/>
@@ -33,7 +38,9 @@ const AddIncomingMailModal = ()=>{
                </ModalBody>
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                    <MDBBtn size='sm' color='primary' disabled>Tambah surat</MDBBtn>
+                    <MDBBtn size='sm' color='primary' onClick={()=>{
+                         get_data()
+                    }}>Tambah surat</MDBBtn>
                </ModalFooter>
           </Modal>
      )

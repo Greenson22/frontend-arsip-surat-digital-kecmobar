@@ -1,56 +1,58 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
+import { MDBBtn } from "mdb-react-ui-kit"
 import { useSelector } from "react-redux"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead} from '../Elements/Table'
 import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
-import { fetch_data } from '../../hooks/useFetchData'
-import useIncomingmailActions from "../../hooks/useIncomingmailActions"
+import { useEffectIncomingmail, usePaginationOffset } from "../../hooks"
 
-const IncomingMailPage = ()=>{
-     const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima","Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
-     const [data, setData] = useState([])
-     const [iData, setIData] = useState(0)
+
+function IncomingMailPage() {
+     const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
      const token = useSelector((state) => state.auth.token)
-     const incomingmail_api = useSelector((state) => state.api.incomingmail)
-     
-     useEffect(()=>{
-          if (data.length <= 0){
-               fetch_data(incomingmail_api, token, (response)=>{
-                    setData(response.data)
-               })
+     const link = useSelector((state) => state.api.incomingmail)
+
+     const [url, setUrl] = useState(link)
+     const [data, setData] = useState(null)
+     const [iData, setIData] = useState(0)
+     const [command, setCommand] = useState(null)
+
+     useEffectIncomingmail(link, url, token, command, setUrl, setData, setIData)
+     function getData(request){setCommand(request)}
+
+     // set data to next page or prev page
+     function setNavigationPage(nav) {
+          if (data[nav]){
+               setUrl(data[nav])
           }
-     }, [data])
-
-     const get_data = (mydata)=>{
-          useIncomingmailActions(incomingmail_api, token, mydata, setData, setIData)
      }
-
-     return(
+     
+     return (
           <div>
                <TitleBar>Surat masuk</TitleBar>
                <Card>
                     <CardHeader>
-                         {data.length > 0 &&
-                              <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal"/>
-                         }
+                         {data &&
+                              <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal" />}
                     </CardHeader>
                     <CardBody>
-                         <TableFilter/>
+                         <TableFilter link={link} setUrl={setUrl}/>
                          <Table add_class="table-sm">
-                              <TableHead columns={columns}/>
-                              <IncomingMailTableBody data={data} get_data={get_data}></IncomingMailTableBody>
+                              <TableHead columns={columns} />
+                              {data &&
+                                   <IncomingMailTableBody data={data['results']} get_data={getData} page_index={usePaginationOffset(url)}></IncomingMailTableBody>}
                          </Table>
+                         <MDBBtn onClick={() => { setNavigationPage('previous') } }>prev</MDBBtn>
+                         <MDBBtn onClick={() => { setNavigationPage('next') } }>next</MDBBtn>
                     </CardBody>
                </Card>
-               {/* Modal */
-                    data.length > 0 && <div>
-                         <AddIncomingMailModal/>
-                         <EditIncomingMailModal letter={data[iData]} get_data={get_data}/>
-                         <ViewMailModal title='Surat masuk'/>
-                         <DeleteIncomingMailModal/>
-                         <ExportModal title="Ekspor daftar surat masuk"/>
-                    </div>
-               }
+               {/* Modal */data && <div>
+                    <AddIncomingMailModal get_data={getData}/>
+                    <EditIncomingMailModal letter={data['results'][iData]} get_data={getData} />
+                    <ViewMailModal title='Surat masuk' />
+                    <DeleteIncomingMailModal />
+                    <ExportModal title="Ekspor daftar surat masuk" />
+               </div>}
           </div>
      )
 }

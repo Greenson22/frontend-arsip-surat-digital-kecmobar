@@ -17,8 +17,6 @@ function IncomingMailPage() {
      const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
 
-     useEffect(()=>{console.log(command)}, [command])
-
      useIncomingmailEffect(link, url, token, command, setUrl, setData, setIData)
      
      return (
@@ -36,8 +34,8 @@ function IncomingMailPage() {
                               {data &&
                                    <IncomingMailTableBody data={data['results']} setCommand={setCommand} page_index={usePaginationOffset(url)}></IncomingMailTableBody>}
                          </Table>
-                         <MDBBtn onClick={() => { useSetPage(data, 'previous', setUrl) } }>prev</MDBBtn>
-                         <MDBBtn onClick={() => { useSetPage(data, 'next', setUrl) } }>next</MDBBtn>
+                         <MDBBtn onClick={() => { useSetPage(data['previous'], setCommand) } }>prev</MDBBtn>
+                         <MDBBtn onClick={() => { useSetPage(data['next'], setCommand) } }>next</MDBBtn>
                     </CardBody>
                </Card>
                {/* Modal */data && <div>

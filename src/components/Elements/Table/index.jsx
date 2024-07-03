@@ -65,7 +65,7 @@ export const RowAction = (props)=>{
                <MDBBtn outline color='danger' size='sm' onClick={()=>{
                     setCommand({
                          'id':id,
-                         'command':'delete'
+                         'command': 'delete',
                     })
                }}>Hapus</MDBBtn>
           </div>

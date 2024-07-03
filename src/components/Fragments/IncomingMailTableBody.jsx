@@ -2,7 +2,7 @@ import React from 'react'
 import {TableBody, RowAction} from '../Elements/Table'
 
 const IncomingMailTableBody = (props)=>{
-     const {data, get_data, page_index, setCommand} = props
+     const {data, page_index, setCommand} = props
 
      return(
           <TableBody>
@@ -21,7 +21,7 @@ const IncomingMailTableBody = (props)=>{
                                    <td>
                                         <RowAction view_target='#viewMailModal' 
                                                   edit_target='#editMailModal' index={index}
-                                                  get_data={get_data} id={surat.id}
+                                                  id={surat.id}
                                                   setCommand={setCommand}/>
                                    </td>
                               </tr>

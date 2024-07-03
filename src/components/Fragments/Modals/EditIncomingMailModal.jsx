@@ -4,7 +4,8 @@ import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
 
 const EditIncomingMailModal = (props)=>{
-     const {letter, get_data} = props
+     const {letter, setCommand} = props
+
      const form_name = 'editIncomingMailForm'
      const agenda_number = 'agenda_number'
      const letter_number = 'letter_number'
@@ -27,7 +28,7 @@ const EditIncomingMailModal = (props)=>{
 
      const send_data = ()=>{
           const form = document.getElementById(form_name)
-          get_data({
+          setCommand({
                'command': 'put',
                'id': letter.id,
                'data': {'agenda_number': form.querySelector('#'+agenda_number).value,

@@ -1,6 +1,6 @@
 import { fetch_data, delete_data, put_data } from '../useFetchData'
 
-const useActionsIncomingmail = (link, url, token, command, setData, setIData)=>{
+const useIncomingmailActions = (link, url, token, command, setData, setIData)=>{
      if (command){
           switch(command.command){
                case 'post':
@@ -19,4 +19,4 @@ const useActionsIncomingmail = (link, url, token, command, setData, setIData)=>{
      }
 }
 
-export default useActionsIncomingmail
+export default useIncomingmailActions

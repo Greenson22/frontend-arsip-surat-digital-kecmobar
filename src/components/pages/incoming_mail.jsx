@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { MDBBtn } from "mdb-react-ui-kit"
 import { useSelector } from "react-redux"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead} from '../Elements/Table'
 import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
-import { useEffectIncomingmail, usePaginationOffset } from "../../hooks"
+import { useIncomingmailEffect, usePaginationOffset, useSetPage } from "../../hooks"
 
 
 function IncomingMailPage() {
@@ -17,15 +17,9 @@ function IncomingMailPage() {
      const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
 
-     useEffectIncomingmail(link, url, token, command, setUrl, setData, setIData)
-     function getData(request){setCommand(request)}
+     useEffect(()=>{console.log(command)}, [command])
 
-     // set data to next page or prev page
-     function setNavigationPage(nav) {
-          if (data[nav]){
-               setUrl(data[nav])
-          }
-     }
+     useIncomingmailEffect(link, url, token, command, setUrl, setData, setIData)
      
      return (
           <div>
@@ -40,15 +34,15 @@ function IncomingMailPage() {
                          <Table add_class="table-sm">
                               <TableHead columns={columns} />
                               {data &&
-                                   <IncomingMailTableBody data={data['results']} get_data={getData} page_index={usePaginationOffset(url)}></IncomingMailTableBody>}
+                                   <IncomingMailTableBody data={data['results']} setCommand={setCommand} page_index={usePaginationOffset(url)}></IncomingMailTableBody>}
                          </Table>
-                         <MDBBtn onClick={() => { setNavigationPage('previous') } }>prev</MDBBtn>
-                         <MDBBtn onClick={() => { setNavigationPage('next') } }>next</MDBBtn>
+                         <MDBBtn onClick={() => { useSetPage(data, 'previous', setUrl) } }>prev</MDBBtn>
+                         <MDBBtn onClick={() => { useSetPage(data, 'next', setUrl) } }>next</MDBBtn>
                     </CardBody>
                </Card>
                {/* Modal */data && <div>
-                    <AddIncomingMailModal get_data={getData}/>
-                    <EditIncomingMailModal letter={data['results'][iData]} get_data={getData} />
+                    <AddIncomingMailModal />
+                    <EditIncomingMailModal letter={data['results'][iData]} setCommand={setCommand}/>
                     <ViewMailModal title='Surat masuk' />
                     <DeleteIncomingMailModal />
                     <ExportModal title="Ekspor daftar surat masuk" />

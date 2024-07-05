@@ -6,7 +6,7 @@ import { TitleBar, TableFilter, TableAction, AddUserModal, ExportModal, EditUser
 
 import pengguna from "../../assets/data/pengguna.json"
 import ViewProfileModal from "../Fragments/Modals/ViewProfileModal"
-import { fetch_data } from '../../hooks/useFetchData'
+// import { fetch_data } from '../../hooks/useFetchData'
 
 const UserManagementPage = ()=>{
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
@@ -14,11 +14,11 @@ const UserManagementPage = ()=>{
      const token = useSelector((state) => state.auth.token)
      const usermanagement_api = useSelector((state) => state.api.usermanagement)
 
-     useEffect(()=>{
-          fetch_data(usermanagement_api, token, (response)=>{
-               setData(response.data)
-          })
-     }, [])
+     // useEffect(()=>{
+     //      fetch_data(usermanagement_api, token, (response)=>{
+     //           setData(response.data)
+     //      })
+     // }, [])
 
      return(
           <div>

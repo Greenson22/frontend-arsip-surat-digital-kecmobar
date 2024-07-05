@@ -2,13 +2,10 @@ import React from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
+import { useFormData } from '../../../hooks';
 
-const AddIncomingMailModal = ()=>{
-     const get_data = ()=>{
-          const form = document.getElementById('addIncomingMailForm')
-          const agenda_number = form.querySelector('#agenda_number')
-          console.log(agenda_number)
-     }
+const AddIncomingMailModal = (props)=>{
+     const {setCommand} = props
 
      return(
           <Modal id="addMailModal">
@@ -38,8 +35,11 @@ const AddIncomingMailModal = ()=>{
                </ModalBody>
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                    <MDBBtn size='sm' color='primary' onClick={()=>{
-                         get_data()
+                    <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" onClick={()=>{
+                         setCommand({
+                              'command': 'post', 
+                              'data': useFormData('addIncomingMailForm')
+                         })
                     }}>Tambah surat</MDBBtn>
                </ModalFooter>
           </Modal>

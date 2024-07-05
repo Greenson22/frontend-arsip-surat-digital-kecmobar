@@ -66,7 +66,7 @@ const EditIncomingMailModal = (props)=>{
                          <input type="file" name="" className="form-control mt-2"/>
                          <AnalisisIndicator/>
                     </form>
-                    {document.getElementById('received_date') && init_data()}
+                    {document.getElementById(form_name) && init_data()}
                </ModalBody>
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>

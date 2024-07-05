@@ -10,15 +10,18 @@ import { useIncomingmailEffect, usePaginationOffset, useSetPage } from "../../ho
 function IncomingMailPage() {
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
      const token = useSelector((state) => state.auth.token)
-     const link = useSelector((state) => state.api.incomingmail)
+     const url = useSelector((state) => state.api.incomingmail)
 
-     const [url, setUrl] = useState(link)
+     const [pagination, setPagination] = useState({
+          'page': 1,
+          'page_size': 5, 
+     })
+
      const [data, setData] = useState(null)
      const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
-
-     useIncomingmailEffect(link, url, token, command, setUrl, setData, setIData)
      
+     useIncomingmailEffect(url, token, command, setData, setIData, setCommand, setPagination)
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>
@@ -28,7 +31,7 @@ function IncomingMailPage() {
                               <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal" />}
                     </CardHeader>
                     <CardBody>
-                         <TableFilter link={link} setUrl={setUrl}/>
+                         <TableFilter url={url} setCommand={setCommand}/>
                          <Table add_class="table-sm">
                               <TableHead columns={columns} />
                               {data &&
@@ -38,13 +41,15 @@ function IncomingMailPage() {
                          <MDBBtn onClick={() => { useSetPage(data['next'], setCommand) } }>next</MDBBtn>
                     </CardBody>
                </Card>
-               {/* Modal */data && <div>
-                    <AddIncomingMailModal />
+
+               {data && data['count'] > 0 && <div>
                     <EditIncomingMailModal letter={data['results'][iData]} setCommand={setCommand}/>
-                    <ViewMailModal title='Surat masuk' />
-                    <DeleteIncomingMailModal />
-                    <ExportModal title="Ekspor daftar surat masuk" />
                </div>}
+               
+               <AddIncomingMailModal setCommand={setCommand}/>
+               <ViewMailModal title='Surat masuk' />
+               <DeleteIncomingMailModal />
+               <ExportModal title="Ekspor daftar surat masuk" />
           </div>
      )
 }

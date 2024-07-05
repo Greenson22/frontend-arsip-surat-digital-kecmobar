@@ -1,11 +1,9 @@
 import { useEffect } from "react"
-import useUrlResource from "../useUrlResource"
 import useIncomingmailActions from "./useIncomingmailActions"
 
-const useIncomingmailEffect = (link, url, token, command, setUrl, setData, setIData)=>{
+const useIncomingmailEffect = (url, token, command, setData, setIData, setCommand)=>{
      useEffect(()=>{
-          useUrlResource(link, setUrl, command)
-          useIncomingmailActions(link, url, token, command, setData, setIData)
+          useIncomingmailActions(url, token, command, setData, setIData, setCommand)
      }, [command])
 }
 

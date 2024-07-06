@@ -1,4 +1,4 @@
-const usePaginationOffset = (url)=>{
+const usePaginationUrlOffset = (url)=>{
      const urlSplit = url.split('?')
      const queryParams = new URLSearchParams(urlSplit[1])
      let page = queryParams.get('page')
@@ -7,4 +7,4 @@ const usePaginationOffset = (url)=>{
      return (pageSize * (page-1))
 }
 
-export default usePaginationOffset
+export default usePaginationUrlOffset

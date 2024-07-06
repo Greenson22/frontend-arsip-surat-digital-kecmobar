@@ -1,7 +1,8 @@
-
-const getParams = (url)=>{
+const useUrlParams = (url)=>{
      const urlSplit = url.split('?')
      const urlParams = urlSplit[1]
      const queryParams = new URLSearchParams(urlParams)
-     return 
+     return queryParams
 }
+
+export default useUrlParams

@@ -2,6 +2,8 @@ import useHandlePut from './useHandlePut'
 import useHandlePost from './useHandlePost'
 import useHandleDelete from './useHandleDelete'
 import useHandleFetch from './useHandleFetch'
+import usePaginationLocalStorage from '../usePaginationLocalStorage'
+import useUrlSyn from '../useUrlSyn'
 
 const useIncomingmailActions = (url, token, command, setData, setIData, setCommand)=>{
      if (command){
@@ -20,13 +22,16 @@ const useIncomingmailActions = (url, token, command, setData, setIData, setComma
                     break
                case 'navigation':
                     useHandleFetch(command.navigation_link, token, setData)
+                    usePaginationLocalStorage(command.navigation_link)
                     break
                case 'page_size':
                     useHandleFetch(command.url, token, setData)
+                    usePaginationLocalStorage(command.url)
                     break
           }
      }else{
           useHandleFetch(url, token, setData)
+          usePaginationLocalStorage(url)
      }
 }
 

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead} from '../Elements/Table'
 import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
-import { useIncomingmailEffect, usePaginationOffset, useSetPage } from "../../hooks"
+import { useIncomingmailEffect, useSetPage } from "../../hooks"
 
 
 function IncomingMailPage() {
@@ -12,16 +12,11 @@ function IncomingMailPage() {
      const token = useSelector((state) => state.auth.token)
      const url = useSelector((state) => state.api.incomingmail)
 
-     const [pagination, setPagination] = useState({
-          'page': 1,
-          'page_size': 5, 
-     })
-
      const [data, setData] = useState(null)
      const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
      
-     useIncomingmailEffect(url, token, command, setData, setIData, setCommand, setPagination)
+     useIncomingmailEffect(url, token, command, setData, setIData, setCommand)
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>
@@ -35,7 +30,7 @@ function IncomingMailPage() {
                          <Table add_class="table-sm">
                               <TableHead columns={columns} />
                               {data &&
-                                   <IncomingMailTableBody data={data['results']} setCommand={setCommand} page_index={usePaginationOffset(url)}></IncomingMailTableBody>}
+                                   <IncomingMailTableBody data={data['results']} setCommand={setCommand}></IncomingMailTableBody>}
                          </Table>
                          <MDBBtn onClick={() => { useSetPage(data['previous'], setCommand) } }>prev</MDBBtn>
                          <MDBBtn onClick={() => { useSetPage(data['next'], setCommand) } }>next</MDBBtn>

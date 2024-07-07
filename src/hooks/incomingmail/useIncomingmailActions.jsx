@@ -28,6 +28,10 @@ const useIncomingmailActions = (url, token, command, setData, setIData, setComma
                     useHandleFetch(command.url, token, setData)
                     usePaginationLocalStorage(command.url)
                     break
+               case 'search':
+                    const searchUrl = url+'&search='+command.words
+                    useHandleFetch(searchUrl, token, setData)
+                    break
           }
      }else{
           useHandleFetch(url, token, setData)

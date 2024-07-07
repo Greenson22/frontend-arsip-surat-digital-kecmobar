@@ -20,7 +20,10 @@ const TableFilter = (props)=>{
                <div className="col-0 col-md-6 my-1"></div>
                <div className="col-12 col-md-4 d-flex">
                     <sub className="mt-3 me-2">Search:</sub>
-                    <input type="search" className="form-control form-control-sm mb-2" name="search_box"/>
+                    <input type="search" className="form-control form-control-sm mb-2" name="search_box" onChange={(event)=>{setCommand({
+                         'command': 'search',
+                         'words': event.target.value
+                    })}}/>
                </div>
           </div>
      )

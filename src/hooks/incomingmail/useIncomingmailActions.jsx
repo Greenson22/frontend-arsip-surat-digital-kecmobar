@@ -29,7 +29,8 @@ const useIncomingmailActions = (url, token, command, setData, setIData, setComma
                     usePaginationLocalStorage(command.url)
                     break
                case 'search':
-                    const searchUrl = url+'&search='+command.words
+                    const urlSyn = useUrlSyn(url, 'incomingmail_pagination')
+                    const searchUrl = urlSyn+'&search='+command.words
                     useHandleFetch(searchUrl, token, setData)
                     break
           }

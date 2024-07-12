@@ -4,8 +4,10 @@ import useHandleDelete from './useHandleDelete'
 import useHandleFetch from './useHandleFetch'
 import usePaginationLocalStorage from '../usePaginationLocalStorage'
 import useUrlSyn from '../useUrlSyn'
+import useUrlModifier from '../useUrlModifier'
+import { useFetchFile } from '..'
 
-const useIncomingmailActions = (url, token, command, setData, setIData, setCommand)=>{
+const useIncomingmailActions = (url, token, command, setData, setIData, setFileUrl, setCommand)=>{
      if (command){
           switch(command.command){
                case 'post':
@@ -19,6 +21,10 @@ const useIncomingmailActions = (url, token, command, setData, setIData, setComma
                     break
                case 'view_data':
                     setIData(command.index)
+                    break
+               case 'view_file':
+                    const urlFile = useUrlModifier(url, command)+'file'
+                    setFileUrl(urlFile)
                     break
                case 'navigation':
                     useHandleFetch(command.navigation_link, token, setData)

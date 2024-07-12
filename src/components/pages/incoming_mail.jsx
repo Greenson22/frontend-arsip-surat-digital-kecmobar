@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead} from '../Elements/Table'
 import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
-import { useIncomingmailEffect, useSetPage } from "../../hooks"
+import { useFetchData, useIncomingmailEffect, useSetPage } from "../../hooks"
 
 
 function IncomingMailPage() {
@@ -15,8 +15,9 @@ function IncomingMailPage() {
      const [data, setData] = useState(null)
      const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
+     const [fileUrl, setFileUrl] = useState(null)
      
-     useIncomingmailEffect(url, token, command, setData, setIData, setCommand)
+     useIncomingmailEffect(url, token, command, setData, setIData, setFileUrl, setCommand)
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>
@@ -39,10 +40,10 @@ function IncomingMailPage() {
 
                {data && data['count'] > 0 && <div>
                     <EditIncomingMailModal letter={data['results'][iData]} setCommand={setCommand}/>
+                    <ViewMailModal title='Surat masuk' fileUrl={fileUrl}/>
                </div>}
                
                <AddIncomingMailModal setCommand={setCommand}/>
-               <ViewMailModal title='Surat masuk' />
                <DeleteIncomingMailModal />
                <ExportModal title="Ekspor daftar surat masuk" />
           </div>

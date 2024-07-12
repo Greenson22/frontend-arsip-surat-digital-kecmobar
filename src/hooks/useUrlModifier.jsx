@@ -1,6 +1,7 @@
 const useUrlModifier = (url, command)=>{
      let newUrl = url
      switch (command.command){
+          case 'view_file':
           case 'delete':
           case 'put':
                const splitUrl = url.split('?')

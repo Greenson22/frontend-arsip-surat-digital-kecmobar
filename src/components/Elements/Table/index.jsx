@@ -54,7 +54,12 @@ export const RowAction = (props)=>{
      const {view_target, edit_target, id, index, setCommand} = props
      return (
           <div className="btn-group">
-               <MDBBtn outline color='primary' size='sm' data-bs-toggle="modal" data-bs-target={view_target}>Lihat</MDBBtn>
+               <MDBBtn outline color='primary' size='sm' data-bs-toggle="modal" data-bs-target={view_target} onClick={()=>{
+                    setCommand({
+                         'id':id,
+                         'command':'view_file'
+                    })
+               }}>Lihat</MDBBtn>
                <MDBBtn outline color='warning' size='sm' data-bs-toggle="modal" data-bs-target={edit_target} onClick={()=>{
                     setCommand({
                          'id':id,

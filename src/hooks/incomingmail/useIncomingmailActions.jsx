@@ -11,7 +11,8 @@ const useIncomingmailActions = (url, token, command, setData, setIData, setFileU
      if (command){
           switch(command.command){
                case 'post':
-                    useHandlePost(url, token, command, setCommand)
+                    const newUrl = url.split('?')[0]
+                    useHandlePost(newUrl, token, command, setCommand)
                     break
                case 'put':
                     useHandlePut(url, token, command, setCommand)

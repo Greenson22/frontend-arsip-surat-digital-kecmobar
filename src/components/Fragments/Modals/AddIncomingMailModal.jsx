@@ -14,7 +14,7 @@ const AddIncomingMailModal = (props)=>{
                     <form action="" id='addIncomingMailForm'>
                          <label htmlFor="" className="from-label">Unggah file surat</label>
                          <br/><sub className="">*pdf, png, jpeg, jpg</sub>
-                         <input type="file" name="" className="form-control mt-2"/>
+                         <input id='document' type="file" className="form-control mt-2"/>
                          <AnalisisIndicator/>
                          <hr className="mb-4"/>
 

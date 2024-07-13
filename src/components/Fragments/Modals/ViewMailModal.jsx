@@ -12,7 +12,7 @@ const ViewMailModal = (props)=>{
                          <iframe
                          src={fileUrl}
                          title="My Document"
-                         allowfullscreen></iframe>
+                         allowFullScreen></iframe>
                     </div>
                </ModalBody>
                <ModalFooter>

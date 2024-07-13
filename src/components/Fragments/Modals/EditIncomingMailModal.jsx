@@ -28,16 +28,19 @@ const EditIncomingMailModal = (props)=>{
 
      const send_data = ()=>{
           const form = document.getElementById(form_name)
+          const formData = new FormData()
+          formData.append('agenda_number', form.querySelector('#'+agenda_number).value)
+          formData.append('letter_number',  form.querySelector('#'+letter_number).value)
+          formData.append('received_date', form.querySelector('#'+received_date).value)
+          formData.append('source', form.querySelector('#'+source).value)
+          formData.append('letter_date', form.querySelector('#'+letter_date).value)
+          formData.append('recipient', form.querySelector('#'+recipient).value)
+          formData.append('subject', form.querySelector('#'+subject).value)
+
           setCommand({
                'command': 'put',
                'id': letter.id,
-               'data': {'agenda_number': form.querySelector('#'+agenda_number).value,
-                    'letter_number':  form.querySelector('#'+letter_number).value,
-                    'received_date':  form.querySelector('#'+received_date).value,
-                    'source':  form.querySelector('#'+source).value,
-                    'letter_date': form.querySelector('#'+letter_date).value,
-                    'recipient': form.querySelector('#'+recipient).value,
-                    'subject': form.querySelector('#'+subject).value,},
+               'data': formData
           })
      }
      

@@ -15,3 +15,4 @@ export { default as usePaginationLocalStorage } from './usePaginationLocalStorag
 export { default as useUrlParams } from './useUrlParams'
 export { default as usePaginationOffset } from './usePaginationOffset'
 export { default as useUrlSyn } from './useUrlSyn'
+export { default as useAlert } from './useAlert'

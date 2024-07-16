@@ -15,3 +15,4 @@ export { default as AddOutgoingMailModal } from "./Modals/AddOutgoingMailModal"
 export { default as EditOutgoingMailModal } from './Modals/EditOutgoingMailModal'
 export { default as AddUserModal } from "./Modals/AddUserModal"
 export { default as EditUserModal } from './Modals/EditUserModal'
+export { default as AlertModal } from './Modals/AlertModal'

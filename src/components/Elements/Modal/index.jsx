@@ -1,5 +1,4 @@
 import React from "react"
-import { MDBBtn } from "mdb-react-ui-kit"
 
 export const Modal = (props)=>{
      const {children, id, addClassToModalDialog} = props

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead} from '../Elements/Table'
 import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, 
-     AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal, AlertModal} from '../Fragments'
+     AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
 import { useIncomingmailEffect, useSetPage } from "../../hooks"
 
 function IncomingMailPage() {

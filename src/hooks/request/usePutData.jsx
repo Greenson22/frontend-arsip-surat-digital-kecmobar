@@ -1,15 +1,13 @@
 import axios from "axios"
 
-const usePutData = (url, data, token, call_back)=>{
+const usePutData = (url, data, token, call_back, call_back_err)=>{
      axios.put(url, data, {
           headers: {
                'Authorization': `Token ${token}`
           }
      })
      .then(call_back)
-     .catch(error=>{
-          console.log(error)
-     })
+     .catch(call_back_err)
 }
 
 export default usePutData

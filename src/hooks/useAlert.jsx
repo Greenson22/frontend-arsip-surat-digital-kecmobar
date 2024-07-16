@@ -1,34 +1,34 @@
 import Swal from 'sweetalert2'
 
+const handleAlert = (title, text, icon, timer=false)=>{
+     Swal.fire({
+          title: title,
+          text: text,
+          icon: icon,
+          timer: timer,
+          timerProgressBar: true,
+        })
+}
+
 const useAlert = (option)=>{
      switch(option){
           case 'success':
-               Swal.fire({
-                    title: "Berhasil!",
-                    text: "Data telah berhasil ditambahkan!",
-                    icon: "success"
-                  })
+               handleAlert("Berhasil ditambahkan!", "Data telah ditambahkan!", "success", 3000)
+               break
+          case 'success_update':
+               handleAlert( "Berhasil diubah!", "Data telah diubah!", "success", 3000)
                break
           case 'success_delete':
-               Swal.fire({
-                    title: "Berhasil dihapus!",
-                    text: "Data berhasil dihapus!",
-                    icon: "success"
-                  })
-               break
-          case 'error_delete':
-                    Swal.fire({
-                         title: "Oppss gagal menghapus data!!!",
-                         text: "Mungkin terjadi kesalahan di server!!!",
-                         icon: "error"
-                    })
+               handleAlert("Berhasil dihapus!", "Data telah dihapus!", "success", 3000)
                break
           case 'error':
-               Swal.fire({
-                    title: "Oppss terjadi kesalahan!!!",
-                    text: "Coba periksa input yang ada berikan!!!",
-                    icon: "error"
-               })
+                    handleAlert("Oppss terjadi kesalahan!!!", "Coba periksa input yang ada berikan!!!", "error")
+                    break
+          case 'error_delete':
+               handleAlert("Oppss gagal menghapus data!!!", "Mungkin terjadi kesalahan di server!!!", "error")
+               break
+          case 'error_update':
+               handleAlert("Oppss gagal mengubah data!!!", "Mungkin input yang dimasukan salah atau kesalahan terjadi di server!!!", "error")
                break
      }
 }

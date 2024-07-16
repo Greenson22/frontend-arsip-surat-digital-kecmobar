@@ -3,9 +3,9 @@ import { MDBBtn } from "mdb-react-ui-kit"
 import { useSelector } from "react-redux"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead} from '../Elements/Table'
-import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
-import { useFetchData, useIncomingmailEffect, useSetPage } from "../../hooks"
-
+import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, 
+     AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal, AlertModal} from '../Fragments'
+import { useIncomingmailEffect, useSetPage } from "../../hooks"
 
 function IncomingMailPage() {
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]

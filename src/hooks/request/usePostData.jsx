@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const usePostData = (url, data, token, call_back)=>{
+const usePostData = (url, data, token, call_back, call_back_err)=>{
      axios.post(url, data, {
           headers: {
                'Authorization': `Token ${token}`,
@@ -8,9 +8,7 @@ const usePostData = (url, data, token, call_back)=>{
           }
      })
      .then(call_back)
-     .catch(error=>{
-          console.log(error)
-     })
+     .catch(call_back_err)
 }
 
 export default usePostData

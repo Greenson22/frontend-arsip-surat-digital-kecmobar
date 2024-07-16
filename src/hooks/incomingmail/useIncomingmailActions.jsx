@@ -5,7 +5,6 @@ import useHandleFetch from './useHandleFetch'
 import usePaginationLocalStorage from '../usePaginationLocalStorage'
 import useUrlSyn from '../useUrlSyn'
 import useUrlModifier from '../useUrlModifier'
-import { useFetchFile } from '..'
 
 const useIncomingmailActions = (url, token, command, setData, setIData, setFileUrl, setCommand)=>{
      if (command){

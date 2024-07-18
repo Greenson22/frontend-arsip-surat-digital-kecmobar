@@ -10,6 +10,17 @@ const handleAlert = (title, text, icon, timer=false)=>{
         })
 }
 
+const handleAlertLoading = (title, text)=>{
+     Swal.fire({
+          title: title,
+          text: text,
+          showConfirmButton: false,
+          didOpen: ()=>{
+               Swal.showLoading()
+          }
+        })
+}
+
 const useAlert = (option)=>{
      switch(option){
           case 'success':
@@ -21,6 +32,9 @@ const useAlert = (option)=>{
           case 'success_delete':
                handleAlert("Berhasil dihapus!", "Data telah dihapus!", "success", 3000)
                break
+          case 'success_login':
+                    handleAlert("Berhasil Login!", "Anda berhasil masuk!", "success", 3000)
+               break
           case 'error':
                     handleAlert("Oppss terjadi kesalahan!!!", "Coba periksa input yang ada berikan!!!", "error")
                     break
@@ -29,6 +43,9 @@ const useAlert = (option)=>{
                break
           case 'error_update':
                handleAlert("Oppss gagal mengubah data!!!", "Mungkin input yang dimasukan salah atau kesalahan terjadi di server!!!", "error")
+               break
+          case 'loading':
+               handleAlertLoading('Sedang masuk...', 'Mohon tunggu sebentar...')
                break
      }
 }

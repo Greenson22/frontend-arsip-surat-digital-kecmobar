@@ -1,8 +1,8 @@
 const WrapperItem = (props) => {
-  const {active, children} = props
+  const {active, children, onClick} = props
     return (
       <li className={active}>
-        <a href={props.href}>
+        <a href={props.href} onClick={onClick}>
             <i>
               {children}
             </i>

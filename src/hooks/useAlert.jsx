@@ -33,11 +33,14 @@ const useAlert = (option)=>{
                handleAlert("Berhasil dihapus!", "Data telah dihapus!", "success", 3000)
                break
           case 'success_login':
-                    handleAlert("Berhasil Login!", "Anda berhasil masuk!", "success", 3000)
+               handleAlert("Berhasil Login!", "Anda berhasil masuk!", "success", 3000)
                break
           case 'error':
-                    handleAlert("Oppss terjadi kesalahan!!!", "Coba periksa input yang ada berikan!!!", "error")
-                    break
+               handleAlert("Oppss terjadi kesalahan!!!", "Coba periksa input yang ada berikan!!!", "error")
+               break
+          case 'error_login':
+               handleAlert("Oppss gagal login!!!", "Coba periksa username dan password yang anda masukan atau kesalahan terjadi di server!!!", "error")
+               break
           case 'error_delete':
                handleAlert("Oppss gagal menghapus data!!!", "Mungkin terjadi kesalahan di server!!!", "error")
                break

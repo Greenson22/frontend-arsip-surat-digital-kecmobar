@@ -6,18 +6,22 @@ import {Table, TableHead} from '../Elements/Table'
 import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, 
      AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
 import { useIncomingmailEffect, useSetPage } from "../../hooks"
+import useLoginValidate from "../../hooks/useLoginValidation"
 
 function IncomingMailPage() {
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
-     const token = useSelector((state) => state.auth.token)
      const url = useSelector((state) => state.api.incomingmail)
+
+     const accessToken = localStorage.getItem('accessToken')
+     useLoginValidate(accessToken)
 
      const [data, setData] = useState(null)
      const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
      const [fileUrl, setFileUrl] = useState(null)
      
-     useIncomingmailEffect(url, token, command, setData, setIData, setFileUrl, setCommand)
+     useIncomingmailEffect(url, accessToken, command, setData, setIData, setFileUrl, setCommand)
+
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>

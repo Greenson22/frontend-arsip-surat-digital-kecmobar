@@ -1,13 +1,15 @@
 import {Card, CardBody, CardHeader} from '../Elements/Card'
 import { Table, TableHead, TableBody, RowAction } from "../Elements/Table"
-
 import { TitleBar, TableAction, TableFilter, 
      AddOutgoingMailModal, EditOutgoingMailModal, ViewMailModal, ExportModal } from '../Fragments'
-
 import surat_keluar from "../../assets/data/surat_keluar.json"
-const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Berkas surat", "Tindakan"]
+import useLoginValidate from '../../hooks/useLoginValidation'
 
 const OutgoingMailPage = ()=>{
+     const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Berkas surat", "Tindakan"]
+     const accessToken = localStorage.getItem('accessToken')
+     useLoginValidate(accessToken)
+
      return(
           <div>
                <TitleBar>Surat keluar</TitleBar>

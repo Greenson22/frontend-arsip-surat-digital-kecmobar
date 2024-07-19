@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
+import React, { useState } from "react"
 import {Card, CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead, TableBody, RowAction} from "../Elements/Table"
 import { TitleBar, TableFilter, TableAction, AddUserModal, ExportModal, EditUserModal } from '../Fragments'
 
-import pengguna from "../../assets/data/pengguna.json"
 import ViewProfileModal from "../Fragments/Modals/ViewProfileModal"
-// import { fetch_data } from '../../hooks/useFetchData'
+import useLoginValidate from "../../hooks/useLoginValidation"
+
+import pengguna from "../../assets/data/pengguna.json"
 
 const UserManagementPage = ()=>{
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
-     const [data, setData] = useState([])
-     const token = useSelector((state) => state.auth.token)
-     const usermanagement_api = useSelector((state) => state.api.usermanagement)
 
-     // useEffect(()=>{
-     //      fetch_data(usermanagement_api, token, (response)=>{
-     //           setData(response.data)
-     //      })
-     // }, [])
+     const accessToken = localStorage.getItem('accessToken')
+     useLoginValidate(accessToken)
+
+     const [data, setData] = useState([])
 
      return(
           <div>

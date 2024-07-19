@@ -47,6 +47,9 @@ const useAlert = (option)=>{
           case 'error_update':
                handleAlert("Oppss gagal mengubah data!!!", "Mungkin input yang dimasukan salah atau kesalahan terjadi di server!!!", "error")
                break
+          case 'session_end':
+               handleAlert("Oppss sesi login kamu telah berakhir!!!", "Silakan melakukan login kembali untuk dapat mengakses aplikasi ini!!!", "error")
+               break
           case 'loading':
                handleAlertLoading('Sedang masuk...', 'Mohon tunggu sebentar...')
                break

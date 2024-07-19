@@ -3,7 +3,7 @@ import axios from 'axios'
 const useFetchDataFile = (url, token, call_back)=>{
      axios.get(url, {
           headers: {
-               'Authorization': `Token ${token}`
+               'Authorization': `Bearer ${token}`
           }, 
           responseType: 'blob',
           // withCredentials: true

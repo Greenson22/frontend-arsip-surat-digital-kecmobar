@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Route} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import LoginPage from './../../components/pages/login.jsx'
 import HomePage from './../../components/pages/home.jsx'

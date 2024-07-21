@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { MDBBtn } from "mdb-react-ui-kit"
+import React, { useState } from "react"
 import { useSelector } from "react-redux"
-import { Card , CardHeader, CardBody} from "../Elements/Card"
-import {Table, TableHead} from '../Elements/Table'
-import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, 
-     AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
-import { useIncomingmailEffect, useSetPage } from "../../hooks"
+import { useIncomingmailEffect } from "../../hooks"
 import useLoginValidate from "../../hooks/useLoginValidation"
 
+import { IncomingMailEmptyLayout, IncomingMailLayout } from '../Layouts'
+
 function IncomingMailPage() {
-     const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
      const url = useSelector((state) => state.api.incomingmail)
 
      const accessToken = localStorage.getItem('accessToken')
@@ -22,36 +18,9 @@ function IncomingMailPage() {
      
      useIncomingmailEffect(url, accessToken, command, setData, setIData, setFileUrl, setCommand)
 
-     return (
-          <div>
-               <TitleBar>Surat masuk</TitleBar>
-               <Card>
-                    <CardHeader>
-                         {data &&
-                              <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal" />}
-                    </CardHeader>
-                    <CardBody>
-                         <TableFilter url={url} setCommand={setCommand}/>
-                         <Table add_class="table-sm">
-                              <TableHead columns={columns} />
-                              {data &&
-                                   <IncomingMailTableBody data={data['results']} setCommand={setCommand}></IncomingMailTableBody>}
-                         </Table>
-                         <MDBBtn onClick={() => { useSetPage(data['previous'], setCommand) } }>prev</MDBBtn>
-                         <MDBBtn onClick={() => { useSetPage(data['next'], setCommand) } }>next</MDBBtn>
-                    </CardBody>
-               </Card>
+     return (data && data['count'] > 0) ? 
+     (<IncomingMailLayout url={url} data={data} iData={iData} command={command} setCommand={setCommand}/>) :
+     (<IncomingMailEmptyLayout setCommand={setCommand}/>)
 
-               {data && data['count'] > 0 && <div>
-                    <EditIncomingMailModal letter={data['results'][iData]} setCommand={setCommand}/>
-                    <ViewMailModal title='Surat masuk' fileUrl={fileUrl}/>
-               </div>}
-               
-               <AddIncomingMailModal setCommand={setCommand}/>
-               <DeleteIncomingMailModal />
-               <ExportModal title="Ekspor daftar surat masuk" />
-          </div>
-     )
 }
-
 export default IncomingMailPage

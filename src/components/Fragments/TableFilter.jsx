@@ -1,7 +1,8 @@
 import { usePageSizeSelect } from "../../hooks"
 
 const TableFilter = (props)=>{
-     const {url, setCommand} = props
+     const {setCommand} = props
+
      return(
           <div className="row">
                <div className="col-12 col-md-2 d-flex">

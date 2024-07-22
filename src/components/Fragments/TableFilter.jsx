@@ -7,7 +7,7 @@ const TableFilter = (props)=>{
                <div className="col-12 col-md-2 d-flex">
                     <sub className="mt-3">Show</sub>
                     <div className="col-2 col-md-9 ms-1 me-1">
-                         <select className="form-select form-select-sm" name="" id="page_size" onClick={(event)=>{usePageSizeSelect(event, url, setCommand)}}>
+                         <select className="form-select form-select-sm" name="" id="page_size" onClick={(event)=>{usePageSizeSelect(event, setCommand)}}>
                               <option value="5">5</option>
                               <option value="10">10</option>
                               <option value="15">15</option>

@@ -4,9 +4,10 @@ import useHandleDelete from './useHandleDelete'
 import useHandleFetch from './useHandleFetch'
 import usePaginationLocalStorage from '../usePaginationLocalStorage'
 import useUrlSyn from '../useUrlSyn'
-import useUrlModifier from '../useUrlModifier'
 
-const useIncomingmailActions = (url, token, command, setData, setIData, setFileUrl, setCommand)=>{
+const useIncomingmailActions = (command, setData, setIData, setCommand)=>{
+     const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
+     const token = localStorage.getItem('accessToken')
      if (command){
           switch(command.command){
                case 'post':
@@ -21,10 +22,6 @@ const useIncomingmailActions = (url, token, command, setData, setIData, setFileU
                     break
                case 'view_data':
                     setIData(command.index)
-                    break
-               case 'view_file':
-                    const urlFile = useUrlModifier(url, command)+'file'
-                    setFileUrl(urlFile)
                     break
                case 'navigation':
                     useHandleFetch(command.navigation_link, token, setData)

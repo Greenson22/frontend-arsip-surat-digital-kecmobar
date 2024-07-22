@@ -7,9 +7,9 @@ import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal,
 import { useSetPage } from "../../hooks"
 
 const IncomingMailLayout = (props)=>{
-     const {url, data, iData, command, setCommand} = props
+     const {data, iData, command, setCommand} = props
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
-     
+
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>
@@ -18,7 +18,7 @@ const IncomingMailLayout = (props)=>{
                          <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal" />
                     </CardHeader>
                     <CardBody>
-                         <TableFilter url={url} setCommand={setCommand}/>
+                         <TableFilter setCommand={setCommand}/>
                          <Table add_class="table-sm">
                               <TableHead columns={columns} />
                               {data &&

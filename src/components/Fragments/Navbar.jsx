@@ -1,16 +1,17 @@
-import React from "react"
+import React, { forwardRef, useRef } from "react"
 import { MDBBtn } from "mdb-react-ui-kit"
 
 import profile_photo from "../../assets/images/avatar_female.jpeg"
 
-const Navbar = (props)=> {
+const Navbar = forwardRef((props, ref)=> {
   const {date, user} = props
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow rounded sticky-top">
       <div className="container-fluid">
         <div className="d-flex d-inline">
             <MDBBtn id="sidebarCollapse" color="primary" outline><i className="fa-solid fa-bars"></i></MDBBtn>
-            <p className="m-2">{date}</p>
+            <p className="m-2" ref={ref}>{date}</p>
         </div>
 
         <div className="w-25 d-flex justify-content-end">
@@ -23,5 +24,5 @@ const Navbar = (props)=> {
       </div>
     </nav>
   )
-}
+})
 export default Navbar

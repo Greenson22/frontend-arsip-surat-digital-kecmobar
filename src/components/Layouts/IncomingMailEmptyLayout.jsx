@@ -1,6 +1,6 @@
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import { Table, TableHead } from '../Elements/Table'
-import { TitleBar, TableAction, AddIncomingMailModal } from '../Fragments'
+import { TitleBar, TableAction, AddIncomingMailModal, TableFilter } from '../Fragments'
 
 const IncomingMailEmptyLayout = (props)=>{
      const {setCommand} = props
@@ -14,6 +14,7 @@ const IncomingMailEmptyLayout = (props)=>{
                          <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal" button2Disabled={true}/>
                     </CardHeader>
                     <CardBody>
+                         <TableFilter setCommand={setCommand}/>
                          <Table add_class="table-sm">
                               <TableHead columns={columns} />
                          </Table>

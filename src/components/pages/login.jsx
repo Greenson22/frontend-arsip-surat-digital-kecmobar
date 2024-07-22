@@ -9,7 +9,7 @@ import { useAlert } from '../../hooks'
 
 function LoginPage() {
      const navigate = useNavigate()
-
+     
      const handleSubmit = (event)=>{
           event.preventDefault()
           const formData = new FormData(event.target)
@@ -17,8 +17,8 @@ function LoginPage() {
           formData.append('password', event.target.password.value)
 
           useAlert('loading')
-
-          axios.post('http://localhost:8000/api/token/', formData)
+          
+          axios.post(import.meta.env.VITE_ACCESS_TOKEN_API_KEY, formData)
           .then((response)=>{
                const data = response.data
                localStorage.setItem('accessToken', data.access)

@@ -5,14 +5,13 @@ import useTokenValidation from "./useTokenValidation"
 
 const useLoginValidate = (accessToken)=>{
      const navigate = useNavigate()
-
      accessToken = useTokenValidation(accessToken)
 
      if (!accessToken){
           useAlert('loading')
           const refrestToken = useTokenValidation(localStorage.getItem('refreshToken'))
 
-          axios.post('http://localhost:8000/api/token/refresh/', {'refresh': refrestToken})
+          axios.post(import.meta.env.VITE_REFRESH_TOKEN_API_KEY, {'refresh': refrestToken})
           .then((response)=>{
                localStorage.setItem('accessToken', response.data.access)
                window.refresh()

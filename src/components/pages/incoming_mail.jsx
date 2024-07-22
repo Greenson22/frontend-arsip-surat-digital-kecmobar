@@ -7,9 +7,8 @@ function IncomingMailPage() {
      const [data, setData] = useState(null)
      const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
-     const accessToken = localStorage.getItem('accessToken')
-     
-     useLoginValidate(accessToken)
+
+     useLoginValidate(localStorage.getItem('accessToken'))
      useIncomingmailEffect(command, setData, setIData, setCommand)
      
      return (data && data['count'] > 0) ? 

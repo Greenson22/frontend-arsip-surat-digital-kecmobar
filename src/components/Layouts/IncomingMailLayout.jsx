@@ -8,7 +8,7 @@ import { useSetPage } from "../../hooks"
 
 const IncomingMailLayout = (props)=>{
      const {data, iData, command, setCommand} = props
-     const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
+     const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Penerima", "Tindakan"]
 
      return (
           <div>

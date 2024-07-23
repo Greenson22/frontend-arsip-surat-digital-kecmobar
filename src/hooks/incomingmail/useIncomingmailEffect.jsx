@@ -6,7 +6,6 @@ const useIncomingmailEffect = (command, setData, setIData, setCommand)=>{
           useIncomingmailActions(command, setData, setIData, setCommand)
      }, [command])
      useEffect(()=>{
-          console.log("incoming mail dibuat")
           localStorage.setItem('search_value', '')
      }, [])
 }

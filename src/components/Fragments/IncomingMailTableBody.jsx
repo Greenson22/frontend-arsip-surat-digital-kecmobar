@@ -17,7 +17,6 @@ const IncomingMailTableBody = (props)=>{
                                    <td >{surat.received_date}</td>
                                    <td >{surat.source}</td>
                                    <td >{surat.subject}</td>
-                                   <td >{surat.file}</td>
                                    <td >{surat.recipient}</td>
                                    <td>
                                         <RowAction view_target='#viewMailModal' 

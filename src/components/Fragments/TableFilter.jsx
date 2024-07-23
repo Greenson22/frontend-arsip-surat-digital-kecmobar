@@ -1,30 +1,31 @@
-import { usePageSizeSelect } from "../../hooks"
+import { useEffect, useRef } from "react"
+import PageSize from "./TableFilter/PageSize"
 
 const TableFilter = (props)=>{
      const {setCommand} = props
+     const searchRef = useRef()
+
+     useEffect(()=>{
+          console.log('dibuat')
+          searchRef.current.value = localStorage.getItem('search_value')
+          searchRef.current.focus()
+     }, [])
+
+     function handleOnChangeSearch(event){
+          setCommand({
+               'command': 'search',
+               'words': event.target.value
+          })
+          localStorage.setItem('search_value', event.target.value)
+     }
 
      return(
           <div className="row">
-               <div className="col-12 col-md-2 d-flex">
-                    <sub className="mt-3">Show</sub>
-                    <div className="col-2 col-md-9 ms-1 me-1">
-                         <select className="form-select form-select-sm" name="" id="page_size" onClick={(event)=>{usePageSizeSelect(event, setCommand)}}>
-                              <option value="5">5</option>
-                              <option value="10">10</option>
-                              <option value="15">15</option>
-                              <option value="20">20</option>
-                              <option value="25">25</option>
-                         </select>
-                    </div>
-                    <sub className="mt-3">Entries</sub>
-               </div>
+               <PageSize setCommand={setCommand}/>
                <div className="col-0 col-md-6 my-1"></div>
                <div className="col-12 col-md-4 d-flex">
                     <sub className="mt-3 me-2">Search:</sub>
-                    <input type="search" className="form-control form-control-sm mb-2" name="search_box" onChange={(event)=>{setCommand({
-                         'command': 'search',
-                         'words': event.target.value
-                    })}}/>
+                    <input type="search" className="form-control form-control-sm mb-2" name="search_box" onChange={handleOnChangeSearch} ref={searchRef}/>
                </div>
           </div>
      )

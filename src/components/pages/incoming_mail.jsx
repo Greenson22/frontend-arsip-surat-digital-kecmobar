@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { useAlert, useIncomingmailEffect } from "../../hooks"
 import useLoginValidate from "../../hooks/useLoginValidation"
 import { IncomingMailEmptyLayout, IncomingMailLayout } from '../Layouts'
-import axios from "axios"
 
 function IncomingMailPage() {
      const [data, setData] = useState(null)

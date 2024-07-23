@@ -4,7 +4,7 @@ import { TitleBar, TableAction, AddIncomingMailModal, TableFilter } from '../Fra
 
 const IncomingMailEmptyLayout = (props)=>{
      const {setCommand} = props
-     const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Berkas surat", "Penerima", "Tindakan"]
+     const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Penerima", "Tindakan"]
      
      return (
           <div>

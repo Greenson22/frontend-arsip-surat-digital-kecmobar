@@ -6,7 +6,6 @@ const TableFilter = (props)=>{
      const searchRef = useRef()
 
      useEffect(()=>{
-          console.log('dibuat')
           searchRef.current.value = localStorage.getItem('search_value')
           searchRef.current.focus()
      }, [])

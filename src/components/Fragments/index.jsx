@@ -5,6 +5,7 @@ export { default as IncomingMailTableBody } from './IncomingMailTableBody'
 export { default as ProfileBox } from './ProfileBox'
 export { default as UserBox } from './UserBox'
 export { default as InfoBox } from './InfoBox'
+export { default as PageSize } from './TableFilter/PageSize'
 
 export { default as ExportModal } from './Modals/ExportModal'
 export { default as AddIncomingMailModal } from './Modals/AddIncomingMailModal'

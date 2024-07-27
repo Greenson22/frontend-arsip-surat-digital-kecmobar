@@ -7,6 +7,7 @@ const useIncomingmailEffect = (command, setData, setIData, setCommand)=>{
      }, [command])
      useEffect(()=>{
           localStorage.setItem('search_value', '')
+          // localStorage.getItem('incomingmail_pagination')
      }, [])
 }
 

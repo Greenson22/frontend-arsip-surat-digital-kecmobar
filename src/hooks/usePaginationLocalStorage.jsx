@@ -1,4 +1,4 @@
-import useUrlParams from './useUrlParams'
+import useUrlParams from './url/useUrlParams'
 
 const usePaginationLocalStorage = (url)=>{
      const urlParams = useUrlParams(url)
@@ -10,7 +10,7 @@ const usePaginationLocalStorage = (url)=>{
           'page_size': urlParams.get('page_size'),
      }
 
-     localStorage.setItem('incomingmail_pagination', JSON.stringify(dataDict))
+     localStorage.setItem('pagination', JSON.stringify(dataDict))
 }
 
 export default usePaginationLocalStorage

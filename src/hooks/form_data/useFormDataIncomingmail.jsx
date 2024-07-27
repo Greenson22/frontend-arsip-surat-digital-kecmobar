@@ -1,4 +1,4 @@
-const useFormData = (id)=>{
+const useFormDataIncomingmail = (id)=>{
      const form = document.getElementById(id)
      const formData = new FormData()
      formData.append('agenda_number', form.querySelector('#agenda_number').value)
@@ -12,4 +12,4 @@ const useFormData = (id)=>{
      return formData
 }
 
-export default useFormData
+export default useFormDataIncomingmail

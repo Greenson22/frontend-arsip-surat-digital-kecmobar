@@ -2,7 +2,7 @@ import React from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
-import { useFormData } from '../../../hooks';
+import { useFormDataIncomingmail } from '../../../hooks';
 
 const AddIncomingMailModal = (props)=>{
      const {setCommand} = props
@@ -38,7 +38,7 @@ const AddIncomingMailModal = (props)=>{
                     <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" onClick={()=>{
                          setCommand({
                               'command': 'post', 
-                              'data': useFormData('addIncomingMailForm')
+                              'data': useFormDataIncomingmail('addIncomingMailForm')
                          })
                     }}>Tambah surat</MDBBtn>
                </ModalFooter>

@@ -1,4 +1,4 @@
-import useUrlModifier from '../useUrlModifier'
+import useUrlModifier from '../url/useUrlModifier'
 import useDeleteData from '../request/useDeleteData'
 import useAlert from '../useAlert'
 import useConfirmAlert from '../useConfirmAlert'

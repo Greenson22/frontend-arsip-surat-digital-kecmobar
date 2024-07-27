@@ -3,7 +3,6 @@ import useHandlePost from './useHandlePost'
 import useHandleDelete from './useHandleDelete'
 import useHandleFetch from './useHandleFetch'
 import usePaginationLocalStorage from '../usePaginationLocalStorage'
-import useUrlSyn from '../useUrlSyn'
 
 const useIncomingmailActions = (command, setData, setIData, setCommand)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY

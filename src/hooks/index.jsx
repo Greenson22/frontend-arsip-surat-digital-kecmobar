@@ -1,4 +1,4 @@
-export { default as usePageEffect } from './incomingmail/usePageEffect'
+export { default as usePageEffect } from './usePageEffect'
 export { default as useIncomingmailActions } from './incomingmail/useIncomingmailActions'
 export { default as useUrlResource } from './useUrlModifier'
 export { default as usePageSizeSelect } from './incomingmail/usePageSizeSelect'

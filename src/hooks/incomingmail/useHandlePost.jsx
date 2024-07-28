@@ -1,5 +1,5 @@
 import usePostData from '../request/usePostData'
-import useAlert from '../useAlert'
+import useAlert from '../alert/useAlert'
 
 const useHandlePost = (url, token, command, setCommand)=>{
      usePostData(url, command.data, token, 

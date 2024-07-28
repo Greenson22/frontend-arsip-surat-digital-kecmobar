@@ -1,6 +1,6 @@
 import usePutData from '../request/usePutData'
 import useUrlModifier from '../url/useUrlModifier'
-import useAlert from '../useAlert'
+import useAlert from '../alert/useAlert'
 
 const useHandlePut = (url, token, command, setCommand) => {
      const newUrl = useUrlModifier(url, command)

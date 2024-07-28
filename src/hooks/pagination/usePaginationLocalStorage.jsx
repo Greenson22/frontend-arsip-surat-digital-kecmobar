@@ -1,4 +1,4 @@
-import useUrlParams from './url/useUrlParams'
+import useUrlParams from '../url/useUrlParams'
 
 const usePaginationLocalStorage = (url)=>{
      const urlParams = useUrlParams(url)

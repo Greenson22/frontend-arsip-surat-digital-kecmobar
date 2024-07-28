@@ -2,7 +2,7 @@ import useHandlePut from './useHandlePut'
 import useHandlePost from './useHandlePost'
 import useHandleDelete from './useHandleDelete'
 import useHandleFetch from './useHandleFetch'
-import usePaginationLocalStorage from '../usePaginationLocalStorage'
+import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
 
 const useIncomingmailActions = (command, setData, setIData, setCommand)=>{

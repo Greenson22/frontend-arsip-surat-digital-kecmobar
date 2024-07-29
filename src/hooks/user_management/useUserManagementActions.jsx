@@ -9,12 +9,11 @@ const useUserManagementActions = (command, setData, setIData, setCommand)=>{
      const url = import.meta.env.VITE_USERS_API_KEY
      const token = localStorage.getItem('accessToken')
 
-     console.log(command)
-
      if (command){
           switch(command.command){
                case 'post':
-                    const newUrl = import.meta.env.VITE_USERS_CREATE_API_KEY
+                    const newUrl = url.split('?')[0]
+                    // const newUrl = import.meta.env.VITE_USERS_CREATE_API_KEY
                     useHandlePost(newUrl, token, command, setCommand)
                     break
                case 'put':

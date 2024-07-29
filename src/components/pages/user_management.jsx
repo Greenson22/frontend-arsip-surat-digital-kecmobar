@@ -3,8 +3,8 @@ import { UserManagementLayout, UserManagementEmptyLayout } from "../Layouts"
 import { useLoginValidate, usePageEffect, useUserManagementActions } from "../../hooks"
 
 const UserManagementPage = ()=>{
-     const [data, setData] = useState([])
-     const [iData, setIData] = useState([])
+     const [data, setData] = useState(null)
+     const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
      const accessToken = localStorage.getItem('accessToken')
      
@@ -12,7 +12,7 @@ const UserManagementPage = ()=>{
      usePageEffect(command, setData, setIData, setCommand, useUserManagementActions)
 
      return (data && data['count'] > 0) ? 
-     ( <UserManagementLayout data={data} setCommand={setCommand}/> ):
+     ( <UserManagementLayout data={data} iData={iData} setCommand={setCommand}/> ):
      ( <UserManagementEmptyLayout setCommand={setCommand}/> )
 }
 

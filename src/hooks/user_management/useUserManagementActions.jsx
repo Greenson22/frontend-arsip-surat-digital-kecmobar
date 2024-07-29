@@ -1,7 +1,7 @@
-import useHandlePut from '../incomingmail/useHandlePut'
-import useHandlePost from '../incomingmail/useHandlePost'
-import useHandleDelete from '../incomingmail/useHandleDelete'
-import useHandleFetch from '../incomingmail/useHandleFetch'
+import useHandlePut from '../request/useHandlePut'
+import useHandlePost from '../request/useHandlePost'
+import useHandleDelete from '../request/useHandleDelete'
+import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
 
@@ -14,7 +14,7 @@ const useUserManagementActions = (command, setData, setIData, setCommand)=>{
      if (command){
           switch(command.command){
                case 'post':
-                    const newUrl = url.split('?')[0]
+                    const newUrl = import.meta.env.VITE_USERS_CREATE_API_KEY
                     useHandlePost(newUrl, token, command, setCommand)
                     break
                case 'put':

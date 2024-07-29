@@ -1,7 +1,7 @@
-import useHandlePut from './useHandlePut'
-import useHandlePost from './useHandlePost'
-import useHandleDelete from './useHandleDelete'
-import useHandleFetch from './useHandleFetch'
+import useHandlePut from '../request/useHandlePut'
+import useHandlePost from '../request/useHandlePost'
+import useHandleDelete from '../request/useHandleDelete'
+import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
 

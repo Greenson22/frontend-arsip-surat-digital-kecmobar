@@ -1,32 +1,48 @@
-import React from "react"
-import { MDBBtn, MDBInput } from "mdb-react-ui-kit"
+import React, { useEffect, useRef } from "react"
+import { MDBBtn, MDBInput, MDBCheckbox } from "mdb-react-ui-kit"
 
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 
-const EditUserModal = ()=>{
+const EditUserModal = (props)=>{
+     const { user, setCommand } = props
+     const formRef = useRef()
+     const handleSubmit = ()=>{}
+
+     useEffect(()=>{
+          formRef.current['username-edit'].value = user.username
+          formRef.current['first-name-edit'].value = user.first_name
+          formRef.current['last-name-edit'].value = user.last_name
+          formRef.current['email-address-edit'].value = user.email
+          formRef.current['active-edit'].checked = user.is_active
+          formRef.current['is-superuser-edit'].checked = user.is_superuser
+          formRef.current['phone-number-edit'].value = user.phone_number
+     })
+
      return(
           <Modal id="editUserModal">
                <ModalHeader title="Ubah pengguna"/>
                <ModalBody>
-                    <form action="">
-                         <MDBInput label="Nama" type="text" className='mb-2'/>
-                         <MDBInput label="User" type="text" className='mb-2'/>
+                    <form action="" onSubmit={handleSubmit} id="edit-user-modal" ref={formRef}>
                          <div>
-                              <label htmlFor="" className="form-label">Tingkat</label>
-                              <select name="" className="form-select mb-3">
-                                   <option value="admin">Administrator</option>
-                                   <option value="user">User</option>
-                                   <option value="spectator">Spectator</option>
-                              </select>
+                              <MDBInput label="username" id="username-edit" type="text" className='mb-2' defaultValue={' '}/>
+                              <MDBInput label="password" id="password-edit" type="password" className='mb-2' disabled/>
+                              <MDBInput label="konfirmasi password" id="confirm-password-edit" type="password" className='mb-4' disabled/>
                          </div>
+
                          <div>
-                              <label htmlFor="" className="form-label">Status</label>
-                              <select name="" className="form-select mb-3">
-                                   <option value="aktif">Aktif</option>
-                                   <option value="nonaktif">Tidak aktif</option>
-                              </select>
+                              <MDBInput label="nama awal" id="first-name-edit" type="text" className='mb-2' defaultValue={' '}/>
+                              <MDBInput label="nama akhir" id="last-name-edit" type="text" className='mb-2' defaultValue={' '}/>
+                              <MDBInput label="alamat email" id="email-address-edit" type="text" className='mb-4' defaultValue={' '}/>
                          </div>
-                         <MDBInput label="Nomor telepon" type="text"/>
+
+                         <div>
+                              <MDBCheckbox name='flexCheck' id='active-edit' label='active'/>
+                              <MDBCheckbox name='flexCheck' id='is-superuser-edit' label='super user status'/>
+                         </div>
+                         <MDBInput label="nomor telepon" id="phone-number-edit" type="text" className='mb-2 mt-4' defaultValue={' '}/>
+                         
+                         <label htmlFor="">foto profil</label>
+                         <MDBInput type="file" id="fileE" className='mb-2'/>
                     </form>
                </ModalBody>
                <ModalFooter>

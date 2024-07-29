@@ -2,7 +2,8 @@ import React from "react"
 import { TableBody, RowAction } from "../Elements/Table"
 
 const UserManagementTableBody = (props)=>{
-     const {data} = props
+     const {data, setCommand} = props
+     
      return (
           <TableBody>
                {data.map((user, index)=>{
@@ -14,7 +15,7 @@ const UserManagementTableBody = (props)=>{
                                    <td>{user.is_superuser ? 'admin' : 'user'}</td>
                                    <td>{user.is_active ? 'aktif' : 'nonaktif'}</td>
                                    <td>{user.date_joined}</td>
-                                   <td><RowAction ubah_target='#editUserModal' lihat_target='#viewProfileModal'/></td>
+                                   <td><RowAction edit_target='#editUserModal' view_target='#viewProfileModal' id={user.id} index={index} setCommand={setCommand}/></td>
                               </tr>
                          )
                     })}

@@ -1,5 +1,5 @@
 import useUrlModifier from '../url/useUrlModifier'
-import useDeleteData from '../request/useDeleteData'
+import useDeleteData from './useDeleteData'
 import useAlert from '../alert/useAlert'
 import useConfirmAlert from '../alert/useConfirmAlert'
 

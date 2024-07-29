@@ -5,7 +5,7 @@ import { TitleBar, TableFilter, TableAction,
      AddUserModal, ExportModal, EditUserModal } from '../Fragments'
 
 const UserManagementEmptyLayout = (props)=>{
-     const {data, setCommand} = props
+     const {setCommand} = props
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
 
      return (
@@ -25,7 +25,6 @@ const UserManagementEmptyLayout = (props)=>{
 
                {/* Modal */}
                <AddUserModal setCommand={setCommand}/>
-               <EditUserModal/>
           </div>
      )
 }

@@ -15,8 +15,8 @@ const AddUserModal = (props)=>{
           formData.append('first_name', event.target['first-name'].value)
           formData.append('last_name', event.target['last-name'].value)
           formData.append('email', event.target['email-address'].value)
-          formData.append('is_active', event.target['active'].value)
-          formData.append('is_superuser', event.target['is-superuser'].value)
+          formData.append('is_active', event.target['active'].checked)
+          formData.append('is_superuser', event.target['is-superuser'].checked)
           formData.append('phone_number', event.target['phone-number'].value)
           formData.append('photo_url', event.target.file.files[0])
 

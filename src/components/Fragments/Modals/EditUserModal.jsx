@@ -25,8 +25,8 @@ const EditUserModal = (props)=>{
                     <form action="" onSubmit={handleSubmit} id="edit-user-modal" ref={formRef}>
                          <div>
                               <MDBInput label="username" id="username-edit" type="text" className='mb-2' defaultValue={' '}/>
-                              <MDBInput label="password" id="password-edit" type="password" className='mb-2' disabled/>
-                              <MDBInput label="konfirmasi password" id="confirm-password-edit" type="password" className='mb-4' disabled/>
+                              {/* <MDBInput label="password" id="password-edit" type="password" className='mb-2' disabled/>
+                              <MDBInput label="konfirmasi password" id="confirm-password-edit" type="password" className='mb-4' disabled/> */}
                          </div>
 
                          <div>
@@ -47,7 +47,7 @@ const EditUserModal = (props)=>{
                </ModalBody>
                <ModalFooter>
                     <MDBBtn color="secondary" data-bs-dismiss="modal" size="sm">Tutup</MDBBtn>
-                    <MDBBtn color="primary" size="sm">Tambah surat</MDBBtn>
+                    <MDBBtn color="warning" size="sm">Simpan perubahan</MDBBtn>
                </ModalFooter>
           </Modal>
      )

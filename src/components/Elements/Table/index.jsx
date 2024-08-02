@@ -57,7 +57,8 @@ export const RowAction = (props)=>{
                <MDBBtn outline color='primary' size='sm' data-bs-toggle="modal" data-bs-target={view_target} onClick={()=>{
                     setCommand({
                          'id':id,
-                         'command':'view_file'
+                         'command':'view_file',
+                         'index': index
                     })
                }}>Lihat</MDBBtn>
                <MDBBtn outline color='warning' size='sm' data-bs-toggle="modal" data-bs-target={edit_target} onClick={()=>{

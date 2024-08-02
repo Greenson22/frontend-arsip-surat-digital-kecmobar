@@ -7,8 +7,9 @@ import { TitleBar, TableFilter, TableAction, UserManagementTableBody,
 import ViewProfileModal from "../Fragments/Modals/ViewProfileModal"
 
 const UserManagementLayout = (props)=>{
-     const {data, iData, setCommand} = props
+     const {data, iData, command, setCommand} = props
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
+
 
      return (
           <div>
@@ -29,7 +30,7 @@ const UserManagementLayout = (props)=>{
                {/* Modal */}
                <AddUserModal setCommand={setCommand}/>
                <EditUserModal user={data['results'][iData]} setCommand={setCommand}/>
-               {/* <ViewProfileModal title=""/> */}
+               <ViewProfileModal user={data['results'][iData]} command={command} setCommand={command}/>
                <ExportModal title="Ekspor daftar pengguna"/>
           </div>
      )

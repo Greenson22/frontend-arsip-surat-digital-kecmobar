@@ -6,7 +6,6 @@ import TableFilter from './TableFilter'
 import { Table, TableHead, TableBody, RowAction } from '../Elements/Table'
 
 import axios from 'axios'
-const url = 'http://localhost:8000/user_management/'
 const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Tanggal Registrasi"]
 
 const UserBox = ()=>{

@@ -8,12 +8,11 @@ import useUrlSyn from '../url/useUrlSyn'
 const useUserManagementActions = (command, setData, setIData, setCommand)=>{
      const url = import.meta.env.VITE_USERS_API_KEY
      const token = localStorage.getItem('accessToken')
-
+     
      if (command){
           switch(command.command){
                case 'post':
                     const newUrl = url.split('?')[0]
-                    // const newUrl = import.meta.env.VITE_USERS_CREATE_API_KEY
                     useHandlePost(newUrl, token, command, setCommand)
                     break
                case 'put':
@@ -22,6 +21,7 @@ const useUserManagementActions = (command, setData, setIData, setCommand)=>{
                case 'delete':
                     useHandleDelete(url, token, command, setCommand)
                     break
+               case 'view_file':
                case 'view_data':
                     setIData(command.index)
                     break

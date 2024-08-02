@@ -6,9 +6,26 @@ import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 const EditUserModal = (props)=>{
      const { user, setCommand } = props
      const formRef = useRef()
-     const handleSubmit = ()=>{}
+
+     const handleSubmit = (event)=>{
+          event.preventDefault()
+          const formData = new FormData()
+          formData.append('username', event.target['username-edit'].value)
+          formData.append('first_name', event.target['first-name-edit'].value)
+          formData.append('last_name', event.target['last-name-edit'].value)
+          formData.append('is_active', event.target['active-edit'].checked)
+          formData.append('is_superuser', event.target['is-superuser-edit'].checked)
+          formData.append('phone_number', event.target['phone-number-edit'].value)
+
+          setCommand({
+               'command' : 'put',
+               'data' : formData,
+               'id' : user.id
+          })
+     }
 
      useEffect(()=>{
+          console.log(user)
           formRef.current['username-edit'].value = user.username
           formRef.current['first-name-edit'].value = user.first_name
           formRef.current['last-name-edit'].value = user.last_name
@@ -16,7 +33,7 @@ const EditUserModal = (props)=>{
           formRef.current['active-edit'].checked = user.is_active
           formRef.current['is-superuser-edit'].checked = user.is_superuser
           formRef.current['phone-number-edit'].value = user.phone_number
-     })
+     }, [user])
 
      return(
           <Modal id="editUserModal">
@@ -47,7 +64,7 @@ const EditUserModal = (props)=>{
                </ModalBody>
                <ModalFooter>
                     <MDBBtn color="secondary" data-bs-dismiss="modal" size="sm">Tutup</MDBBtn>
-                    <MDBBtn color="warning" size="sm">Simpan perubahan</MDBBtn>
+                    <MDBBtn color="warning" size="sm" form="edit-user-modal">Simpan perubahan</MDBBtn>
                </ModalFooter>
           </Modal>
      )

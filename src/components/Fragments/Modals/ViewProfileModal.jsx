@@ -1,20 +1,25 @@
-import React from "react"
+import React, { useRef } from "react"
 
 import { MDBBtn } from "mdb-react-ui-kit"
-import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
-import {Table, TableHead} from "../../Elements/Table"
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "../../Elements/Modal"
+import { Table, TableHead } from "../../Elements/Table"
+import useViewProfileModalEffect from "../../../hooks/effects/useViewProfileModalEffect"
 
-import profile_picture from "../../../assets/images/avatar_female.jpeg"
-const columns = ["Nama", "User", "Level", "Status", "Tanggal Register", "Nomor Telepon"]
+
 
 const ViewProfileModal = (props)=>{
-   const {pengguna, i_pengguna=0} = props
-   const datas = [pengguna[i_pengguna].nama, pengguna[i_pengguna].user, pengguna[i_pengguna].level, pengguna[i_pengguna].status, pengguna[i_pengguna].tanggal_register, pengguna[i_pengguna].nomor_telepon]
-      return(
+   const {user, command} = props
+   const columns = ["Nama", "Username", "Superuser status", "Status", "Tanggal Register", "Nomor Telepon"]
+   const imgRef = useRef()
+   const datas = [user.first_name+' '+user.last_name, user.username, (user.is_superuser)?'aktif':'tidak aktif', (user.is_active)?'aktif':'tidak aktif', user.date_joined, user.phone_number]
+   
+   useViewProfileModalEffect(command, imgRef)
+
+   return(
          <Modal id="viewProfileModal">
             <ModalHeader title="Profil"/>
             <ModalBody>
-               <img className="mx-auto d-block w-50" src={profile_picture} alt=""/>
+               <img className="mx-auto d-block w-50" alt="" ref={imgRef}/>
                <Table add_class="table-sm">
                   <TableHead columns={columns} datas={datas} rotate={true}></TableHead>
                </Table>

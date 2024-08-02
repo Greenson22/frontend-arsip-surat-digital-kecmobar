@@ -3,7 +3,7 @@ import { Table, TableHead, TableBody, RowAction } from "../Elements/Table"
 import { TitleBar, TableAction, TableFilter, 
      AddOutgoingMailModal, EditOutgoingMailModal, ViewMailModal, ExportModal } from '../Fragments'
 import surat_keluar from "../../assets/data/surat_keluar.json"
-import useLoginValidate from '../../hooks/useLoginValidation'
+import { useLoginValidate } from '../../hooks'
 
 const OutgoingMailPage = ()=>{
      const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Berkas surat", "Tindakan"]

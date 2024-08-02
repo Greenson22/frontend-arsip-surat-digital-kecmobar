@@ -1,7 +1,7 @@
 import { TitleBar, ProfileBox, UserBox, InfoBox } from '../Fragments'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserTie, faUsers, faUserCheck, faUserXmark } from '@fortawesome/free-solid-svg-icons'
-import useLoginValidate from '../../hooks/useLoginValidation'
+import { useLoginValidate } from '../../hooks'
 
 const HomePage = () => {
    const accessToken = localStorage.getItem('accessToken')

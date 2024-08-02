@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import { usePageEffect } from "../../hooks"
-import useLoginValidate from "../../hooks/useLoginValidation"
+import { usePageEffect, useLoginValidate } from "../../hooks"
 import { IncomingMailEmptyLayout, IncomingMailLayout } from '../Layouts'
 import { useIncomingmailActions } from "../../hooks"
 

@@ -3,7 +3,7 @@ import {TableBody, RowAction} from '../Elements/Table'
 
 const IncomingMailTableBody = (props)=>{
      const {data, setCommand} = props
-     const incomingmailPagination = JSON.parse(localStorage.getItem('incomingmail_pagination'))
+     const incomingmailPagination = JSON.parse(localStorage.getItem('pagination'))
 
      return(
           <TableBody>

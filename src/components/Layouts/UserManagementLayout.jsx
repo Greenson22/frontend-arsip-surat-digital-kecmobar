@@ -19,7 +19,7 @@ const UserManagementLayout = (props)=>{
                          <TableAction title="Daftar pengguna" button1="Tambah Pengguna" button1_target="#addUserModal" button2="Ekspor" button2_target="#exportModal"/>
                     </CardHeader>
                     <CardBody>
-                         <TableFilter/>
+                         <TableFilter setCommand={setCommand}/>
                          <Table add_class="table-sm">
                               <TableHead columns = {columns}/>
                               <UserManagementTableBody data={data['results']} setCommand={setCommand}/>

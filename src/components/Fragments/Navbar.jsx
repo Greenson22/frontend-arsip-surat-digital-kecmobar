@@ -4,19 +4,19 @@ import { MDBBtn } from "mdb-react-ui-kit"
 import profile_photo from "../../assets/images/avatar_female.jpeg"
 
 const Navbar = forwardRef((props, ref)=> {
-  const {date, user} = props
+  const {} = props
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow rounded sticky-top">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow rounded sticky-top" ref={ref}>
+      <div className="container-fluid" id="tes">
         <div className="d-flex d-inline">
             <MDBBtn id="sidebarCollapse" color="primary" outline><i className="fa-solid fa-bars"></i></MDBBtn>
-            <p className="m-2" ref={ref}>{date}</p>
+            <p className="m-2" id="date">date kosong</p>
         </div>
 
         <div className="w-25 d-flex justify-content-end">
           <div className="w-75 d-flex justify-content-end">
-              <h6 className="me-2 mt-2">{user}</h6>
+              <h6 className="me-2 mt-2" id='user-name'>user</h6>
               <img className="img-fluid w-25 d-none d-md-block" src={profile_photo} alt=""/>
               <img className="img-fluid w-75 d-md-none" src={profile_photo} alt=""/>
           </div>

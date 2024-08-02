@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { usePageEffect } from "../../hooks"
 import useLoginValidate from "../../hooks/useLoginValidation"
 import { IncomingMailEmptyLayout, IncomingMailLayout } from '../Layouts'
-import useIncomingmailActions from "../../hooks/incomingmail/useIncomingmailActions"
+import { useIncomingmailActions } from "../../hooks"
 
 function IncomingMailPage() {
      const [data, setData] = useState(null)

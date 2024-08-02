@@ -5,15 +5,15 @@ import { useContainerLayoutEffect } from '../../hooks'
 
 const ContainerLayout = (props) => {
   const {children} = props
-  const dataRef = useRef()
+  const navRef = useRef()
   
-  useContainerLayoutEffect(dataRef)
+  useContainerLayoutEffect(navRef)
 
   return(
     <div className='wrapper'>
       <Sidebar/>
       <div id="content" className='active'>
-        <Navbar date="27 Mei 2024" user="Admin" ref={dataRef}/>
+        <Navbar ref={navRef}/>
         <div className="container-fluid">
           {children} {/* Konten */}
         </div>

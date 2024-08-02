@@ -6,9 +6,8 @@ const UserManagementPage = ()=>{
      const [data, setData] = useState(null)
      const [iData, setIData] = useState(0)
      const [command, setCommand] = useState(null)
-     const accessToken = localStorage.getItem('accessToken')
      
-     useLoginValidate(accessToken)
+     useLoginValidate()
      usePageEffect(command, setData, setIData, setCommand, useUserManagementActions)
 
      return (data && data['count'] > 0) ? 

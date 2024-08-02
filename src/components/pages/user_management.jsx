@@ -12,7 +12,7 @@ const UserManagementPage = ()=>{
      usePageEffect(command, setData, setIData, setCommand, useUserManagementActions)
 
      return (data && data['count'] > 0) ? 
-     ( <UserManagementLayout data={data} iData={iData} setCommand={setCommand}/> ):
+     ( <UserManagementLayout data={data} iData={iData} command={command} setCommand={setCommand}/> ):
      ( <UserManagementEmptyLayout setCommand={setCommand}/> )
 }
 

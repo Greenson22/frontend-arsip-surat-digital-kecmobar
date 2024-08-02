@@ -7,8 +7,8 @@ import { useLoginValidate } from '../../hooks'
 
 const OutgoingMailPage = ()=>{
      const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Berkas surat", "Tindakan"]
-     const accessToken = localStorage.getItem('accessToken')
-     useLoginValidate(accessToken)
+
+     useLoginValidate()
 
      return(
           <div>

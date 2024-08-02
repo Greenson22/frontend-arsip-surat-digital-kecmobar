@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import useAlert from "./alert/useAlert"
+import useAlert from "../alert/useAlert"
 import axios from "axios"
 import useTokenValidation from "./useTokenValidation"
 import { useEffect } from "react"

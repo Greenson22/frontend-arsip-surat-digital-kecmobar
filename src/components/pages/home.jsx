@@ -4,8 +4,7 @@ import { faUserTie, faUsers, faUserCheck, faUserXmark } from '@fortawesome/free-
 import { useLoginValidate } from '../../hooks'
 
 const HomePage = () => {
-   const accessToken = localStorage.getItem('accessToken')
-   useLoginValidate(accessToken)
+   useLoginValidate()
 
    return(
       <div>

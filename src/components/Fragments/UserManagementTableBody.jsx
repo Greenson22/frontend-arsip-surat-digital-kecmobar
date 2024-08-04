@@ -1,5 +1,6 @@
 import React from "react"
 import { TableBody, RowAction } from "../Elements/Table"
+import { useFormattedDate } from "../../hooks"
 
 const UserManagementTableBody = (props)=>{
      const {data, setCommand} = props
@@ -14,7 +15,7 @@ const UserManagementTableBody = (props)=>{
                                    <td>{user.username}</td>
                                    <td>{user.is_superuser ? 'admin' : 'user'}</td>
                                    <td>{user.is_active ? 'aktif' : 'nonaktif'}</td>
-                                   <td>{user.date_joined}</td>
+                                   <td>{useFormattedDate(user.date_joined)}</td>
                                    <td><RowAction edit_target='#editUserModal' view_target='#viewProfileModal' id={user.id} index={index} setCommand={setCommand}/></td>
                               </tr>
                          )

@@ -2,30 +2,17 @@ import React, { useEffect, useRef } from "react"
 import { MDBBtn, MDBInput, MDBCheckbox } from "mdb-react-ui-kit"
 
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
+import { useHandleSubmitEditUserModal } from "../../../hooks"
 
 const EditUserModal = (props)=>{
      const { user, setCommand } = props
      const formRef = useRef()
 
      const handleSubmit = (event)=>{
-          event.preventDefault()
-          const formData = new FormData()
-          formData.append('username', event.target['username-edit'].value)
-          formData.append('first_name', event.target['first-name-edit'].value)
-          formData.append('last_name', event.target['last-name-edit'].value)
-          formData.append('is_active', event.target['active-edit'].checked)
-          formData.append('is_superuser', event.target['is-superuser-edit'].checked)
-          formData.append('phone_number', event.target['phone-number-edit'].value)
-
-          setCommand({
-               'command' : 'put',
-               'data' : formData,
-               'id' : user.id
-          })
+          useHandleSubmitEditUserModal(event, user, setCommand)
      }
 
      useEffect(()=>{
-          console.log(user)
           formRef.current['username-edit'].value = user.username
           formRef.current['first-name-edit'].value = user.first_name
           formRef.current['last-name-edit'].value = user.last_name
@@ -42,8 +29,6 @@ const EditUserModal = (props)=>{
                     <form action="" onSubmit={handleSubmit} id="edit-user-modal" ref={formRef}>
                          <div>
                               <MDBInput label="username" id="username-edit" type="text" className='mb-2' defaultValue={' '}/>
-                              {/* <MDBInput label="password" id="password-edit" type="password" className='mb-2' disabled/>
-                              <MDBInput label="konfirmasi password" id="confirm-password-edit" type="password" className='mb-4' disabled/> */}
                          </div>
 
                          <div>
@@ -58,13 +43,18 @@ const EditUserModal = (props)=>{
                          </div>
                          <MDBInput label="nomor telepon" id="phone-number-edit" type="text" className='mb-2 mt-4' defaultValue={' '}/>
                          
-                         <label htmlFor="">foto profil</label>
-                         <MDBInput type="file" id="fileE" className='mb-2'/>
+                         <label htmlFor="" className="mt-2">ganti password <p className="text-primary">*isi untuk mengganti password</p></label>
+                         <MDBInput label="password lama" id="old-password-edit" type="password" className='mb-2' placeholder="isi untuk mengganti password"/>
+                         <MDBInput label="password baru" id="new-password-edit" type="password" className='mb-2' placeholder="isi untuk mengganti password"/>
+                         <MDBInput label="konfirmasi password baru" id="new-password-confirm-edit" type="password" className='mb-4' placeholder="isi untuk mengganti password"/>
+                         
+                         <label htmlFor="">foto profil <p className="text-primary">*isi untuk mengganti foto profil</p></label>
+                         <MDBInput type="file" id="file-edit" className='mb-2'/>
                     </form>
                </ModalBody>
                <ModalFooter>
                     <MDBBtn color="secondary" data-bs-dismiss="modal" size="sm">Tutup</MDBBtn>
-                    <MDBBtn color="warning" size="sm" form="edit-user-modal">Simpan perubahan</MDBBtn>
+                    <MDBBtn color="warning" size="sm" data-bs-dismiss="modal" form="edit-user-modal">Simpan perubahan</MDBBtn>
                </ModalFooter>
           </Modal>
      )

@@ -4,7 +4,6 @@ const useHandleSubmitEditUserModal = (event, user, setCommand)=>{
      event.preventDefault(); // Prevent default form submission behavior
      const formData = new FormData();
      
-     formData.append('username', event.target['username-edit'].value);
      formData.append('first_name', event.target['first-name-edit'].value);
      formData.append('last_name', event.target['last-name-edit'].value);
      formData.append('is_active', event.target['active-edit'].checked);

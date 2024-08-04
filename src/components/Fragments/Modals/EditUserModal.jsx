@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react"
 import { MDBBtn, MDBInput, MDBCheckbox } from "mdb-react-ui-kit"
 
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
-import { useHandleSubmitEditUserModal } from "../../../hooks"
+import { useHandleSubmitEditUserModal, useEditUserModalEffect } from "../../../hooks"
 
 const EditUserModal = (props)=>{
      const { user, setCommand } = props
@@ -11,16 +11,7 @@ const EditUserModal = (props)=>{
      const handleSubmit = (event)=>{
           useHandleSubmitEditUserModal(event, user, setCommand)
      }
-
-     useEffect(()=>{
-          formRef.current['username-edit'].value = user.username
-          formRef.current['first-name-edit'].value = user.first_name
-          formRef.current['last-name-edit'].value = user.last_name
-          formRef.current['email-address-edit'].value = user.email
-          formRef.current['active-edit'].checked = user.is_active
-          formRef.current['is-superuser-edit'].checked = user.is_superuser
-          formRef.current['phone-number-edit'].value = user.phone_number
-     }, [user])
+     useEditUserModalEffect(user, formRef)
 
      return(
           <Modal id="editUserModal">
@@ -28,7 +19,7 @@ const EditUserModal = (props)=>{
                <ModalBody>
                     <form action="" onSubmit={handleSubmit} id="edit-user-modal" ref={formRef}>
                          <div>
-                              <MDBInput label="username" id="username-edit" type="text" className='mb-2' defaultValue={' '}/>
+                              <MDBInput label="username" id="username-edit" type="text" className='mb-2' defaultValue={' '} disabled/>
                          </div>
 
                          <div>

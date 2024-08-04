@@ -24,3 +24,4 @@ export { default as useContainerLayoutEffect } from './effects/useContainerLayou
 export { default as useLoginValidate } from './security/useLoginValidation'
 export { default as useFetchFileProfilePicture } from './request/useFetchFileProfilePicture'
 export { default as useHandleSubmitEditUserModal } from './useHandleSubmitEditUserModal'
+export { default as useEditUserModalEffect } from './effects/useEditUserModalEffect'

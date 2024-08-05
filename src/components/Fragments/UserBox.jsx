@@ -1,26 +1,22 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import {Card, CardBody, CardHeader} from '../Elements/Card'
+import { Card, CardBody, CardHeader } from '../Elements/Card'
 import TableFilter from './TableFilter'
-import { Table, TableHead, TableBody, RowAction } from '../Elements/Table'
+import UserBoxTableBody from './TableBody/UserBoxTableBody'
+import { Table, TableHead } from '../Elements/Table'
+import { useFetchData } from '../../hooks'
 
-import axios from 'axios'
 const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Tanggal Registrasi"]
 
 const UserBox = ()=>{
      const [data, setData] = useState([])
-     const usermanagement_api = useSelector(state=>state.api.usermanagement)
-     const token = useSelector(state=>state.auth.token)
+     const api = import.meta.env.VITE_USERS_API_KEY
 
      useEffect(()=>{
-          axios.get(usermanagement_api, {
-               headers: {
-                    'Authorization': `Token ${token}`
-               }
-          })
-          .then((response)=>{
+          useFetchData(api, localStorage.getItem('accessToken'), (response)=>{
                setData(response.data)
+          }, (error)=>{
+               console.log(error)
           })
      }, [])
 
@@ -35,20 +31,9 @@ const UserBox = ()=>{
 
                          <Table add_class="table-sm">
                               <TableHead columns={columns}/>
-                              <TableBody>
-                                   {data.map((user, index)=>{
-                                             return(
-                                                  <tr key={user.id}>
-                                                       <td>{index+1}</td>
-                                                       <td>{user.first_name+' '+user.last_name}</td>
-                                                       <td>{user.username}</td>
-                                                       <td>{user.is_superuser ? 'admin' : 'user'}</td>
-                                                       <td>{user.is_active ? 'aktif' : 'nonaktif'}</td>
-                                                       <td>{user.date_joined}</td>
-                                                  </tr>
-                                             )
-                                        })}
-                              </TableBody>
+                              {data && data['count'] > 0 && 
+                                   <UserBoxTableBody data={data['results']}/>
+                              }
                          </Table>
                     </CardBody>
                </Card>

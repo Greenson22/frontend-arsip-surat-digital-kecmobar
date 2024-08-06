@@ -3,12 +3,13 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
 import background from "../../assets/office-scene-4255945.svg"
 import icon from "../../assets/computer-desk-7339325.svg"
+import { forwardRef } from 'react';
 
-const LoginLayout = (props)=>{
+const LoginLayout = forwardRef((props, ref)=>{
      const {children} = props
      return (
           <div>
-               <img src={background} alt="" className='w-100 h-100 object-fit-cover z-n1 position-absolute'/>
+               <img ref={ref} src={background} alt="" className='w-100 h-100 object-fit-cover z-n1 position-absolute'/>
                <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}></div>
                <section className='vh-100'>
                     <MDBContainer className="py-5 h-100">
@@ -32,6 +33,6 @@ const LoginLayout = (props)=>{
                </section>
           </div>
      )
-}
+})
 
 export default LoginLayout

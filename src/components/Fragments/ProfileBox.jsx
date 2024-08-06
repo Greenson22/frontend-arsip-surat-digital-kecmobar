@@ -1,32 +1,35 @@
-import React from "react"
+import React, { useRef } from "react"
 import { useState, useEffect } from "react"
 import { MDBBtn } from "mdb-react-ui-kit"
 
 import {Card, CardHeader, CardBody} from '../Elements/Card'
 import {Table, TableHead} from '../Elements/Table'
+import { useFormattedDate } from "../../hooks"
 
-import EditProfileModal from "./Modals/EditProfileModal"
 import EditPasswordModal from "./Modals/EditPasswordModal"
 
-import profile_picture from '../../assets/images/avatar_female.jpeg'
-import pengguna from "../../assets/data/pengguna.json"
 
-const columns = ["Nama", "User", "Level", "Status", "Tanggal Register", "Nomor Telepon"]
+const ProfileBox = (props)=>{
+   const {user} = props
+   const profileImgRef = useRef()
+   const columns = ["Nama", "Pengguna", "Tingkat", "Status", "Tanggal Registrasi", "Nomor Telepon"]
+   const datas = [user.first_name+' '+user.last_name, user.username, (user.is_superuser)?'aktif':'tidak aktif', (user.is_active)?'aktif':'tidak aktif', useFormattedDate(user.date_joined), user.phone_number]
 
-const ProfileBox = ()=>{
-   const [data, setData] = useState([])
-
+   useEffect(()=>{
+      profileImgRef.current.src = localStorage.getItem('myImage')
+   }, [])
+   
    return (
-      <div className="col-12 col-md-4">
+      <div className="col-12 col-md-12">
          <Card>
             <CardHeader>
                <h5 className="card-title">Profil</h5>
                {/* <h5>{data[0].id}</h5> */}
             </CardHeader>
             <CardBody>
-               <img className="mx-auto d-block w-50" src={profile_picture} alt=""/>
+               <img className="mx-auto d-block w-50" alt="" ref={profileImgRef}/>
                <Table add_class="table-sm">
-                  <TableHead columns={columns} rotate={true}></TableHead>
+                  <TableHead columns={columns} datas={datas} rotate={true}></TableHead>
                </Table>
                <div className="d-grid">
                   <MDBBtn outline  color="primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Ubah Profil</MDBBtn>

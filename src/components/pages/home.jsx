@@ -33,7 +33,6 @@ const HomePage = () => {
          {/* Profil */}
          <div className="row mt-4">
             {data && <ProfileBox user={data} setCommand={setCommand}/>}
-            {/* <UserBox/> */}
          </div>
       </div>
    )

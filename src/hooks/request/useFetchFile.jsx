@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const useFetchDataFile = (url, token, call_back)=>{
+const useFetchDataFile = (url, token, call_back, callBackError)=>{
      axios.get(url, {
           headers: {
                'Authorization': `Bearer ${token}`
@@ -9,9 +9,7 @@ const useFetchDataFile = (url, token, call_back)=>{
           // withCredentials: true
      })
      .then(call_back)
-     .catch(error=>{
-          console.log(error)
-     })
+     .catch(callBackError)
 }
 
 export default useFetchDataFile

@@ -4,13 +4,14 @@ import { useFormattedDate } from "../../hooks"
 
 const UserManagementTableBody = (props)=>{
      const {data, setCommand} = props
+     const pagination = JSON.parse(localStorage.getItem('pagination'))
      
      return (
           <TableBody>
                {data.map((user, index)=>{
                          return(
                               <tr key={user.id}>
-                                   <td>{index+1}</td>
+                                   <td>{index+1+((pagination['page']-1)*pagination['page_size'])}</td>
                                    <td>{user.first_name+' '+user.last_name}</td>
                                    <td>{user.username}</td>
                                    <td>{user.is_superuser ? 'admin' : 'user'}</td>

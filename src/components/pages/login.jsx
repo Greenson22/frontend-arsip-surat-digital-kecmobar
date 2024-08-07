@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { LoginLayout } from '../Layouts'
 import { useNavigate } from 'react-router-dom'
 
 import axios from 'axios';
-import { useAlert } from '../../hooks'
+import { useAlert, useBase64, useFetchFileProfilePicture } from '../../hooks'
+import { jwtDecode } from 'jwt-decode';
 
 
 function LoginPage() {
      const navigate = useNavigate()
-     
+     const backgroundImgRef = useRef()
+
+     const saveImage = async (file)=>{
+          const base64Image = await useBase64(file)
+          localStorage.setItem('myImage', base64Image)
+     }
+
      const handleSubmit = (event)=>{
           event.preventDefault()
           const formData = new FormData(event.target)
@@ -23,8 +30,19 @@ function LoginPage() {
                const data = response.data
                localStorage.setItem('accessToken', data.access)
                localStorage.setItem('refreshToken', data.refresh)
-               useAlert('success_login')
-               navigate('/incoming_mail')
+               
+               const userId = jwtDecode(localStorage.getItem('accessToken'))['user_id']
+               
+               useFetchFileProfilePicture(userId, (response)=>{
+                    saveImage(response.data)
+                    useAlert('success_login')
+                    navigate('/incoming_mail')
+               }, (error)=>{
+                    saveImage(response.data)
+                    useAlert('success_login')
+                    navigate('/incoming_mail')
+               })
+
           })
           .catch((error)=>{
                console.log(error)
@@ -33,7 +51,7 @@ function LoginPage() {
      }
 
      return (
-          <LoginLayout>                   
+          <LoginLayout ref={backgroundImgRef}>
                <form action="" id='form-login' onSubmit={handleSubmit}>
                     <div className="align-items-center pb-1 mb-2">
                          <span className="h2">Arsip surat digital</span>

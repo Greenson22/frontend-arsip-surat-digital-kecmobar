@@ -10,7 +10,7 @@ import EditPasswordModal from "./Modals/EditPasswordModal"
 
 
 const ProfileBox = (props)=>{
-   const {user} = props
+   const {user, setCommand} = props
    const profileImgRef = useRef()
    const columns = ["Nama", "Pengguna", "Tingkat", "Status", "Tanggal Registrasi", "Nomor Telepon"]
    const datas = [user.first_name+' '+user.last_name, user.username, (user.is_superuser)?'aktif':'tidak aktif', (user.is_active)?'aktif':'tidak aktif', useFormattedDate(user.date_joined), user.phone_number]
@@ -40,7 +40,7 @@ const ProfileBox = (props)=>{
 
          {/* Modal */}
          {/* <EditProfileModal pengguna={data} i_pengguna={i_pengguna}/> */}
-         <EditPasswordModal/>
+         <EditPasswordModal user={user} setCommand={setCommand}/>
       </div>
    )
 }

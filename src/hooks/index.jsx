@@ -1,6 +1,7 @@
 export { default as usePageEffect } from './page/usePageEffect'
 export { default as useIncomingmailActions } from './actions/useIncomingmailActions'
 export { default as useUserManagementActions } from './actions/useUserManagementActions'
+export { default as useHomeActions } from './actions/useHomeActions'
 export { default as usePageSizeSelect } from './page/usePageSizeSelect'
 export { default as usePaginationUrlOffset } from './pagination/usePaginationOffsetUrl'
 export { default as useSetPage } from './page/useSetPage'
@@ -26,3 +27,4 @@ export { default as useFetchFileProfilePicture } from './request/useFetchFilePro
 export { default as useHandleSubmitEditUserModal } from './useHandleSubmitEditUserModal'
 export { default as useEditUserModalEffect } from './effects/useEditUserModalEffect'
 export { default as useFormattedDate } from './useFormattedDate'
+export { default as useBase64 } from './useBase64'

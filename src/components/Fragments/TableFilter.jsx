@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import PageSize from "./TableFilter/PageSize"
 
 const TableFilter = (props)=>{
-     const {setCommand} = props
+     const {api, setCommand} = props
      const searchRef = useRef()
 
      useEffect(()=>{
@@ -20,7 +20,7 @@ const TableFilter = (props)=>{
 
      return(
           <div className="row">
-               <PageSize setCommand={setCommand}/>
+               <PageSize setCommand={setCommand} api={api}/>
                <div className="col-0 col-md-6 my-1"></div>
                <div className="col-12 col-md-4 d-flex">
                     <sub className="mt-3 me-2">Search:</sub>

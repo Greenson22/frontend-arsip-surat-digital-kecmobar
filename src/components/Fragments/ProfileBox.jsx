@@ -7,6 +7,7 @@ import {Table, TableHead} from '../Elements/Table'
 import { useFormattedDate } from "../../hooks"
 
 import EditPasswordModal from "./Modals/EditPasswordModal"
+import EditProfileModal from "./Modals/EditProfileModal"
 
 
 const ProfileBox = (props)=>{
@@ -39,7 +40,7 @@ const ProfileBox = (props)=>{
          </Card>
 
          {/* Modal */}
-         {/* <EditProfileModal pengguna={data} i_pengguna={i_pengguna}/> */}
+         <EditProfileModal user={user} setCommand={setCommand}/>
          <EditPasswordModal user={user} setCommand={setCommand}/>
       </div>
    )

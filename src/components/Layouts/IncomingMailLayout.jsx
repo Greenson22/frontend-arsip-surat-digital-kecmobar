@@ -7,6 +7,7 @@ import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal,
 import { useSetPage } from "../../hooks"
 
 const IncomingMailLayout = (props)=>{
+     const api = import.meta.env.VITE_INCOMINGMAIL_API_KEY
      const {data, iData, command, setCommand} = props
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Penerima", "Tindakan"]
 
@@ -18,7 +19,7 @@ const IncomingMailLayout = (props)=>{
                          <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal" />
                     </CardHeader>
                     <CardBody>
-                         <TableFilter setCommand={setCommand}/>
+                         <TableFilter api={api} setCommand={setCommand}/>
                          <Table add_class="table-sm">
                               <TableHead columns={columns} />
                               {data &&

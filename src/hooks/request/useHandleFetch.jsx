@@ -4,9 +4,8 @@ const useHandleFetch = (newUrl, token, setData)=>{
      useFetchData(newUrl, token, 
      (response)=>{
           setData(response['data'])
-     }, 
-     (error)=>{
-          
+     }, (error)=>{
+          console.log(error)
      })
 }
 

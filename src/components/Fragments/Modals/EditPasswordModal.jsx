@@ -44,9 +44,9 @@ const EditPasswordModal = (props)=>{
                <ModalHeader title="Ubah Password"/>
                <ModalBody>
                     <form action="" onSubmit={onHandleSubmit} id="form-edit-password">
-                         <MDBInput label="Password lama" id="old-password" type="text" className='mb-2' required/>
-                         <MDBInput label="Password baru" id="new-password" type="text" className='mb-2' required/>
-                         <MDBInput label="Konfirmasi password baru" id="new-password-confirm" type="text" className='mb-2' required/>
+                         <MDBInput label="Password lama" id="old-password" type="password" className='mb-2' required/>
+                         <MDBInput label="Password baru" id="new-password" type="password" className='mb-2' required/>
+                         <MDBInput label="Konfirmasi password baru" id="new-password-confirm" type="password" className='mb-2' required/>
                     </form>
                </ModalBody>
                <ModalFooter>

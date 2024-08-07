@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useRef } from "react"
 import { MDBBtn, MDBInput, MDBCheckbox } from "mdb-react-ui-kit"
 
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"

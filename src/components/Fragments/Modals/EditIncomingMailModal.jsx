@@ -9,17 +9,6 @@ const EditIncomingMailModal = (props)=>{
      const formRef = useRef()
      const onSubmitHandle = (event)=>{useSubmitHandleEditIncomingMailModal(event, letter, setCommand)}
      
-     useEffect(()=>{
-          const form = formRef.current
-          form['agenda-number'].value = letter.agenda_number
-          form['letter-number'].value = letter.letter_number
-          form['source'].value = letter.source
-          form['letter-date'].value = letter.letter_date
-          form['received-date'].value = letter.received_date
-          form['recipient'].value = letter.recipient
-          form['subject'].value = letter.subject
-     }, [letter])
-     
      return(
           <Modal id="editMailModal">
                <ModalHeader title="Ubah surat masuk"/>

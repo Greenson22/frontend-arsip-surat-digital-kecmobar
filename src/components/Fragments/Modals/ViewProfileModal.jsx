@@ -12,7 +12,7 @@ const ViewProfileModal = (props)=>{
    const {user, command} = props
    const columns = ["Nama", "Username", "Superuser status", "Status", "Tanggal Register", "Nomor Telepon"]
    const imgRef = useRef()
-   const datas = [user.first_name+' '+user.last_name, user.username, (user.is_superuser)?'aktif':'tidak aktif', (user.is_active)?'aktif':'tidak aktif', useFormattedDate(user.date_joined), user.phone_number]
+   const datas = [user?.first_name+' '+user?.last_name, user?.username, (user?.is_superuser)?'aktif':'tidak aktif', (user?.is_active)?'aktif':'tidak aktif', useFormattedDate(user?.date_joined), user?.phone_number]
    
    useViewProfileModalEffect(command, imgRef)
 

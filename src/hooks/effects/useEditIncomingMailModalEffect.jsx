@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-const useEditIncomingMailModalEffect = (letter)=>{
+const useEditIncomingMailModalEffect = (formRef, letter)=>{
      useEffect(()=>{
           const form = formRef.current
           form['agenda-number'].value = letter.agenda_number

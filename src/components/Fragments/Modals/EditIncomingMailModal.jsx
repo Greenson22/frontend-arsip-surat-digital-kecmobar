@@ -2,12 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
-import { useSubmitHandleEditIncomingMailModal } from '../../../hooks'
+import { useSubmitHandleEditIncomingMailModal, useEditIncomingMailModalEffect } from '../../../hooks'
 
 const EditIncomingMailModal = (props)=>{
      const {letter, setCommand} = props
      const formRef = useRef()
      const onSubmitHandle = (event)=>{useSubmitHandleEditIncomingMailModal(event, letter, setCommand)}
+     useEditIncomingMailModalEffect(formRef, letter)
      
      return(
           <Modal id="editMailModal">

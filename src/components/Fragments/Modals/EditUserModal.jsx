@@ -2,14 +2,14 @@ import React, { useRef } from "react"
 import { MDBBtn, MDBInput, MDBCheckbox } from "mdb-react-ui-kit"
 
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
-import { useHandleSubmitEditUserModal, useEditUserModalEffect } from "../../../hooks"
+import { useSubmitHandleEditUserModal, useEditUserModalEffect } from "../../../hooks"
 
 const EditUserModal = (props)=>{
      const { user, setCommand } = props
      const formRef = useRef()
 
      const handleSubmit = (event)=>{
-          useHandleSubmitEditUserModal(event, user, setCommand)
+          useSubmitHandleEditUserModal(event, user, setCommand)
      }
      useEditUserModalEffect(user, formRef)
 

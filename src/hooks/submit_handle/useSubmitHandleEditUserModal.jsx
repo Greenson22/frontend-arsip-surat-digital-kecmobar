@@ -1,6 +1,6 @@
-import useAlert from "./alert/useAlert";
+import useAlert from "../alert/useAlert";
 
-const useHandleSubmitEditUserModal = (event, user, setCommand)=>{
+const useSubmitHandleEditUserModal = (event, user, setCommand)=>{
      event.preventDefault(); // Prevent default form submission behavior
      const formData = new FormData();
      
@@ -43,4 +43,4 @@ const useHandleSubmitEditUserModal = (event, user, setCommand)=>{
      });
 }
 
-export default useHandleSubmitEditUserModal
+export default useSubmitHandleEditUserModal

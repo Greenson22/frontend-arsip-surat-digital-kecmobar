@@ -1,63 +1,39 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
+import { useSubmitHandleEditIncomingMailModal } from '../../../hooks'
 
 const EditIncomingMailModal = (props)=>{
      const {letter, setCommand} = props
-
-     const form_name = 'editIncomingMailForm'
-     const agenda_number = 'agenda_number'
-     const letter_number = 'letter_number'
-     const source = 'source'
-     const letter_date = 'letter_date'
-     const received_date = 'received_date'
-     const recipient = 'recipient'
-     const subject = 'subject'
-
-     const init_data = ()=>{
-          const form = document.getElementById(form_name)
-          form.querySelector('#'+agenda_number).value = letter.agenda_number
-          form.querySelector('#'+letter_number).value = letter.letter_number
-          form.querySelector('#'+source).value = letter.source
-          form.querySelector('#'+letter_date).value = letter.letter_date
-          form.querySelector('#'+received_date).value = letter.received_date
-          form.querySelector('#'+recipient).value = letter.recipient
-          form.querySelector('#'+subject).value = letter.subject
-     }
-
-     const send_data = ()=>{
-          const form = document.getElementById(form_name)
-          const formData = new FormData()
-          formData.append('agenda_number', form.querySelector('#'+agenda_number).value)
-          formData.append('letter_number',  form.querySelector('#'+letter_number).value)
-          formData.append('received_date', form.querySelector('#'+received_date).value)
-          formData.append('source', form.querySelector('#'+source).value)
-          formData.append('letter_date', form.querySelector('#'+letter_date).value)
-          formData.append('recipient', form.querySelector('#'+recipient).value)
-          formData.append('subject', form.querySelector('#'+subject).value)
-
-          setCommand({
-               'command': 'put',
-               'id': letter.id,
-               'data': formData
-          })
-     }
+     const formRef = useRef()
+     const onSubmitHandle = (event)=>{useSubmitHandleEditIncomingMailModal(event, letter, setCommand)}
+     
+     useEffect(()=>{
+          const form = formRef.current
+          form['agenda-number'].value = letter.agenda_number
+          form['letter-number'].value = letter.letter_number
+          form['source'].value = letter.source
+          form['letter-date'].value = letter.letter_date
+          form['received-date'].value = letter.received_date
+          form['recipient'].value = letter.recipient
+          form['subject'].value = letter.subject
+     }, [letter])
      
      return(
           <Modal id="editMailModal">
                <ModalHeader title="Ubah surat masuk"/>
                <ModalBody>
-                    <form action="" id='editIncomingMailForm'>
+                    <form action="" id='edit-incomingmail-form' onSubmit={onSubmitHandle} ref={formRef}>
                          <div className="row">
                               <div className="col-6">
-                                   <MDBInput id='agenda_number' label="Nomor agenda" type="text" className='mb-3' defaultValue={letter.agenda_number}/>
-                                   <MDBInput id='letter_number' label="Nomor surat" type="text" className='mb-3' defaultValue={letter.letter_number}/>
+                                   <MDBInput id='agenda-number' label="Nomor agenda" type="text" className='mb-3' defaultValue={letter.agenda_number}/>
+                                   <MDBInput id='letter-number' label="Nomor surat" type="text" className='mb-3' defaultValue={letter.letter_number}/>
                                    <MDBInput id='source' label="Asal surat" type="text" className='mb-3' defaultValue={letter.source}/>
                               </div>
                               <div className="col-6">
-                                   <MDBInput id='letter_date' label="Tanggal surat" type="date" className='mb-3' defaultValue={letter.letter_date}/>
-                                   <MDBInput id='received_date' label="Tanggal terima" type="date" className='mb-3' defaultValue={letter.received_date}/>
+                                   <MDBInput id='letter-date' label="Tanggal surat" type="date" className='mb-3' defaultValue={letter.letter_date}/>
+                                   <MDBInput id='received-date' label="Tanggal terima" type="date" className='mb-3' defaultValue={letter.received_date}/>
                                    <MDBInput id='recipient' label="Penerima" type="text" className='mb-3' defaultValue={letter.recipient}/>
                               </div>
                          </div>
@@ -66,14 +42,14 @@ const EditIncomingMailModal = (props)=>{
                          <hr className="mb-4"/>
                          <label htmlFor="" className="from-label">Unggah file surat</label>
                          <br/><sub className="">*pdf, png, jpeg, jpg</sub>
-                         <input type="file" name="" className="form-control mt-2"/>
+                         <input type="file" id='file' name="" className="form-control mt-2"/>
                          <AnalisisIndicator/>
                     </form>
-                    {document.getElementById(form_name) && init_data()}
+
                </ModalBody>
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                    <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" onClick={send_data}>Simpan perubahan</MDBBtn>
+                    <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" form='edit-incomingmail-form'>Simpan perubahan</MDBBtn>
                </ModalFooter>
           </Modal>
      )

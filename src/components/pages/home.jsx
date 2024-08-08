@@ -16,7 +16,7 @@ const HomePage = () => {
       <div>
          <TitleBar>Beranda</TitleBar>
          {/* Info */}
-         <div className="row mt-4">
+         {/* <div className="row mt-4">
             <InfoBox title="Pengguna Terdaftar" value="3">
                <FontAwesomeIcon icon={faUserTie} bounce/>
             </InfoBox>
@@ -29,7 +29,7 @@ const HomePage = () => {
             <InfoBox title="Pengguna NonAktif" value="3" >
                <FontAwesomeIcon icon={faUserXmark} bounce/>
             </InfoBox>
-         </div>
+         </div> */}
          {/* Profil */}
          <div className="row mt-4">
             {data && <ProfileBox user={data} setCommand={setCommand}/>}

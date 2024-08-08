@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
-import AnalisisIndicator from "../AnalisisIndicator"
 import { useSubmitHandleEditIncomingMailModal, useEditIncomingMailModalEffect } from '../../../hooks'
 
 const EditIncomingMailModal = (props)=>{

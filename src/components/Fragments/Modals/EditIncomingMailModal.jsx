@@ -16,17 +16,17 @@ const EditIncomingMailModal = (props)=>{
                     <form action="" id='edit-incomingmail-form' onSubmit={onSubmitHandle} ref={formRef}>
                          <div className="row">
                               <div className="col-6">
-                                   <MDBInput id='agenda-number' label="Nomor agenda" type="text" className='mb-3' defaultValue={letter.agenda_number}/>
-                                   <MDBInput id='letter-number' label="Nomor surat" type="text" className='mb-3' defaultValue={letter.letter_number}/>
-                                   <MDBInput id='source' label="Asal surat" type="text" className='mb-3' defaultValue={letter.source}/>
+                                   <MDBInput id='agenda-number' label="Nomor agenda" type="text" className='mb-3' defaultValue={' '}/>
+                                   <MDBInput id='letter-number' label="Nomor surat" type="text" className='mb-3' defaultValue={' '}/>
+                                   <MDBInput id='source' label="Asal surat" type="text" className='mb-3' defaultValue={' '}/>
                               </div>
                               <div className="col-6">
-                                   <MDBInput id='letter-date' label="Tanggal surat" type="date" className='mb-3' defaultValue={letter.letter_date}/>
-                                   <MDBInput id='received-date' label="Tanggal terima" type="date" className='mb-3' defaultValue={letter.received_date}/>
-                                   <MDBInput id='recipient' label="Penerima" type="text" className='mb-3' defaultValue={letter.recipient}/>
+                                   <MDBInput id='letter-date' label="Tanggal surat" type="date" className='mb-3' defaultValue={' '}/>
+                                   <MDBInput id='received-date' label="Tanggal terima" type="date" className='mb-3' defaultValue={' '}/>
+                                   <MDBInput id='recipient' label="Penerima" type="text" className='mb-3' defaultValue={' '}/>
                               </div>
                          </div>
-                         <MDBInput id='subject' label="Perihal" type="text" defaultValue={letter.subject}/>
+                         <MDBInput id='subject' label="Perihal" type="text" defaultValue={' '}/>
                     </form>
 
                </ModalBody>

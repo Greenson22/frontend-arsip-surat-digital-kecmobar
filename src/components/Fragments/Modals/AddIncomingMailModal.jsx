@@ -2,10 +2,12 @@ import React from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
-import { useFormDataIncomingmail } from '../../../hooks';
+import { useFormDataIncomingmail } from '../../../hooks'
+import { setCommand } from '../../../redux/slices/commandSlice';
+import { useDispatch } from 'react-redux';
 
-const AddIncomingMailModal = (props)=>{
-     const {setCommand} = props
+const AddIncomingMailModal = ()=>{
+     const dispatch = useDispatch()
 
      return(
           <Modal id="addMailModal">
@@ -36,10 +38,10 @@ const AddIncomingMailModal = (props)=>{
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
                     <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" onClick={()=>{
-                         setCommand({
+                         dispatch(setCommand({
                               'command': 'post', 
                               'data': useFormDataIncomingmail('addIncomingMailForm')
-                         })
+                         }))
                     }}>Tambah surat</MDBBtn>
                </ModalFooter>
           </Modal>

@@ -2,18 +2,17 @@ import React, { useState } from "react"
 import { usePageEffect, useLoginValidate } from "../../hooks"
 import { IncomingMailEmptyLayout, IncomingMailLayout } from '../Layouts'
 import { useIncomingmailActions } from "../../hooks"
+import { useSelector } from "react-redux"
 
 function IncomingMailPage() {
-     const [data, setData] = useState(null)
-     const [iData, setIData] = useState(0)
-     const [command, setCommand] = useState(null)
-
-     useLoginValidate()
-     usePageEffect(command, setData, setIData, setCommand, useIncomingmailActions)
+     const data = useSelector(state=>state.dataSlice.data)
      
+     useLoginValidate()
+     usePageEffect(useIncomingmailActions)
+
      return (data && data['count'] > 0) ? 
-     (<IncomingMailLayout data={data} iData={iData} command={command} setCommand={setCommand}/>) :
-     (<IncomingMailEmptyLayout setCommand={setCommand}/>)
+     (<IncomingMailLayout data={data}/>) :
+     (<IncomingMailEmptyLayout />)
 
 }
 export default IncomingMailPage

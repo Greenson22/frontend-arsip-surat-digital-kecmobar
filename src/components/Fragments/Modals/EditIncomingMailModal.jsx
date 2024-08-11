@@ -2,11 +2,13 @@ import React, { useRef } from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import { useSubmitHandleEditIncomingMailModal, useEditIncomingMailModalEffect } from '../../../hooks'
+import { useDispatch } from 'react-redux';
 
 const EditIncomingMailModal = (props)=>{
-     const {letter, setCommand} = props
+     const {letter} = props
+     const dispatch = useDispatch()
      const formRef = useRef()
-     const onSubmitHandle = (event)=>{useSubmitHandleEditIncomingMailModal(event, letter, setCommand)}
+     const onSubmitHandle = (event)=>{useSubmitHandleEditIncomingMailModal(event, letter, dispatch)}
      useEditIncomingMailModalEffect(formRef, letter)
      
      return(

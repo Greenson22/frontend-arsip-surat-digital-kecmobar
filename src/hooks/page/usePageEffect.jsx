@@ -1,8 +1,12 @@
 import { useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux'
 
-const usePageEffect = (command, setData, setIData, setCommand, callBackAction)=>{
+const usePageEffect = (callBackAction)=>{
+     const command = useSelector(state=>state.commandSlice.command)
+     const dispatch = useDispatch()
+     
      useEffect(()=>{
-          callBackAction(command, setData, setIData, setCommand)
+          callBackAction(command, dispatch)
      }, [command])
      
      useEffect(()=>{

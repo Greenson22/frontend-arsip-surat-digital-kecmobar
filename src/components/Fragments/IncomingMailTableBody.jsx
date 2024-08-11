@@ -2,7 +2,7 @@ import React from 'react'
 import {TableBody, RowAction} from '../Elements/Table'
 
 const IncomingMailTableBody = (props)=>{
-     const {data, setCommand} = props
+     const {data} = props
      const pagination = JSON.parse(localStorage.getItem('pagination'))
 
      return(
@@ -22,7 +22,7 @@ const IncomingMailTableBody = (props)=>{
                                         <RowAction view_target='#viewMailModal' 
                                                   edit_target='#editMailModal' index={index}
                                                   id={surat.id}
-                                                  setCommand={setCommand}/>
+                                                  />
                                    </td>
                               </tr>
                          )

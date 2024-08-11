@@ -1,9 +1,10 @@
 import useFetchData from '../request/useFetchData'
+import { setData } from '../../redux/slices/dataSlice'
 
-const useHandleFetch = (newUrl, token, setData)=>{
+const useHandleFetch = (newUrl, token, dispatch)=>{
      useFetchData(newUrl, token, 
      (response)=>{
-          setData(response['data'])
+          dispatch(setData(response['data']))
      }, (error)=>{
           console.log(error)
      })

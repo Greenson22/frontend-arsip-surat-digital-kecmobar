@@ -1,18 +1,18 @@
-import { configureStore} from "@reduxjs/toolkit";
-import authReducer from './slices/authSlice'
-import apiReducer from './slices/apiSlice'
+import { configureStore} from "@reduxjs/toolkit"
+import dataReducer from "./slices/dataSlice"
+import commandReducer from "./slices/commandSlice"
 
 const store = configureStore({
      reducer:{
-          auth: authReducer,
-          api: apiReducer
+          dataSlice: dataReducer,
+          commandSlice: commandReducer,
      }
 })
 
-// console.log("oncreate store : ", store.getState())
+console.log("oncreate store : ", store.getState())
 
-store.subscribe(()=>{
-     console.log("STORE UPDATE ", store.getState())
-})
+// store.subscribe(()=>{
+//      console.log("STORE UPDATE ", store.getState())
+// })
 
 export default store

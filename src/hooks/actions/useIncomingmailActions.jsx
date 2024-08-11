@@ -5,40 +5,44 @@ import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
 
-const useIncomingmailActions = (command, setData, setIData, setCommand)=>{
+import { setCommand } from '../../redux/slices/commandSlice'
+import { setIData } from '../../redux/slices/dataSlice'
+
+const useIncomingmailActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
      const token = localStorage.getItem('accessToken')
+     
      if (command){
           switch(command.command){
                case 'post':
                     const newUrl = url.split('?')[0]
-                    useHandlePost(newUrl, token, command, setCommand)
+                    useHandlePost(newUrl, token, command, dispatch)
                     break
                case 'put':
-                    useHandlePut(url, token, command, setCommand)
+                    useHandlePut(url, token, command, dispatch)
                     break
                case 'delete':
-                    useHandleDelete(url, token, command, setCommand)
+                    useHandleDelete(url, token, command, dispatch)
                     break
                case 'view_data':
-                    setIData(command.index)
+                    dispatch(setIData(command.index))
                     break
                case 'navigation':
-                    useHandleFetch(command.navigation_link, token, setData)
+                    useHandleFetch(command.navigation_link, token, dispatch)
                     usePaginationLocalStorage(command.navigation_link)
                     break
                case 'page_size':
-                    useHandleFetch(command.url, token, setData)
+                    useHandleFetch(command.url, token, dispatch)
                     usePaginationLocalStorage(command.url)
                     break
                case 'search':
                     const urlSyn = useUrlSyn(url, 'pagination')
                     const searchUrl = urlSyn+'&search='+command.words
-                    useHandleFetch(searchUrl, token, setData)
+                    useHandleFetch(searchUrl, token, dispatch)
                     break
           }
      }else{
-          useHandleFetch(url, token, setData)
+          useHandleFetch(url, token, dispatch)
           usePaginationLocalStorage(url)
      }
 }

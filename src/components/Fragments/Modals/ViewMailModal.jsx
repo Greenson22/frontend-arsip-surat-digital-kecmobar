@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { useFetchFile } from '../../../hooks';
+import { useSelector } from 'react-redux';
 
 const ViewMailModal = (props)=>{
-     const {title, command} = props
+     const {title} = props
+     const command = useSelector(state=>state.commandSlice.command)
      const iframeRef = useRef()
 
      useEffect(()=>{

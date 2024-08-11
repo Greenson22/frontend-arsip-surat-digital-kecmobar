@@ -1,13 +1,14 @@
 import usePutData from '../request/usePutData'
 import useUrlModifier from '../url/useUrlModifier'
 import useAlert from '../alert/useAlert'
+import { setCommand } from '../../redux/slices/commandSlice'
 
-const useHandlePut = (url, token, command, setCommand) => {
+const useHandlePut = (url, token, command, dispatch) => {
      const newUrl = useUrlModifier(url, command)
      usePutData(newUrl, command.data, token, 
      (response)=>{
           console.log(response)
-          setCommand(null)
+          dispatch(setCommand(null))
           useAlert('success_update')
      }, 
      (err)=>{

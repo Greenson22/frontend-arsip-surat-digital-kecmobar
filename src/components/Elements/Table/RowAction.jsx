@@ -1,11 +1,11 @@
 import React from 'react';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { useDispatch } from 'react-redux';
-import { setCommand } from '../../../redux/slices/commandSlice'
+import { setCommand } from '../../../redux/slices/commandSlice';
 
 export const RowAction = (props)=>{
      const dispatch = useDispatch()
-     const {view_target, edit_target, id, index, setCommand} = props
+     const {view_target, edit_target, id, index} = props
      
      return (
           <div className="btn-group">

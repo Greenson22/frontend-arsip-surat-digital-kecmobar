@@ -1,6 +1,6 @@
 import { setCommand } from "../../redux/slices/commandSlice"
 
-const useSubmitHandleEditIncomingMailModal = (event, letter, dispatch)=>{
+const useSubmitHandleEditIncomingMailModal = (event)=>{
      event.preventDefault()
      const formData = new FormData()
      const form = event.target
@@ -12,11 +12,7 @@ const useSubmitHandleEditIncomingMailModal = (event, letter, dispatch)=>{
      formData.append('recipient', form['recipient'].value)
      formData.append('subject', form['subject'].value)
 
-     dispatch(setCommand({
-          'command': 'put',
-          'id': letter.id,
-          'data': formData
-     }))
+     return formData
 }
 
 export default useSubmitHandleEditIncomingMailModal

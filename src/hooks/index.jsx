@@ -30,7 +30,6 @@ export { default as useUrlSyn } from './url/useUrlSyn'
 export { default as useObjectUrl } from './url/useObjectURL'
 
 export { default as useSubmitHandleEditUserModal } from './submit_handle/useSubmitHandleEditUserModal'
-export { default as useSubmitHandleEditIncomingMailModal } from './submit_handle/useSubmitHandleEditIncomingMailModal'
 
 export { default as useAlert } from './alert/useAlert'
 export { default as useConfirmAlert } from './alert/useConfirmAlert'

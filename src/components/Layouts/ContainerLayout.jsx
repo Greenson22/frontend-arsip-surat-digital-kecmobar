@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { useContainerLayoutEffect } from '../../hooks'
 
 const ContainerLayout = (props) => {
-  const {children} = props
+  const {render} = props
   const navRef = useRef()
   
   // useContainerLayoutEffect(navRef)
@@ -15,7 +15,7 @@ const ContainerLayout = (props) => {
       <div id="content" className='active'>
         <Navbar ref={navRef}/>
         <div className="container-fluid">
-          {children} {/* Konten */}
+          {render} {/* Konten */}
         </div>
       </div>
     </div>

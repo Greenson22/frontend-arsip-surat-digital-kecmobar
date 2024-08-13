@@ -12,37 +12,23 @@ import ContainerLayout from '../../components/Layouts/ContainerLayout.jsx'
 const router = createBrowserRouter([
      {
           path: "/",
-          element:
-          <ContainerLayout>
-               <HomePage/>
-          </ContainerLayout>,
+          element: <ContainerLayout render={<HomePage/>} />,
      },
      {
           path: "/incoming_mail",
-          element: 
-          <ContainerLayout>
-               <IncomingMailPage/>
-          </ContainerLayout>,
+          element: <ContainerLayout render={<IncomingMailPage/>} />,
      },
      {
           path: "/outgoing_mail",
-          element: 
-          <ContainerLayout>
-               <OutgoingMailPage/>
-          </ContainerLayout>,
+          element: <ContainerLayout render={<OutgoingMailPage/>} />,
      },
      {
           path: "/management_users",
-          element: 
-          <ContainerLayout>
-               <UserManagementPage/>,
-          </ContainerLayout>
+          element: <ContainerLayout render={<UserManagementPage/>} />,
      },
      {
           path: "/login",
-          element: <div>
-               <LoginPage/>
-          </div>,
+          element: <LoginPage/>,
      },
 ])
 

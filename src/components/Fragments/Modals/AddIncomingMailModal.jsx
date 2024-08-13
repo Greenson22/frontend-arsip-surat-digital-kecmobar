@@ -13,8 +13,8 @@ const AddIncomingMailModal = ()=>{
           event.preventDefault()
           const form = event.target
           dispatch(setCommand({
-               'command': 'post', 
-               'form_id' : 'add-incomingmail-form' 
+               'command': 'post',
+               'form_id' : 'add-incomingmail-form'
           }))
      }
 
@@ -25,28 +25,28 @@ const AddIncomingMailModal = ()=>{
                     <form action="" onSubmit={handleSubmit} id='add-incomingmail-form'>
                          <label htmlFor="" className="from-label">Unggah file surat</label>
                          <br/><sub className="">*pdf, png, jpeg, jpg</sub>
-                         <input id='document' type="file" className="form-control mt-2"/>
+                         <input id='document' type="file" className="form-control mt-2" required/>
                          <AnalisisIndicator/>
                          <hr className="mb-4"/>
 
                          <div className="row">
                               <div className="col-6">
                                    <MDBInput id='agenda_number' label="Nomor agenda" type="text" className='mb-2'/>
-                                   <MDBInput id='letter_number' label="Nomor surat" type="text" className='mb-2'/>
-                                   <MDBInput id='source' label="Asal surat" type="text" className='mb-2'/>
+                                   <MDBInput id='letter_number' label="Nomor surat" type="text" className='mb-2' required/>
+                                   <MDBInput id='source' label="Asal surat" type="text" className='mb-2' required/>
                               </div>
                               <div className="col-6">
-                                   <MDBInput id='letter_date' label="Tanggal surat" type="date" className='mb-2'/>
-                                   <MDBInput id='received_date' label="Tanggal terima" type="date" className='mb-2'/>
-                                   <MDBInput id='recipient' label="Penerima" type="text" className='mb-2'/>
+                                   <MDBInput id='letter_date' label="Tanggal surat" type="date" className='mb-2' required/>
+                                   <MDBInput id='received_date' label="Tanggal terima" type="date" className='mb-2' required/>
+                                   <MDBInput id='recipient' label="Penerima" type="text" className='mb-2' required/>
                               </div>
                          </div>
-                         <MDBInput id='subject' label="Perihal" type="text" />
+                         <MDBInput id='subject' label="Perihal" type="text" required/>
                     </form>
                </ModalBody>
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                    <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" form='add-incomingmail-form'>Tambah surat</MDBBtn>
+                    <MDBBtn size='sm' color='primary' form='add-incomingmail-form'>Tambah surat</MDBBtn>
                </ModalFooter>
           </Modal>
      )

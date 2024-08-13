@@ -4,10 +4,10 @@ import useHandleDelete from '../request/useHandleDelete'
 import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
-
-import { setCommand } from '../../redux/slices/commandSlice'
+import useUrlModifier from '../url/useUrlModifier'
 import { setIData } from '../../redux/slices/dataSlice'
 import useFormDataIncomingmail from '../form_data/useFormDataIncomingmail'
+import useFormDataEditIncomingmail from '../form_data/useFormDataEditIncomingmail'
 
 const useIncomingmailActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
@@ -21,7 +21,9 @@ const useIncomingmailActions = (command, dispatch)=>{
                     useHandlePost(newUrl, token, data, dispatch)
                     break
                case 'put':
-                    useHandlePut(url, token, command, dispatch)
+                    const putData = useFormDataEditIncomingmail(command.form_id)
+                    const newPutUrl = useUrlModifier(url, command)
+                    useHandlePut(newPutUrl, token, putData, dispatch)
                     break
                case 'delete':
                     useHandleDelete(url, token, command, dispatch)

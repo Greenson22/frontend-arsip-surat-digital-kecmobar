@@ -9,11 +9,20 @@ import { useDispatch } from 'react-redux';
 const AddIncomingMailModal = ()=>{
      const dispatch = useDispatch()
 
+     const handleSubmit = (event)=>{
+          event.preventDefault()
+          const form = event.target
+          dispatch(setCommand({
+               'command': 'post', 
+               'form_id' : 'add-incomingmail-form' 
+          }))
+     }
+
      return(
           <Modal id="addMailModal">
                <ModalHeader title="Tambah surat masuk"/>
                <ModalBody>
-                    <form action="" id='addIncomingMailForm'>
+                    <form action="" onSubmit={handleSubmit} id='add-incomingmail-form'>
                          <label htmlFor="" className="from-label">Unggah file surat</label>
                          <br/><sub className="">*pdf, png, jpeg, jpg</sub>
                          <input id='document' type="file" className="form-control mt-2"/>
@@ -37,12 +46,7 @@ const AddIncomingMailModal = ()=>{
                </ModalBody>
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                    <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" onClick={()=>{
-                         dispatch(setCommand({
-                              'command': 'post', 
-                              'data': useFormDataIncomingmail('addIncomingMailForm')
-                         }))
-                    }}>Tambah surat</MDBBtn>
+                    <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" form='add-incomingmail-form'>Tambah surat</MDBBtn>
                </ModalFooter>
           </Modal>
      )

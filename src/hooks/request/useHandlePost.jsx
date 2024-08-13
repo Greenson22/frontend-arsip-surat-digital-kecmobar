@@ -2,8 +2,8 @@ import usePostData from '../request/usePostData'
 import useAlert from '../alert/useAlert'
 import { setCommand } from '../../redux/slices/commandSlice'
 
-const useHandlePost = (url, token, command, dispatch)=>{
-     usePostData(url, command.data, token, 
+const useHandlePost = (url, token, data, dispatch)=>{
+     usePostData(url, data, token, 
      (response)=>{
           console.log(response)
           dispatch(setCommand(null))

@@ -7,6 +7,7 @@ import useUrlSyn from '../url/useUrlSyn'
 
 import { setCommand } from '../../redux/slices/commandSlice'
 import { setIData } from '../../redux/slices/dataSlice'
+import useFormDataIncomingmail from '../form_data/useFormDataIncomingmail'
 
 const useIncomingmailActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
@@ -16,7 +17,8 @@ const useIncomingmailActions = (command, dispatch)=>{
           switch(command.command){
                case 'post':
                     const newUrl = url.split('?')[0]
-                    useHandlePost(newUrl, token, command, dispatch)
+                    const data = useFormDataIncomingmail(command.form_id)
+                    useHandlePost(newUrl, token, data, dispatch)
                     break
                case 'put':
                     useHandlePut(url, token, command, dispatch)

@@ -1,3 +1,4 @@
+import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import LoginPage from './../../components/pages/login.jsx'
@@ -6,7 +7,6 @@ import IncomingMailPage from './../../components/pages/incoming_mail.jsx'
 import OutgoingMailPage from './../../components/pages/outgoing_mail.jsx'
 import UserManagementPage from './../../components/pages/user_management.jsx'
 
-import React from 'react'
 import ContainerLayout from '../../components/Layouts/ContainerLayout.jsx'
 
 const router = createBrowserRouter([

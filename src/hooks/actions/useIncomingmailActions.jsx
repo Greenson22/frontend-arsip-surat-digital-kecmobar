@@ -6,7 +6,7 @@ import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
 import useUrlModifier from '../url/useUrlModifier'
 import { setIData } from '../../redux/slices/dataSlice'
-import useFormDataIncomingmail from '../form_data/useFormDataIncomingmail'
+import { useFormDataIncomingmail } from '../form_data'
 import useFormDataEditIncomingmail from '../form_data/useFormDataEditIncomingmail'
 
 const useIncomingmailActions = (command, dispatch)=>{
@@ -18,7 +18,7 @@ const useIncomingmailActions = (command, dispatch)=>{
                case 'post':
                     const newUrl = url.split('?')[0]
                     const data = useFormDataIncomingmail(command.form_id)
-                    useHandlePost(newUrl, token, data, dispatch)
+                    useHandlePost(newUrl, token, data, command, dispatch)
                     break
                case 'put':
                     const putData = useFormDataEditIncomingmail(command.form_id)

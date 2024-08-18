@@ -1,18 +1,17 @@
-import { useState } from "react"
+import React from "react"
 import { UserManagementLayout, UserManagementEmptyLayout } from "../Layouts"
 import { useLoginValidate, usePageEffect, useUserManagementActions } from "../../hooks"
+import { useSelector } from "react-redux"
 
 const UserManagementPage = ()=>{
-     const [data, setData] = useState(null)
-     const [iData, setIData] = useState(0)
-     const [command, setCommand] = useState(null)
+     const data = useSelector(state=>state.dataSlice.data)
      
      useLoginValidate()
-     usePageEffect(command, setData, setIData, setCommand, useUserManagementActions)
+     usePageEffect(useUserManagementActions)
 
      return (data && data['count'] > 0) ? 
-     ( <UserManagementLayout data={data} iData={iData} command={command} setCommand={setCommand}/> ):
-     ( <UserManagementEmptyLayout setCommand={setCommand}/> )
+     ( <UserManagementLayout data={data} /> ):
+     ( <UserManagementEmptyLayout /> )
 }
 
 export default UserManagementPage

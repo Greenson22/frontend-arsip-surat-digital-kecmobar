@@ -20,7 +20,6 @@ export { default as useFetchFile } from './request/useFetchFile'
 export { default as useFetchFileProfilePicture } from './request/useFetchFileProfilePicture'
 
 export { default as useFormDataIncomingmail } from './form_data/useFormDataIncomingmail'
-export { default as useFormDataUserManagement } from './form_data/useFormDataUserManagement'
 export { default as usePaginationLocalStorage } from './pagination/usePaginationLocalStorage'
 export { default as usePaginationOffset } from './pagination/usePaginationOffset'
 

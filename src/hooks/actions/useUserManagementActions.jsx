@@ -6,8 +6,7 @@ import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
 import useUrlModifier from '../url/useUrlModifier'
 import { setIData } from '../../redux/slices/dataSlice'
-import useFormDataEditIncomingmail from '../form_data/useFormDataEditIncomingmail'
-import { useFormDataUser } from '../form_data'
+import { useFormDataUser, useFormDataUserEdit } from '../form_data'
 
 const useUserManagementActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_USERS_API_KEY
@@ -18,11 +17,11 @@ const useUserManagementActions = (command, dispatch)=>{
                case 'post':
                     console.log(command)
                     const newUrl = url.split('?')[0]
-                    const data = useFormDataUser(command.form_id)
+                    const data = useFormDataUser(command)
                     useHandlePost(newUrl, token, data, command, dispatch)
                     break
                case 'put':
-                    const putData = useFormDataEditIncomingmail(command.form_id)
+                    const putData = useFormDataUserEdit(command)
                     const newPutUrl = useUrlModifier(url, command)
                     useHandlePut(newPutUrl, token, putData, dispatch)
                     break

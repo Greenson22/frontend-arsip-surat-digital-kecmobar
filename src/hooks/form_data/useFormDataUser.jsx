@@ -1,5 +1,5 @@
-const useFormDataUser = (id)=>{
-     const form = document.getElementById(id)
+const useFormDataUser = (command)=>{
+     const form = document.getElementById(command.form_id)
      const formData = new FormData()
      formData.append('username', form.querySelector('#username').value)
      formData.append('password', form.querySelector('#password').value)

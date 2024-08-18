@@ -2,7 +2,6 @@ import React from 'react';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
-import { useFormDataIncomingmail } from '../../../hooks'
 import { setCommand } from '../../../redux/slices/commandSlice';
 import { useDispatch } from 'react-redux';
 
@@ -11,7 +10,6 @@ const AddIncomingMailModal = ()=>{
 
      const handleSubmit = (event)=>{
           event.preventDefault()
-          const form = event.target
           dispatch(setCommand({
                'command': 'post',
                'form_id' : 'add-incomingmail-form'

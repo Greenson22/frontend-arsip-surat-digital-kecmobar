@@ -41,7 +41,7 @@ const ProfileBox = (props)=>{
 
          {/* Modal */}
          <EditProfileModal user={user}/>
-         {/* <EditPasswordModal user={user} setCommand={setCommand}/> */}
+         <EditPasswordModal user={user}/>
       </div>
    )
 }

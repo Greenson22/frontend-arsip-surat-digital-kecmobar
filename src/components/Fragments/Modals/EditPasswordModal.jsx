@@ -3,40 +3,24 @@ import React from "react"
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit"
 import { useAlert } from "../../../hooks"
+import { useDispatch } from "react-redux"
+import { setCommand } from "../../../redux/slices/commandSlice"
 
 const EditPasswordModal = (props)=>{
-     const {user, setCommand} = props
+     const {user} = props
+     const dispatch = useDispatch()
 
      const onHandleSubmit = (event)=>{
           event.preventDefault()
-          
-          const oldPassword = event.target['old-password'].value
-          const newPassword = event.target['new-password'].value
-          const passwordConfirm = event.target['new-password-confirm'].value
-          
-          const formData = new FormData()
-          formData.append('username', user.username)
-          formData.append('is_active', user.is_active);
-          formData.append('is_superuser', user.is_superuser);
-          
-          // --- Password Validation Logic ---
-          if (oldPassword) { // Check if old password field is not empty
-               if (newPassword !== passwordConfirm) { // Check if new password and confirm password match
-                    useAlert('error_password_not_match')
-                    return; // Stop submission if passwords don't match
-                    }
-                    formData.append('old_password', oldPassword);
-                    formData.append('password', newPassword);
-               }
-          else if (newPassword || passwordConfirm) { 
-               useAlert('error_old_password_not_fill')
-               return; // Stop submission if old password is not provided but new passwords are
-          }
-          setCommand({
-               'command': 'put',
-               'data': formData,
-               'id': user.id
-          });
+
+          dispatch(setCommand({
+               'command': 'put_password',
+               'form_id': 'form-edit-password',
+               'id': user.id,
+               'username': user.username,
+               'is_active': user.is_active,
+               'is_superuser': user.is_superuser,
+          }));
      }
 
      return(

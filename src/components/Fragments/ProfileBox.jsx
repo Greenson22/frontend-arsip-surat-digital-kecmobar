@@ -11,7 +11,7 @@ import EditProfileModal from "./Modals/EditProfileModal"
 
 
 const ProfileBox = (props)=>{
-   const {user, setCommand} = props
+   const {user} = props
    const profileImgRef = useRef()
    const columns = ["Nama", "Pengguna", "Tingkat", "Status", "Tanggal Registrasi", "Nomor Telepon"]
    const datas = [user.first_name+' '+user.last_name, user.username, (user.is_superuser)?'aktif':'tidak aktif', (user.is_active)?'aktif':'tidak aktif', useFormattedDate(user.date_joined), user.phone_number]
@@ -40,8 +40,8 @@ const ProfileBox = (props)=>{
          </Card>
 
          {/* Modal */}
-         <EditProfileModal user={user} setCommand={setCommand}/>
-         <EditPasswordModal user={user} setCommand={setCommand}/>
+         <EditProfileModal user={user}/>
+         {/* <EditPasswordModal user={user} setCommand={setCommand}/> */}
       </div>
    )
 }

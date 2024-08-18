@@ -3,8 +3,9 @@ import { jwtDecode } from 'jwt-decode'
 import useHandlePut from '../request/useHandlePut'
 import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
+import useformDataUserEdit from '../form_data/useFormDataUserEdit'
 
-const useHomeActions = (command, setData, setIData, setCommand)=>{
+const useHomeActions = (command, dispatch)=>{
      const token = localStorage.getItem('accessToken')
      const userId = jwtDecode(token).user_id
      const url = import.meta.env.VITE_USERS_API_KEY
@@ -13,11 +14,12 @@ const useHomeActions = (command, setData, setIData, setCommand)=>{
      if (command){
           switch(command.command){
                case 'put':
-                    useHandlePut(url, token, command, setCommand)
+                    const data = useformDataUserEdit(command.form_id)
+                    useHandlePut(apiUserId, token, data, dispatch)
                     break
           }
      }else{
-          useHandleFetch(apiUserId, token, setData)
+          useHandleFetch(apiUserId, token, dispatch)
           usePaginationLocalStorage(url)
      }
 }

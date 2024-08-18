@@ -3,33 +3,22 @@ import React, { useEffect, useRef } from "react"
 import { MDBInput, MDBBtn, MDBCheckbox } from "mdb-react-ui-kit"
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import { useAlert } from "../../../hooks"
+import { useDispatch } from "react-redux"
+import { setCommand } from "../../../redux/slices/commandSlice"
 
 const EditProfileModal = (props)=>{
-   const {user, setCommand} = props
+   const {user} = props
    const formRef = useRef()
+   const dispatch = useDispatch()
 
    const handleSubmit = (event)=>{
       event.preventDefault()
-      const formData = new FormData()
-      formData.append('username', user.username)
-      formData.append('first_name', event.target['first-name-edit'].value)
-      formData.append('last_name', event.target['last-name-edit'].value)
-      formData.append('is_active', event.target['is-active-edit'].checked)
-      formData.append('is_superuser', event.target['is-superuser-edit'].checked)
-      formData.append('phone_number', event.target['phone-number-edit'].value)
-
-      // cek jika foto dimasukan
-      const picFile = event.target['file-edit'].files[0]
-      if (picFile){
-         formData.append('photo_url', picFile)
-      }
-
-      useAlert('loading_change_user_information')
-      setCommand({
+      // useAlert('loading_change_user_information')
+      dispatch(setCommand({
            'command': 'put',
-           'data': formData,
+           'form_id': 'edit-user-modal',
            'id': user.id
-      });
+      }));
       
    }
 

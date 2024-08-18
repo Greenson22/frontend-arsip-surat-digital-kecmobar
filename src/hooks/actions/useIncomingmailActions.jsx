@@ -17,11 +17,11 @@ const useIncomingmailActions = (command, dispatch)=>{
           switch(command.command){
                case 'post':
                     const newUrl = url.split('?')[0]
-                    const data = useFormDataIncomingmail(command.form_id)
+                    const data = useFormDataIncomingmail(command)
                     useHandlePost(newUrl, token, data, command, dispatch)
                     break
                case 'put':
-                    const putData = useFormDataEditIncomingmail(command.form_id)
+                    const putData = useFormDataEditIncomingmail(command)
                     const newPutUrl = useUrlModifier(url, command)
                     useHandlePut(newPutUrl, token, putData, dispatch)
                     break

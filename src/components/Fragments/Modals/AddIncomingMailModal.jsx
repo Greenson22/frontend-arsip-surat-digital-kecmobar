@@ -31,13 +31,13 @@ const AddIncomingMailModal = ()=>{
 
                          <div className="row">
                               <div className="col-6">
-                                   <MDBInput id='agenda_number' label="Nomor agenda" type="text" className='mb-2'/>
-                                   <MDBInput id='letter_number' label="Nomor surat" type="text" className='mb-2' required/>
+                                   <MDBInput id='agenda-number' label="Nomor agenda" type="text" className='mb-2'/>
+                                   <MDBInput id='letter-number' label="Nomor surat" type="text" className='mb-2' required/>
                                    <MDBInput id='source' label="Asal surat" type="text" className='mb-2' required/>
                               </div>
                               <div className="col-6">
-                                   <MDBInput id='letter_date' label="Tanggal surat" type="date" className='mb-2' required/>
-                                   <MDBInput id='received_date' label="Tanggal terima" type="date" className='mb-2' required/>
+                                   <MDBInput id='letter-date' label="Tanggal surat" type="date" className='mb-2' required/>
+                                   <MDBInput id='received-date' label="Tanggal terima" type="date" className='mb-2' required/>
                                    <MDBInput id='recipient' label="Penerima" type="text" className='mb-2' required/>
                               </div>
                          </div>

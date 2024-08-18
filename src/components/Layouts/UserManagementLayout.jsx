@@ -36,7 +36,7 @@ const UserManagementLayout = (props)=>{
 
                {/* Modal */}
                <AddUserModal />
-               {/* <EditUserModal user={data['results'][iData]} setCommand={setCommand}/> */}
+               <EditUserModal user={data['results'][iData]}/>
                {/* <ViewProfileModal user={data['results'][iData]} command={command} setCommand={command}/> */}
                {/* <ExportModal title="Ekspor daftar pengguna"/> */}
           </div>

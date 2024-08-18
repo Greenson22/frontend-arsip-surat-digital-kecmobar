@@ -2,14 +2,22 @@ import React, { useRef } from "react"
 import { MDBBtn, MDBInput, MDBCheckbox } from "mdb-react-ui-kit"
 
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
-import { useSubmitHandleEditUserModal, useEditUserModalEffect } from "../../../hooks"
+import { useEditUserModalEffect } from "../../../hooks"
+import { setCommand } from "../../../redux/slices/commandSlice"
+import { useDispatch } from "react-redux"
 
 const EditUserModal = (props)=>{
-     const { user, setCommand } = props
+     const { user } = props
      const formRef = useRef()
+     const dispatch = useDispatch()
 
      const handleSubmit = (event)=>{
-          useSubmitHandleEditUserModal(event, user, setCommand)
+          event.preventDefault()
+          dispatch(setCommand({
+               'command': 'put',
+               'form_id': 'edit-user-modal',
+               'id': user.id
+          }));
      }
      useEditUserModalEffect(user, formRef)
 
@@ -23,13 +31,13 @@ const EditUserModal = (props)=>{
                          </div>
 
                          <div>
-                              <MDBInput label="nama awal" id="first-name-edit" type="text" className='mb-2' defaultValue={' '}/>
-                              <MDBInput label="nama akhir" id="last-name-edit" type="text" className='mb-2' defaultValue={' '}/>
-                              <MDBInput label="alamat email" id="email-address-edit" type="text" className='mb-4' defaultValue={' '}/>
+                              <MDBInput label="nama awal" id="first-name-edit" type="text" className='mb-2' defaultValue={' '} required/>
+                              <MDBInput label="nama akhir" id="last-name-edit" type="text" className='mb-2' defaultValue={' '} required/>
+                              <MDBInput label="alamat email" id="email-address-edit" type="text" className='mb-4' defaultValue={' '} required/>
                          </div>
 
                          <div>
-                              <MDBCheckbox name='flexCheck' id='active-edit' label='active'/>
+                              <MDBCheckbox name='flexCheck' id='is-active-edit' label='active'/>
                               <MDBCheckbox name='flexCheck' id='is-superuser-edit' label='super user status'/>
                          </div>
                          <MDBInput label="nomor telepon" id="phone-number-edit" type="text" className='mb-2 mt-4' defaultValue={' '}/>
@@ -45,7 +53,7 @@ const EditUserModal = (props)=>{
                </ModalBody>
                <ModalFooter>
                     <MDBBtn color="secondary" data-bs-dismiss="modal" size="sm">Tutup</MDBBtn>
-                    <MDBBtn color="warning" size="sm" data-bs-dismiss="modal" form="edit-user-modal">Simpan perubahan</MDBBtn>
+                    <MDBBtn color="warning" size="sm" form="edit-user-modal">Simpan perubahan</MDBBtn>
                </ModalFooter>
           </Modal>
      )

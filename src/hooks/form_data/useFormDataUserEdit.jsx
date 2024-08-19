@@ -15,7 +15,7 @@ const useFormDataUserEdit = (command)=>{
           formData.append('photo_url', picFile)
      }
 
-     if (command.form_id == 'edit-user-modal'){
+     if (command.form_id == 'edit-user-management-modal'){
           const oldPassword = form.querySelector('#old-password-edit').value;
           const newPassword = form.querySelector('#new-password-edit').value;
           const passwordConfirm = form.querySelector('#new-password-confirm-edit').value;

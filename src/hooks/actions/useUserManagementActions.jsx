@@ -29,6 +29,7 @@ const useUserManagementActions = (command, dispatch)=>{
                case 'delete':
                     useHandleDelete(url, token, command, dispatch)
                     break
+               case 'view_file':
                case 'view_data':
                     dispatch(setIData(command.index))
                     break

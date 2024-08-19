@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react"
 
 import { MDBInput, MDBBtn, MDBCheckbox } from "mdb-react-ui-kit"
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
-import { useAlert } from "../../../hooks"
 import { useDispatch } from "react-redux"
 import { setCommand } from "../../../redux/slices/commandSlice"
 

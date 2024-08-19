@@ -15,7 +15,7 @@ const UserManagementLayout = (props)=>{
      const iData = useSelector(state => state.dataSlice.iData)
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
      const dispatch = useDispatch()
-
+     
      return (
           <div>
                <TitleBar>Pengaturan pengguna</TitleBar>
@@ -37,7 +37,7 @@ const UserManagementLayout = (props)=>{
                {/* Modal */}
                <AddUserModal />
                <EditUserModal user={data['results'][iData]}/>
-               {/* <ViewProfileModal user={data['results'][iData]} command={command} setCommand={command}/> */}
+               <ViewProfileModal user={data['results'][iData]}/>
                {/* <ExportModal title="Ekspor daftar pengguna"/> */}
           </div>
      )

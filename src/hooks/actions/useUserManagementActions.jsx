@@ -7,6 +7,7 @@ import useUrlSyn from '../url/useUrlSyn'
 import useUrlModifier from '../url/useUrlModifier'
 import { setIData } from '../../redux/slices/dataSlice'
 import { useFormDataUser, useFormDataUserEdit } from '../form_data'
+import useAlert from '../alert/useAlert'
 
 const useUserManagementActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_USERS_API_KEY
@@ -15,7 +16,6 @@ const useUserManagementActions = (command, dispatch)=>{
      if (command){
           switch(command.command){
                case 'post':
-                    console.log(command)
                     const newUrl = url.split('?')[0]
                     const data = useFormDataUser(command)
                     useHandlePost(newUrl, token, data, command, dispatch)
@@ -23,6 +23,7 @@ const useUserManagementActions = (command, dispatch)=>{
                case 'put':
                     const putData = useFormDataUserEdit(command)
                     const newPutUrl = useUrlModifier(url, command)
+                    useAlert('loading_change_user_information')
                     useHandlePut(newPutUrl, token, putData, dispatch)
                     break
                case 'delete':

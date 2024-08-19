@@ -15,7 +15,7 @@ const EditUserModal = (props)=>{
           event.preventDefault()
           dispatch(setCommand({
                'command': 'put',
-               'form_id': 'edit-user-modal',
+               'form_id': 'edit-user-management-modal',
                'id': user.id
           }));
      }
@@ -25,7 +25,7 @@ const EditUserModal = (props)=>{
           <Modal id="editUserModal">
                <ModalHeader title="Ubah pengguna"/>
                <ModalBody>
-                    <form action="" onSubmit={handleSubmit} id="edit-user-modal" ref={formRef}>
+                    <form action="" onSubmit={handleSubmit} id="edit-user-management-modal" ref={formRef}>
                          <div>
                               <MDBInput label="username" id="username-edit" type="text" className='mb-2' defaultValue={' '} disabled/>
                          </div>
@@ -53,7 +53,7 @@ const EditUserModal = (props)=>{
                </ModalBody>
                <ModalFooter>
                     <MDBBtn color="secondary" data-bs-dismiss="modal" size="sm">Tutup</MDBBtn>
-                    <MDBBtn color="warning" size="sm" form="edit-user-modal">Simpan perubahan</MDBBtn>
+                    <MDBBtn color="warning" size="sm" form="edit-user-management-modal">Simpan perubahan</MDBBtn>
                </ModalFooter>
           </Modal>
      )

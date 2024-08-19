@@ -5,6 +5,7 @@ import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useformDataUserEdit from '../form_data/useFormDataUserEdit'
 import useFormDataPasswordChange from '../form_data/useFormDataPasswordChange'
+import useAlert from '../alert/useAlert'
 
 const useHomeActions = (command, dispatch)=>{
      const token = localStorage.getItem('accessToken')
@@ -15,7 +16,8 @@ const useHomeActions = (command, dispatch)=>{
      if (command){
           switch(command.command){
                case 'put':
-                    const data = useformDataUserEdit(command.form_id)
+                    const data = useformDataUserEdit(command)
+                    useAlert('loading_change_user_information')
                     useHandlePut(apiUserId, token, data, dispatch)
                     break
                case 'put_password':

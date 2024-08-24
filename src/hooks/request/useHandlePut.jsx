@@ -10,6 +10,7 @@ const useHandlePut = (url, token, data, dispatch) => {
           useAlert('success_update')
      }, 
      (err)=>{
+          console.log(err)
           useAlert('error_update')
      })
 }

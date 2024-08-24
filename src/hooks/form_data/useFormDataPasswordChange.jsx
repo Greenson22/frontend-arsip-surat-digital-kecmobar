@@ -6,7 +6,6 @@ const useFormDataPasswordChange = (command)=>{
      const passwordConfirm = form.querySelector('#new-password-confirm').value
      
      const formData = new FormData()
-     formData.append('username', command.username)
      formData.append('is_active', command.is_active)
      formData.append('is_superuser', command.is_superuser)
      
@@ -16,8 +15,8 @@ const useFormDataPasswordChange = (command)=>{
                useAlert('error_password_not_match')
                return; // Stop submission if passwords don't match
                }
-               formData.append('old_password', oldPassword)
-               formData.append('password', newPassword)
+               formData.append('new_password', newPassword)
+               formData.append('password', oldPassword)
           }
      else if (newPassword || passwordConfirm) { 
           useAlert('error_old_password_not_fill')

@@ -26,8 +26,8 @@ const useFormDataUserEdit = (command)=>{
                     useAlert('error_password_not_match')
                     return; // Stop submission if passwords don't match
                     }
-                    formData.append('old_password', oldPassword);
-                    formData.append('password', newPassword);
+                    formData.append('password', oldPassword);
+                    formData.append('new_password', newPassword);
                }
           else if (newPassword || passwordConfirm) { 
                useAlert('error_old_password_not_fill')

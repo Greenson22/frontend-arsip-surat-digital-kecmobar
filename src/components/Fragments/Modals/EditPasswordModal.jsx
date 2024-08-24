@@ -17,7 +17,6 @@ const EditPasswordModal = (props)=>{
                'command': 'put_password',
                'form_id': 'form-edit-password',
                'id': user.id,
-               'username': user.username,
                'is_active': user.is_active,
                'is_superuser': user.is_superuser,
           }));

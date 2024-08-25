@@ -6,6 +6,7 @@ import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useformDataUserEdit from '../form_data/useFormDataUserEdit'
 import useFormDataPasswordChange from '../form_data/useFormDataPasswordChange'
 import useAlert from '../alert/useAlert'
+import useErrorAlert from '../alert/useErrorAlert'
 
 const useHomeActions = (command, dispatch)=>{
      const token = localStorage.getItem('accessToken')
@@ -23,7 +24,9 @@ const useHomeActions = (command, dispatch)=>{
                case 'put_password':
                     const dataPut = useFormDataPasswordChange(command)
                     useAlert('loading_change_user_information')
-                    useHandlePut(apiUserId, token, dataPut, dispatch)
+                    useHandlePut(apiUserId, token, dataPut, dispatch, (error)=>{
+                         useErrorAlert('', error.response.data.error)
+                    })
                     break
           }
      }else{

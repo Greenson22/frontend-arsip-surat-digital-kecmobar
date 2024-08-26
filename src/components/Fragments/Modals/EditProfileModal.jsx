@@ -16,7 +16,7 @@ const EditProfileModal = (props)=>{
       dispatch(setCommand({
            'command': 'put',
            'form_id': 'edit-user-modal',
-           'id': user.id
+           'user': user
       }));
       
    }
@@ -26,8 +26,6 @@ const EditProfileModal = (props)=>{
       formRef.current['first-name-edit'].value = user.first_name
       formRef.current['last-name-edit'].value = user.last_name
       formRef.current['email-address-edit'].value = user.email
-      formRef.current['is-active-edit'].checked = user.is_active
-      formRef.current['is-superuser-edit'].checked = user.is_superuser
       formRef.current['phone-number-edit'].value = user.phone_number
    }, [])
 
@@ -46,10 +44,6 @@ const EditProfileModal = (props)=>{
                <MDBInput label="alamat email" id="email-address-edit" type="text" className='mb-4' defaultValue={' '}/>
             </div>
 
-            <div>
-               <MDBCheckbox name='flexCheck' id='is-active-edit' label='active'/>
-               <MDBCheckbox name='flexCheck' id='is-superuser-edit' label='super user status'/>
-            </div>
             <MDBInput label="nomor telepon" id="phone-number-edit" type="text" className='mb-2 mt-4' defaultValue={' '}/>
             
             <label htmlFor="">foto profil <p className="text-primary">*isi untuk mengganti foto profil</p></label>

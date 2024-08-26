@@ -3,7 +3,7 @@ import { jwtDecode } from 'jwt-decode'
 import useHandlePut from '../request/useHandlePut'
 import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
-import useformDataUserEdit from '../form_data/useFormDataUserEdit'
+import useFormDataUserProfile from '../form_data/useFormDataUserProfile'
 import useFormDataPasswordChange from '../form_data/useFormDataPasswordChange'
 import useAlert from '../alert/useAlert'
 import useErrorAlert from '../alert/useErrorAlert'
@@ -17,7 +17,7 @@ const useHomeActions = (command, dispatch)=>{
      if (command){
           switch(command.command){
                case 'put':
-                    const data = useformDataUserEdit(command)
+                    const data = useFormDataUserProfile(command)
                     useAlert('loading_change_user_information')
                     useHandlePut(apiUserId, token, data, dispatch)
                     break

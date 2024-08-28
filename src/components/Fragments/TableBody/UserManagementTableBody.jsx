@@ -1,6 +1,6 @@
 import React from "react"
-import { TableBody, RowAction } from "../Elements/Table"
-import { useFormattedDate } from "../../hooks"
+import { TableBody, RowAction } from "../../Elements/Table"
+import { useFormattedDate } from "../../../hooks"
 
 const UserManagementTableBody = (props)=>{
      const {data} = props

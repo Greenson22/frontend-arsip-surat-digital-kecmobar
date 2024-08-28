@@ -1,5 +1,5 @@
 import React from 'react'
-import {TableBody, RowAction} from '../Elements/Table'
+import {TableBody, RowAction} from '../../Elements/Table'
 
 const OutgoingMailTableBody = (props)=>{
      const {data} = props
@@ -18,7 +18,7 @@ const OutgoingMailTableBody = (props)=>{
                                    <td>{surat.subject}</td>
                                    <td>
                                         <RowAction view_target='#view-mail-modal' 
-                                                       edit_target='#edit-mail-modal' 
+                                                       edit_target='#edit-outgoingmail-modal' 
                                                        index={index}
                                                        id={surat.id}/>
                                    </td>

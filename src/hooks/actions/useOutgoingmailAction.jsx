@@ -1,9 +1,9 @@
 import { useFormDataOutgoingmail } from '../form_data'
-import { useHandlePost, useHandleFetch, useHandleDelete } from '../request'
+import { useHandlePost, useHandleFetch, useHandleDelete, useHandlePut } from '../request'
 import { usePaginationLocalStorage } from "../pagination"
 import useResponseFormattedString from '../useResponseFormattedString'
 import useErrorAlert from '../alert/useErrorAlert'
-import { useUrlSyn } from '../url'
+import { useUrlSyn, useUrlModifier } from '../url'
 import { setIData } from '../../redux/slices/dataSlice'
 
 const useOutgoingmailAction = (command, dispatch)=>{
@@ -18,11 +18,11 @@ const useOutgoingmailAction = (command, dispatch)=>{
                          useErrorAlert('add_outgoingmail', useResponseFormattedString(error.response.data))
                     })
                     break
-               // case 'put':
-               //      const putData = useFormDataEditIncomingmail(command)
-               //      const newPutUrl = useUrlModifier(url, command)
-               //      useHandlePut(newPutUrl, token, putData, dispatch)
-               //      break
+               case 'put':
+                    const putData = useFormDataOutgoingmail(command)
+                    const newPutUrl = useUrlModifier(url, command)
+                    useHandlePut(newPutUrl, token, putData, dispatch)
+                    break
                case 'delete':
                     useHandleDelete(url, token, command, dispatch)
                     break

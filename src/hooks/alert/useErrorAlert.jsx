@@ -15,8 +15,11 @@ const useErrorAlert = (option, text)=>{
           case 'add_outgoingmail':
                handleAlert('Opps gagal menambahkan surat', text, 'error')
                break
+          case 'delete_user':
+               handleAlert('Gagal menghapus pengguna', text, 'error')
+               break
           default:
-               handleAlert('Opps gagal mengubah data!!!', text, 'error')
+               handleAlert('Opps terjadi kesalahan!!!', text, 'error')
                break
      }
 }

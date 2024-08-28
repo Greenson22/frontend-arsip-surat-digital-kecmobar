@@ -62,6 +62,9 @@ const useAlert = (option)=>{
           case 'loading_change_user_information':
                handleAlertLoading('Sedang memperbaruhi user...', 'Mohon tunggu sebentar...')
                break
+          case 'password_not_match':
+               handleAlert('Password tidak cocok', 'Pastikan password dan konfirmasi password sama.', 'warning')
+               break
      }
 }
 

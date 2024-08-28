@@ -3,7 +3,7 @@ import { MDBBtn } from "mdb-react-ui-kit"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead} from '../Elements/Table'
 import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal, 
-     AddIncomingMailModal, EditIncomingMailModal, DeleteIncomingMailModal, ViewMailModal} from '../Fragments'
+     AddIncomingMailModal, EditIncomingMailModal, ViewMailModal} from '../Fragments'
 import { useSetPage } from "../../hooks"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -33,7 +33,7 @@ const IncomingMailLayout = (props)=>{
                </Card>
 
                <EditIncomingMailModal letter={data['results'][iData]} />
-               <ViewMailModal title='Surat masuk'/>
+               <ViewMailModal title='Surat masuk' api={api}/>
                
                <AddIncomingMailModal/>
                {/* <DeleteIncomingMailModal/> */}

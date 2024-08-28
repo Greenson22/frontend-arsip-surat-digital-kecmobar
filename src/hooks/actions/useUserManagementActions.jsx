@@ -4,9 +4,8 @@ import useHandleDelete from '../request/useHandleDelete'
 import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
-import useUrlModifier from '../url/useUrlModifier'
 import { setIData } from '../../redux/slices/dataSlice'
-import { useFormDataUser, useFormDataUserEdit } from '../form_data'
+import { useFormDataUser } from '../form_data'
 import useAlert from '../alert/useAlert'
 
 const useUserManagementActions = (command, dispatch)=>{
@@ -21,7 +20,7 @@ const useUserManagementActions = (command, dispatch)=>{
                     useHandlePost(newUrl, token, data, command, dispatch)
                     break
                case 'put':
-                    const putData = useFormDataUserEdit(command)
+                    const putData = useFormDataUser(command)
                     const newPutUrl = useUrlModifier(url, command)
                     useAlert('loading_change_user_information')
                     useHandlePut(newPutUrl, token, putData, dispatch)

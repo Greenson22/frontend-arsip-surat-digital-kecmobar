@@ -16,26 +16,6 @@ const useFormDataUserEdit = (command)=>{
           formData.append('photo_url', picFile)
      }
 
-     // if (command.form_id == 'edit-user-management-modal'){
-     //      const oldPassword = form.querySelector('#old-password-edit').value;
-     //      const newPassword = form.querySelector('#new-password-edit').value;
-     //      const passwordConfirm = form.querySelector('#new-password-confirm-edit').value;
-          
-     //      // --- Password Validation Logic ---
-     //      if (oldPassword) { // Check if old password field is not empty
-     //           if (newPassword !== passwordConfirm) { // Check if new password and confirm password match
-     //                useAlert('error_password_not_match')
-     //                return; // Stop submission if passwords don't match
-     //                }
-     //                formData.append('password', oldPassword);
-     //                formData.append('new_password', newPassword);
-     //           }
-     //      else if (newPassword || passwordConfirm) { 
-     //           useAlert('error_old_password_not_fill')
-     //           return; // Stop submission if old password is not provided but new passwords are
-     //      }
-     // }
-
      return formData
 }
 

@@ -5,14 +5,14 @@ import { useFetchFile } from '../../../hooks';
 import { useSelector } from 'react-redux';
 
 const ViewMailModal = (props)=>{
-     const {title} = props
+     const {title, api} = props
      const command = useSelector(state=>state.commandSlice.command)
      const iframeRef = useRef()
 
      useEffect(()=>{
           if (command && command.command == 'view_file'){
                const accessToken = localStorage.getItem('accessToken')
-               useFetchFile('http://localhost:8000/incoming_mail/'+command.id+'/file/', accessToken, (response)=>{
+               useFetchFile(api.split('?')[0]+command.id+'/file/', accessToken, (response)=>{
                     const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }))
                     iframeRef.current.src = url
                })
@@ -24,7 +24,7 @@ const ViewMailModal = (props)=>{
      }
 
      return(
-          <Modal id="viewMailModal" addClassToModalDialog="modal-fullscreen">
+          <Modal id="view-mail-modal" addClassToModalDialog="modal-fullscreen">
                <ModalHeader title={title}/>
                <ModalBody>
                     <div className="ratio ratio-16x9">

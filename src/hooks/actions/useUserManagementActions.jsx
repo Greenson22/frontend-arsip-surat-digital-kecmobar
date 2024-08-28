@@ -5,8 +5,8 @@ import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import { setIData } from '../../redux/slices/dataSlice'
 import { useFormDataUser } from '../form_data'
-import { useUrlModifier } from '../url'
-import useAlert from '../alert/useAlert'
+import { useUrlModifier, useUrlSyn } from '../url'
+import { useAlert } from '../alert'
 
 const useUserManagementActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_USERS_API_KEY

@@ -8,7 +8,7 @@ import AnalisisIndicator from "../AnalisisIndicator"
 const EditOutgoingMailModal = (props)=>{
      const {data} = props
      return(
-          <Modal id="editOutgoingMailModal">
+          <Modal id="edit-outgoingmail-modal">
                <ModalHeader title="Ubah surat keluar"/>
                <ModalBody>
                     <form action="">

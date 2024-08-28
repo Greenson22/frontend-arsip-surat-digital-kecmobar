@@ -10,7 +10,7 @@ function IncomingMailPage() {
      useLoginValidate()
      usePageEffect(useIncomingmailActions)
 
-     return (data && data['count'] > 0) ? 
+     return (data && data['count'] > 0) ?
      (<IncomingMailLayout data={data}/>) :
      (<IncomingMailEmptyLayout />)
 

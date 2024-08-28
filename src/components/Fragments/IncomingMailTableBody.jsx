@@ -19,8 +19,9 @@ const IncomingMailTableBody = (props)=>{
                                    <td >{surat.subject}</td>
                                    <td >{surat.recipient}</td>
                                    <td>
-                                        <RowAction view_target='#viewMailModal' 
-                                                  edit_target='#editMailModal' index={index}
+                                        <RowAction view_target='#view-mail-modal' 
+                                                  edit_target='#editMailModal' 
+                                                  index={index}
                                                   id={surat.id}
                                                   />
                                    </td>

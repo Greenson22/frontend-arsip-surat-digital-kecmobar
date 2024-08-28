@@ -1,9 +1,10 @@
 import { useFormDataOutgoingmail } from '../form_data'
-import { useHandlePost, useHandleFetch } from '../request'
+import { useHandlePost, useHandleFetch, useHandleDelete } from '../request'
 import { usePaginationLocalStorage } from "../pagination"
 import useResponseFormattedString from '../useResponseFormattedString'
 import useErrorAlert from '../alert/useErrorAlert'
 import { useUrlSyn } from '../url'
+import { setIData } from '../../redux/slices/dataSlice'
 
 const useOutgoingmailAction = (command, dispatch)=>{
      const url = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
@@ -22,9 +23,9 @@ const useOutgoingmailAction = (command, dispatch)=>{
                //      const newPutUrl = useUrlModifier(url, command)
                //      useHandlePut(newPutUrl, token, putData, dispatch)
                //      break
-               // case 'delete':
-               //      useHandleDelete(url, token, command, dispatch)
-               //      break
+               case 'delete':
+                    useHandleDelete(url, token, command, dispatch)
+                    break
                case 'view_data':
                     dispatch(setIData(command.index))
                     break

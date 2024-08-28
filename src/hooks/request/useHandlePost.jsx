@@ -2,7 +2,12 @@ import usePostData from '../request/usePostData'
 import useAlert from '../alert/useAlert'
 import { setCommand } from '../../redux/slices/commandSlice'
 
-const useHandlePost = (url, token, data, command, dispatch)=>{
+const defaultErrorCallback = (err)=>{
+     console.log(err)
+     useAlert('error')
+}
+
+const useHandlePost = (url, token, data, command, dispatch, errorCallBack=defaultErrorCallback)=>{
      usePostData(url, data, token, 
      (response)=>{
           console.log(response)
@@ -11,10 +16,7 @@ const useHandlePost = (url, token, data, command, dispatch)=>{
 
           const form = document.getElementById(command.form_id)
           form.reset()
-     }, 
-     (err)=>{
-          useAlert('error')
-     })
+     }, errorCallBack)
 }
 
 export default useHandlePost

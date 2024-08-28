@@ -35,6 +35,7 @@ const useAlert = (option)=>{
           case 'success_login':
                handleAlert("Berhasil Login!", "Anda berhasil masuk!", "success", 3000)
                break
+          
           case 'error':
                handleAlert("Oppss terjadi kesalahan!!!", "Coba periksa input yang ada berikan!!!", "error")
                break
@@ -53,6 +54,7 @@ const useAlert = (option)=>{
           case 'error_old_password_not_fill':
                handleAlert("Oppss password lama kosong", "tolong password lama anda diisi terlebih dahulu", "error")
                break
+          
           case 'session_end':
                handleAlert("Oppss sesi login kamu telah berakhir!!!", "Silakan melakukan login kembali untuk dapat mengakses aplikasi ini!!!", "error")
                break

@@ -21,6 +21,16 @@ const useFormDataUser = (command)=>{
           if (picFile){
                formData.append('photo_url', picFile)
           }
+     }else{
+          formData.append('username', form['username'].value)
+          formData.append('password', form['password'].value)
+          formData.append('first_name', form['first-name'].value)
+          formData.append('last_name', form['last-name'].value)
+          formData.append('email', form['email-address'].value)
+          formData.append('is_active', form['is-active'].checked)
+          formData.append('is_superuser', form['is-superuser'].checked)
+          formData.append('phone_number', form['phone-number'].value)
+          formData.append('photo_url', form['file'].files[0])
      }
      
      return formData

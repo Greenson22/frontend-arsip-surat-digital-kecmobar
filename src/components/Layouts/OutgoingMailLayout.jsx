@@ -1,5 +1,6 @@
 import { MDBCard, MDBCardHeader, MDBCardBody, MDBBtn, MDBTable } from "mdb-react-ui-kit"
-import { TitleBar, TableAction, TableFilter, OutgoingMailTableBody, AddOutgoingMailModal, ViewMailModal } from "../Fragments"
+import { TitleBar, TableAction, TableFilter, OutgoingMailTableBody, } from "../Fragments"
+import { AddOutgoingMailModal, ViewMailModal, EditOutgoingMailModal } from '../Fragments/Modals'
 import { TableHead } from "../Elements/Table"
 import { useDispatch, useSelector } from "react-redux"
 import { useSetPage } from "../../hooks"
@@ -31,6 +32,7 @@ const OutgoingMailLayout = (props)=>{
 
                <AddOutgoingMailModal />
                <ViewMailModal title='Surat Keluar' api={api}/>
+               <EditOutgoingMailModal data={data} />
           </div>
      )
 }

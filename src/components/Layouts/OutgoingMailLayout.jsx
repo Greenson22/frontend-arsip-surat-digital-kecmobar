@@ -32,7 +32,7 @@ const OutgoingMailLayout = (props)=>{
 
                <AddOutgoingMailModal />
                <ViewMailModal title='Surat Keluar' api={api}/>
-               <EditOutgoingMailModal data={data} />
+               <EditOutgoingMailModal letter={data['results'][iData]} />
           </div>
      )
 }

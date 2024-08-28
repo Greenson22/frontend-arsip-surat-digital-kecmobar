@@ -4,6 +4,7 @@ import { MDBBtn, MDBInput, MDBCheckbox } from "mdb-react-ui-kit"
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import { setCommand } from "../../../redux/slices/commandSlice"
 import { useDispatch } from "react-redux"
+import { useAlert } from "../../../hooks"
 
 const AddUserModal = ()=>{
      const formRef = useRef()
@@ -11,6 +12,12 @@ const AddUserModal = ()=>{
 
      const handleSubmit = (event)=>{
           event.preventDefault()
+          const password = event.target['password'].value
+          const passwordConfirm = event.target['confirm-password'].value
+          if (password != passwordConfirm){
+               useAlert('password_not_match')
+               return false
+          }
 
           dispatch(setCommand({
                'command' : 'post',
@@ -36,8 +43,8 @@ const AddUserModal = ()=>{
                          </div>
 
                          <div>
-                              <MDBCheckbox name='flexCheck' value='active' id='active' label='active' required/>
-                              <MDBCheckbox name='flexCheck' value='active' id='is-superuser' label='super user status' required/>
+                              <MDBCheckbox name='flexCheck' value='active' id='is-active' label='active'/>
+                              <MDBCheckbox name='flexCheck' value='active' id='is-superuser' label='super user status'/>
                          </div>
                          <MDBInput label="nomor telepon" id="phone-number" type="text" className='mb-2 mt-4' required/>
                          

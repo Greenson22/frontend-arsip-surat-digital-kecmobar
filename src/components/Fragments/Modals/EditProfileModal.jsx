@@ -12,7 +12,7 @@ const EditProfileModal = (props)=>{
 
    const handleSubmit = (event)=>{
       event.preventDefault()
-      // useAlert('loading_change_user_information')
+      
       dispatch(setCommand({
            'command': 'put',
            'form_id': 'edit-user-modal',

@@ -3,9 +3,9 @@ import useHandlePost from '../request/useHandlePost'
 import useHandleDelete from '../request/useHandleDelete'
 import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
-import useUrlSyn from '../url/useUrlSyn'
 import { setIData } from '../../redux/slices/dataSlice'
 import { useFormDataUser } from '../form_data'
+import { useUrlModifier } from '../url'
 import useAlert from '../alert/useAlert'
 
 const useUserManagementActions = (command, dispatch)=>{

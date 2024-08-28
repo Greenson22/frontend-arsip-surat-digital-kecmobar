@@ -12,6 +12,9 @@ const useErrorAlert = (option, text)=>{
      }
 
      switch(option){
+          case 'add_outgoingmail':
+               handleAlert('Opps gagal menambahkan surat', text, 'error')
+               break
           default:
                handleAlert('Opps gagal mengubah data!!!', text, 'error')
                break

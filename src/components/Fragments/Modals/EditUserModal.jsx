@@ -13,14 +13,13 @@ const EditUserModal = (props)=>{
 
      const handleSubmit = (event)=>{
           event.preventDefault()
-          
           const password = event.target['new-password-edit'].value
           const passwordConfirm = event.target['new-password-confirm-edit'].value
           if (password != passwordConfirm){
                useAlert('password_not_match')
                return false
           }
-
+          
           dispatch(setCommand({
                'command': 'put',
                'form_id': 'edit-usermanagement-modal',

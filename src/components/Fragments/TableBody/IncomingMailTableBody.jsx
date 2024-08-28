@@ -1,5 +1,5 @@
 import React from 'react'
-import {TableBody, RowAction} from '../Elements/Table'
+import {TableBody, RowAction} from '../../Elements/Table'
 
 const IncomingMailTableBody = (props)=>{
      const {data} = props

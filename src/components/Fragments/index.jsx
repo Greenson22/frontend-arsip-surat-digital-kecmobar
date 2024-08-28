@@ -1,9 +1,9 @@
 export { default as TitleBar } from './TitleBar'
 export { default as TableFilter } from './TableFilter'
 export { default as TableAction } from "./TableAction"
-export { default as IncomingMailTableBody } from './IncomingMailTableBody'
-export { default as OutgoingMailTableBody } from './OutgoingMailTableBody'
-export { default as UserManagementTableBody } from './UserManagementTableBody'
+export { default as IncomingMailTableBody } from './TableBody/IncomingMailTableBody'
+export { default as OutgoingMailTableBody } from './TableBody/OutgoingMailTableBody'
+export { default as UserManagementTableBody } from './TableBody/UserManagementTableBody'
 export { default as ProfileBox } from './ProfileBox'
 export { default as UserBox } from './UserBox'
 export { default as InfoBox } from './InfoBox'

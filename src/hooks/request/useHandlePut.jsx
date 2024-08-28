@@ -1,10 +1,12 @@
 import usePutData from '../request/usePutData'
 import useAlert from '../alert/useAlert'
 import { setCommand } from '../../redux/slices/commandSlice'
+import { useErrorAlert } from '../alert'
+import { useResponseFormattedString } from '..'
 
-const defaultErrorCallBack = (err)=>{
-     console.log(err)
-     useAlert('error_update')
+const defaultErrorCallBack = (error)=>{
+     console.log(error)
+     useErrorAlert('', useResponseFormattedString(error.response.data))
 }
 
 const useHandlePut = (url, token, data, dispatch, errorCallBack=defaultErrorCallBack) => {

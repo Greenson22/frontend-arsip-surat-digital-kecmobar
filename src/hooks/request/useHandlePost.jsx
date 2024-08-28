@@ -1,10 +1,12 @@
 import usePostData from '../request/usePostData'
 import useAlert from '../alert/useAlert'
 import { setCommand } from '../../redux/slices/commandSlice'
+import { useErrorAlert } from '../alert'
+import { useResponseFormattedString } from '..'
 
-const defaultErrorCallback = (err)=>{
-     console.log(err)
-     useAlert('error')
+const defaultErrorCallback = (error)=>{
+     console.log(error)
+     useErrorAlert(useResponseFormattedString(error.response.data))
 }
 
 const useHandlePost = (url, token, data, command, dispatch, errorCallBack=defaultErrorCallback)=>{

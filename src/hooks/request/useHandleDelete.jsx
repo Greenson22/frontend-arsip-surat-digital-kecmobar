@@ -3,8 +3,15 @@ import useDeleteData from './useDeleteData'
 import useAlert from '../alert/useAlert'
 import useConfirmAlert from '../alert/useConfirmAlert'
 import { setCommand } from '../../redux/slices/commandSlice'
+import { useErrorAlert } from '../alert'
+import { useResponseFormattedString } from '..'
 
-const useHandleDelete = (url, token, command, dispatch)=>{
+const defaultErrorCallback = (error)=>{
+     useErrorAlert('', useResponseFormattedString(error.response.data))
+     console.log(error)
+}
+
+const useHandleDelete = (url, token, command, dispatch, errorCallBack=defaultErrorCallback)=>{
      useConfirmAlert((result)=>{
           if (result.isConfirmed){
                const newUrl = useUrlModifier(url, command)
@@ -13,11 +20,8 @@ const useHandleDelete = (url, token, command, dispatch)=>{
                     console.log(response)
                     dispatch(setCommand(null))
                     useAlert('success_delete')
-               },
-               (err)=>{
-                    useAlert('error_delete')
-               })
-          }
+               }, errorCallBack
+          )}
      })
 }
 

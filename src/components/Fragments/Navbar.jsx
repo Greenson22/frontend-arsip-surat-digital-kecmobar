@@ -17,8 +17,8 @@ const Navbar = forwardRef((props, ref)=> {
         <div className="w-25 d-flex justify-content-end">
           <div className="w-75 d-flex justify-content-end">
               <h6 className="me-2 mt-2" id='user-name'>user</h6>
-              <img className="img-fluid w-25 d-none d-md-block" src={profile_photo} alt=""/>
-              <img className="img-fluid w-75 d-md-none" src={profile_photo} alt=""/>
+              <img className="img-fluid w-25 d-none d-md-block rounded-circle" src={localStorage.getItem('myImage')} alt=""/>
+              <img className="img-fluid w-75 d-md-none rounded-circle" src={localStorage.getItem('myImage')} alt=""/>
           </div>
         </div>
       </div>

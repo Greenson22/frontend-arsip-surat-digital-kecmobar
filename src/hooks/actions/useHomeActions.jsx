@@ -24,9 +24,7 @@ const useHomeActions = (command, dispatch)=>{
                case 'put_password':
                     const dataPut = useFormDataPasswordChange(command)
                     useAlert('loading_change_user_information')
-                    useHandlePut(apiUserId, token, dataPut, dispatch, (error)=>{
-                         useErrorAlert('', error.response.data.error)
-                    })
+                    useHandlePut(apiUserId, token, dataPut, dispatch)
                     break
           }
      }else{

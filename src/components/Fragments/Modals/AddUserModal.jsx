@@ -24,6 +24,20 @@ const AddUserModal = ()=>{
                'form_id' : 'add-user-modal'
           }))
      }
+
+     const handleBtnShowPassCheck = (event)=>{
+          const form = document.getElementById('add-user-modal')
+          const oldPassword = form['password']
+          const newPassword = form['confirm-password']
+          
+          if (event.target.checked){
+               oldPassword.type = 'text'
+               newPassword.type = 'text'
+          }else{
+               oldPassword.type = 'password'
+               newPassword.type = 'password'
+          }
+     }
      
      return(
           <Modal id="addUserModal">
@@ -33,11 +47,12 @@ const AddUserModal = ()=>{
                          <div>
                               <MDBInput label="username" id="username" type="text" className='mb-2' required/>
                               <MDBInput label="password" id="password" type="password" className='mb-2' required/>
-                              <MDBInput label="konfirmasi password" id="confirm-password" type="password" className='mb-4' required/>
+                              <MDBInput label="konfirmasi password" id="confirm-password" type="password" className="mb-2" required/>
+                              <MDBCheckbox label="Show password" onClick={handleBtnShowPassCheck}/>
                          </div>
 
                          <div>
-                              <MDBInput label="nama awal" id="first-name" type="text" className='mb-2' required/>
+                              <MDBInput label="nama awal" id="first-name" type="text" className='mb-2 mt-4' required/>
                               <MDBInput label="nama akhir" id="last-name" type="text" className='mb-2' required/>
                               <MDBInput label="alamat email" id="email-address" type="text" className='mb-4' required/>
                          </div>

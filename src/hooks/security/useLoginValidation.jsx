@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom"
-import useAlert from "../alert/useAlert"
+import { useAlert, useErrorAlert } from "../alert/"
 import axios from "axios"
 import useTokenValidation from "./useTokenValidation"
+import { useResponseFormattedString } from ".."
 
 const useLoginValidate = ()=>{
      const navigate = useNavigate()
@@ -19,7 +20,7 @@ const useLoginValidate = ()=>{
                console.log('success login ulang')
           })
           .catch((error)=>{
-               useAlert('session_end')
+               useErrorAlert('', useResponseFormattedString(error.response.data))
                navigate('/login')
           })
      }

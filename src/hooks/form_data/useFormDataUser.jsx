@@ -14,7 +14,7 @@ const useFormDataUser = (command)=>{
           // cek jika password di masukan
           const password = form['new-password-edit'].value
           if (password){
-               formData.append('password', form['new-password-edit'].value)
+               formData.append('new_password', form['new-password-edit'].value)
           }
           // cek jika jika foto di input
           const picFile = form['file-edit'].files[0]

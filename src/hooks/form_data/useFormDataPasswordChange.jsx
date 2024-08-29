@@ -8,7 +8,7 @@ const useFormDataPasswordChange = (command)=>{
      const passwordConfirm = form.querySelector('#new-password-confirm').value
      
      if (oldPassword){
-          if (oldPassword !== passwordConfirm){
+          if (newPassword !== passwordConfirm){
                useAlert('error_password_not_match')
                return {}
           }
@@ -16,9 +16,6 @@ const useFormDataPasswordChange = (command)=>{
                'new_password':newPassword,
                'password':oldPassword
           }
-     }else if (newPassword || passwordConfirm){
-          useAlert('error_old_password_not_fill')
-          return {}
      }
      return {}
 }

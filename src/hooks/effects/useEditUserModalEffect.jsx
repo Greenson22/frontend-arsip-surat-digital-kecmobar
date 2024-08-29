@@ -2,6 +2,7 @@ import { useEffect } from "react"
 
 const useEditUserModalEffect = (user, formRef)=>{
      useEffect(()=>{
+          formRef.current.reset()
           formRef.current['username-edit'].value = user?.username
           formRef.current['first-name-edit'].value = user?.first_name
           formRef.current['last-name-edit'].value = user?.last_name

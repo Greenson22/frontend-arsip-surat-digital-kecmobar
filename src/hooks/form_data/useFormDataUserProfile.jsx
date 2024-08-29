@@ -8,7 +8,6 @@ const useFormDataUserEdit = (command)=>{
      formData.append('email', form.querySelector('#email-address-edit').value)
      formData.append('is_active', command.user.is_active)
      formData.append('is_superuser', command.user.is_superuser)
-     formData.append('is_staff', command.user.is_staff)
 
      // cek jika jika foto di input
      const picFile = form.querySelector('#file-edit').files[0]

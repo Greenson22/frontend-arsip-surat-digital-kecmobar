@@ -4,8 +4,9 @@ import { LoginLayout } from '../Layouts'
 import { useNavigate } from 'react-router-dom'
 
 import axios from 'axios';
-import { useAlert, useBase64, useFetchFileProfilePicture } from '../../hooks'
+import { useBase64, useFetchFileProfilePicture, useResponseFormattedString } from '../../hooks'
 import { jwtDecode } from 'jwt-decode';
+import { useAlert, useErrorAlert } from '../../hooks/alert'
 
 
 function LoginPage() {
@@ -38,15 +39,14 @@ function LoginPage() {
                     useAlert('success_login')
                     navigate('/incoming_mail')
                }, (error)=>{
-                    saveImage(response.data)
-                    useAlert('success_login')
+                    useErrorAlert('', useResponseFormattedString(error.response.data))
                     navigate('/incoming_mail')
                })
 
           })
           .catch((error)=>{
                console.log(error)
-               useAlert('error_login')
+               useErrorAlert('', useResponseFormattedString(error.response.data))
           })
      }
 

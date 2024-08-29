@@ -7,7 +7,7 @@ const ContainerLayout = (props) => {
   const {render} = props
   const navRef = useRef()
   
-  // useContainerLayoutEffect(navRef)
+  useContainerLayoutEffect(navRef)
 
   return(
     <div className='wrapper'>

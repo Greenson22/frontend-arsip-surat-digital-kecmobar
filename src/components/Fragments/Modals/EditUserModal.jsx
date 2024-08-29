@@ -26,6 +26,20 @@ const EditUserModal = (props)=>{
                'id': user.id
           }));
      }
+
+     const handleBtnShowPassClick = (event)=>{
+          const form = document.getElementById('edit-usermanagement-modal')
+          const newPassword = form['new-password-edit']
+          const newPasswordConfirm = form['new-password-confirm-edit']
+          
+          if (event.target.checked){
+               newPassword.type = 'text'
+               newPasswordConfirm.type = 'text'
+          }else{
+               newPassword.type = 'password'
+               newPasswordConfirm.type = 'password'
+          }
+     }
      useEditUserModalEffect(user, formRef)
 
      return(
@@ -51,9 +65,10 @@ const EditUserModal = (props)=>{
                          
                          <label htmlFor="" className="mt-2">ganti password <p className="text-primary">*isi untuk mengganti password</p></label>
                          <MDBInput label="password baru" id="new-password-edit" type="password" className='mb-2' placeholder="isi untuk mengganti password"/>
-                         <MDBInput label="konfirmasi password baru" id="new-password-confirm-edit" type="password" className='mb-4' placeholder="isi untuk mengganti password"/>
-                         
-                         <label htmlFor="">foto profil <p className="text-primary">*isi untuk mengganti foto profil</p></label>
+                         <MDBInput label="konfirmasi password baru" id="new-password-confirm-edit" type="password" placeholder="isi untuk mengganti password"/>
+                         <MDBCheckbox label='Show password' onClick={handleBtnShowPassClick}/>
+
+                         <label htmlFor="" className="mt-4">foto profil <p className="text-primary">*isi untuk mengganti foto profil</p></label>
                          <MDBInput type="file" id="file-edit" className='mb-2'/>
                     </form>
                </ModalBody>

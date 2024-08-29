@@ -6,7 +6,7 @@ import { useResponseFormattedString } from '..'
 
 const defaultErrorCallback = (error)=>{
      console.log(error)
-     useErrorAlert(useResponseFormattedString(error.response.data))
+     useErrorAlert('', useResponseFormattedString(error.response.data))
 }
 
 const useHandlePost = (url, token, data, command, dispatch, errorCallBack=defaultErrorCallback)=>{

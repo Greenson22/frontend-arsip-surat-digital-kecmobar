@@ -2,9 +2,8 @@ import React, { useRef, useState } from 'react';
 import { MDBInput, MDBBtn, MDBInputGroup } from 'mdb-react-ui-kit';
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
-import { setCommand } from '../../../redux/slices/commandSlice';
 import { useDispatch } from 'react-redux';
-import usePostData from '../../../hooks/request/usePostData';
+import { useHandleBtnAnalysis, useHandleInputFileChange, useHandleSubmit } from '../../../hooks/handle/add_incomingmail_modal';
 
 const AddIncomingMailModal = ()=>{
      const dispatch = useDispatch()
@@ -13,62 +12,9 @@ const AddIncomingMailModal = ()=>{
      const formRef = useRef()
      const [analysis, setAnalysis] = useState(false)
 
-     const handleSubmit = (event)=>{
-          event.preventDefault()
-          dispatch(setCommand({
-               'command': 'post',
-               'form_id' : 'add-incomingmail-form'
-          }))
-     }
-
-     const handleInputFileChange = (event) =>{
-          const inputFile = event.target
-          const files = inputFile.files
-          if (files.length > 0){
-               const preview = previewRef.current
-               const reader = new FileReader()
-               reader.onload = ()=>{
-                    preview.height = '100%'
-                    preview.src = reader.result
-               }
-               reader.readAsDataURL(files[0])
-          }
-
-     }
-
-     const handleBtnAnalisisClick = (event)=>{
-          event.preventDefault()
-          const files = inputFileRef.current.files
-          
-          if (files.length > 0){
-               const letterNumber = formRef.current['letter-number']
-               const source = formRef.current['source']
-               const letterDate = formRef.current['letter-date']
-               const reveivedDate = formRef.current['received-date']
-               const subject = formRef.current['subject']
-               const recipient = formRef.current['recipient']
-
-               const formData = new FormData()
-               formData.append('file', files[0])
-
-               console.log('sedang menganalisa!!!')
-               setAnalysis(true)
-               usePostData(import.meta.env.VITE_GENAI_API_KEY, formData, localStorage.getItem('accessToken'), (response)=>{
-                    const data = response.data
-                    letterNumber.value = data?.letter_number
-                    source.value = data?.source
-                    recipient.value = data?.recipient
-                    letterDate.value = data?.letter_date
-                    reveivedDate.value = data?.received_date
-                    subject.value = data?.subject
-                    console.log(data)
-                    setAnalysis(false)
-               }, (error)=>{
-                    console.log(error)
-               })
-          }
-          
-     }
+     const handleSubmit = (event)=>{useHandleSubmit(event. dispatch)}
+     const handleInputFileChange = (event)=>{useHandleInputFileChange(event, previewRef)}
+     const handleBtnAnalisisClick = (event)=>{useHandleBtnAnalysis(event, inputFileRef, formRef, setAnalysis)}
 
      return(
           <Modal id="addMailModal">
@@ -95,8 +41,8 @@ const AddIncomingMailModal = ()=>{
                                    <MDBInput id='source' label="Asal surat" type="text" className='mb-2' required defaultValue={' '}/>
                               </div>
                               <div className="col-6">
-                                   <MDBInput id='letter-date' label="Tanggal surat" type="date" className='mb-2' required defaultValue={' '}/>
-                                   <MDBInput id='received-date' label="Tanggal terima" type="date" className='mb-2' required defaultValue={' '}/>
+                                   <MDBInput id='letter-date' label="Tanggal surat" type="date" className='mb-2' required/>
+                                   <MDBInput id='received-date' label="Tanggal terima" type="date" className='mb-2' required/>
                                    <MDBInput id='recipient' label="Penerima" type="text" className='mb-2' required defaultValue={' '}/>
                               </div>
                          </div>

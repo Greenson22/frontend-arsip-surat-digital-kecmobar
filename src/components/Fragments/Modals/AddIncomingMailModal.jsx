@@ -25,7 +25,6 @@ const AddIncomingMailModal = ()=>{
                          <br/><sub className="">*pdf, png, jpeg, jpg</sub>
                          
                          <MDBInputGroup>
-                              {/* <input id='document' type="file" accept="application/pdf" className="form-control mt-2" required onChange={handleInputFileChange}/> */}
                               <MDBInput id='document' type='file' accept="application/pdf" required onChange={handleInputFileChange} ref={inputFileRef} ></MDBInput>
                               <MDBBtn size='sm' onClick={handleBtnAnalisisClick} type='button'>Analisis</MDBBtn>
                          </MDBInputGroup>

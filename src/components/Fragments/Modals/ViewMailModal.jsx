@@ -28,7 +28,7 @@ const ViewMailModal = (props)=>{
                <ModalHeader title={title}/>
                <ModalBody>
                     <div className="ratio ratio-16x9">
-                         <iframe title="My Document" allowFullScreen ref={iframeRef}></iframe>
+                         <iframe title="My Document" ref={iframeRef}></iframe>
                     </div>
                </ModalBody>
                <ModalFooter>

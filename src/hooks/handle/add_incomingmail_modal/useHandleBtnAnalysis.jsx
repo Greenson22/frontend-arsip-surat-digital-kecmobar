@@ -13,7 +13,12 @@ const useHandleBtnAnalysis = (event, inputFileRef, formRef, setAnalysis)=>{
           const recipient = formRef.current['recipient']
 
           const formData = new FormData()
-          formData.append('file', files[0])
+          for (let i = 0; i < files.length; i++) {
+               formData.append('file', files[i])
+          }
+          formData.forEach((value, key) => {
+               console.log(`${key}: ${value}`);
+          });
 
           console.log('sedang menganalisa!!!')
           setAnalysis(true)

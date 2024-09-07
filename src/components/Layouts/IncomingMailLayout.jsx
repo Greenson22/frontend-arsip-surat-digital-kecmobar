@@ -6,6 +6,7 @@ import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal,
      AddIncomingMailModal, EditIncomingMailModal, ViewMailModal} from '../Fragments'
 import { useSetPage } from "../../hooks"
 import { useDispatch, useSelector } from "react-redux"
+import AddMultipleIncomingMailModal from "../Fragments/Modals/AddMulitipleIncomingMailModal"
 
 const IncomingMailLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Penerima", "Tindakan"]
@@ -36,6 +37,7 @@ const IncomingMailLayout = (props)=>{
                <ViewMailModal title='Surat masuk' api={api}/>
                
                <AddIncomingMailModal/>
+               <AddMultipleIncomingMailModal/>
                {/* <DeleteIncomingMailModal/> */}
                <ExportModal title="Ekspor daftar surat masuk" />
           </div>

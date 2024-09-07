@@ -21,12 +21,11 @@ const AddIncomingMailModal = ()=>{
                <ModalHeader title="Tambah surat masuk"/>
                <ModalBody>
                     <form action="" onSubmit={handleSubmit} id='add-incomingmail-form' ref={formRef}>
-                         <label htmlFor="" className="from-label">Unggah file surat</label>
-                         <br/><sub className="">*pdf, png, jpeg, jpg</sub>
+                         <label htmlFor="" className="from-label">Unggah file surat *.pdf</label>
                          
                          <MDBInputGroup>
                               <MDBInput id='document' type='file' accept="application/pdf" required onChange={handleInputFileChange} ref={inputFileRef} ></MDBInput>
-                              <MDBBtn size='sm' onClick={handleBtnAnalisisClick} type='button'>Analisis</MDBBtn>
+                              <MDBBtn size='sm' onClick={handleBtnAnalisisClick} type='button'>Analisa</MDBBtn>
                          </MDBInputGroup>
                          
                          <AnalisisIndicator isActive={analysis}/>
@@ -49,8 +48,11 @@ const AddIncomingMailModal = ()=>{
                     </form>
                </ModalBody>
                <ModalFooter>
-                    <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                    <MDBBtn size='sm' color='primary' form='add-incomingmail-form'>Tambah surat</MDBBtn>
+                    <MDBBtn size='sm' data-bs-toggle='modal' data-bs-target="#add-multiple-mail-modal">Surat-surat</MDBBtn>
+                    <div className="ms-auto">
+                         <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
+                         <MDBBtn size='sm' color='primary' form='add-incomingmail-form'>Tambah surat</MDBBtn>
+                    </div>
                </ModalFooter>
           </Modal>
      )

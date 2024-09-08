@@ -6,7 +6,7 @@ import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useUrlSyn from '../url/useUrlSyn'
 import useUrlModifier from '../url/useUrlModifier'
 import { setIData } from '../../redux/slices/dataSlice'
-import { useFormDataIncomingmail } from '../form_data'
+import { useFormDataIncomingmail, useFormDataMultipleIncomingmail } from '../form_data'
 
 const useIncomingmailActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
@@ -18,6 +18,18 @@ const useIncomingmailActions = (command, dispatch)=>{
                     const newUrl = url.split('?')[0]
                     const data = useFormDataIncomingmail(command)
                     useHandlePost(newUrl, token, data, command, dispatch)
+                    break
+               case 'multiple_post':
+                    const fileNote = command.file_note
+                    fileNote.map((file, index)=>{
+                         if (file.entities != null){
+                              const newUrl = url.split('?')[0]
+                              const data = useFormDataMultipleIncomingmail(file.name, file.entities)
+                              useHandlePost(newUrl, token, data, command, dispatch)
+                         }else{
+                              console.log(file.name, ' entitiesnya null')
+                         }
+                    })
                     break
                case 'put':
                     const putData = useFormDataIncomingmail(command)

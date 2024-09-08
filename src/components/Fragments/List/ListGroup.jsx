@@ -9,15 +9,14 @@ const listGroup = (props)=>{
           <MDBListGroup>
                {
                     fileNote.map((file, index)=>{
-                         if (file.cloud === true){ //jika sudah di upload
-                              return <List status={'cloud'} key={index}>{file.name}</List>
-                         }
-                         else if (file.loading === true) { //sementara melakukan analisis
-                              return <List status={'spinner'} key={index}>{file.name}</List>
-                         }else if (file.entities===null){ //jika entities masih null
+                         if (file.status === null){
                               return <List status={''} key={index}>{file.name}</List>
-                         }else{ //selesai melakukan analisis
+                         }else if (file.status === 'loading'){
+                              return <List status={'spinner'} key={index}>{file.name}</List>
+                         }else if (file.status === 'check'){
                               return <List status={'check'} key={index}>{file.name}</List>
+                         }else if (file.status === 'fail'){
+                              return <List status={'fail'} key={index}>{file.name}</List>
                          }
                     })
                }

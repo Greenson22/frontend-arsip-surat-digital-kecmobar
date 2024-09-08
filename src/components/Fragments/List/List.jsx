@@ -1,7 +1,7 @@
 import React from "react"
-import { MDBBtn, MDBListGroupItem, MDBBadge } from "mdb-react-ui-kit"
+import { MDBBtn, MDBListGroupItem } from "mdb-react-ui-kit"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faDownload, faCheck, faCloud } from "@fortawesome/free-solid-svg-icons"
+import { faDownload, faCheck, faCloud, faX } from "@fortawesome/free-solid-svg-icons"
 
 const List = (props)=>{
      const {children, status} = props
@@ -18,6 +18,9 @@ const List = (props)=>{
                break
           case 'cloud':
                statusElement = <FontAwesomeIcon icon={faCloud} style={{color: "#74C0FC",}}/>
+               break
+          case 'fail':
+               statusElement = <FontAwesomeIcon icon={faX} style={{color: "#ff0000",}}/>
                break
      }
 

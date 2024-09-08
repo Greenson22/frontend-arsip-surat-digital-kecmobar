@@ -1,7 +1,7 @@
 import React from "react"
 import { MDBBtn, MDBListGroupItem, MDBBadge } from "mdb-react-ui-kit"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faDownload, faCheck } from "@fortawesome/free-solid-svg-icons"
+import { faDownload, faCheck, faCloud } from "@fortawesome/free-solid-svg-icons"
 
 const List = (props)=>{
      const {children, status} = props
@@ -11,10 +11,13 @@ const List = (props)=>{
                statusElement = <MDBBtn size="sm"><FontAwesomeIcon icon={faDownload}/></MDBBtn>
                break
           case 'check':
-               statusElement = <MDBBadge><FontAwesomeIcon icon={faCheck} style={{color: "#63E6BE",}}/></MDBBadge>
+               statusElement = <FontAwesomeIcon icon={faCheck} style={{color: "#74C0FC",}}/>
                break
           case 'spinner':
                statusElement = <div className="spinner-border spinner-border-sm text-primary"></div>
+               break
+          case 'cloud':
+               statusElement = <FontAwesomeIcon icon={faCloud} style={{color: "#74C0FC",}}/>
                break
      }
 

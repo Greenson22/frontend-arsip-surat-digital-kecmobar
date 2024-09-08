@@ -2,10 +2,11 @@ import React from "react"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import { Table, TableHead } from '../Elements/Table'
 import { TitleBar, TableAction, AddIncomingMailModal, TableFilter } from '../Fragments'
+import { AddMultipleIncomingmailModal } from '../Fragments/Modals'
 
 const IncomingMailEmptyLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Penerima", "Tindakan"]
-     
+      
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>
@@ -21,6 +22,7 @@ const IncomingMailEmptyLayout = (props)=>{
                     </CardBody>
                </Card>
                <AddIncomingMailModal />
+               <AddMultipleIncomingmailModal />
           </div>
      )
 }

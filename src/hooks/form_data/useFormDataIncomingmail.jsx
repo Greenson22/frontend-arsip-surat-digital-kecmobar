@@ -1,7 +1,7 @@
 const useFormDataIncomingmail = (command)=>{
      const form = document.getElementById(command.form_id)
      const formData = new FormData()
-     if (command.form_id != 'edit-incomingmail-form'){
+     if (command.form_id === 'add-incomingmail-form'){
           formData.append('file', form.querySelector('#document').files[0])
           formData.append('agenda_number', form.querySelector('#agenda-number').value)
           formData.append('letter_number', form.querySelector('#letter-number').value)

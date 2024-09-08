@@ -3,11 +3,14 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "../../Elements/Modal
 import { MDBBtn, MDBInput, MDBInputGroup } from "mdb-react-ui-kit"
 import { ListGroup } from '../List'
 import { usePostData } from "../../../hooks"
+import { useDispatch } from "react-redux"
+import { setCommand } from "../../../redux/slices/commandSlice"
 
 const AddMultipleIncomingMailModal = ()=>{
      const [fileList, setFileList] = useState(null)
      const [fileNote, setFileNote] = useState(null)
      const inputFileRef = useRef()
+     const dispatch = useDispatch()
      
      const handleInputFileChange = (event)=>{
           const files = Array.from(event.target.files)
@@ -17,7 +20,8 @@ const AddMultipleIncomingMailModal = ()=>{
                notes.push({
                     'name' : file.name,
                     'entities' : null,
-                    'loading' : false
+                    'loading' : false,
+                    'cloud' : false,
                })
           })
           setFileList([...files])
@@ -45,12 +49,20 @@ const AddMultipleIncomingMailModal = ()=>{
                })
           })
      }
+     const handleBtnPostClick = (event) => {
+          const duplicateFileNote = fileNote.slice()
+          dispatch(setCommand({
+               'command': 'multiple_post',
+               'file_note': fileNote,
+               'form_id': 'input_id'
+          }))
+     }
      return (
           <Modal id="add-multiple-mail-modal"> 
                <ModalHeader title='Tambah beberapa surat'/>
                <ModalBody>
                     <MDBInputGroup className="mb-2">
-                         <MDBInput type="file" multiple ref={inputFileRef} accept="application/pdf" onChange={handleInputFileChange}></MDBInput>
+                         <MDBInput id="input-file" type="file" multiple ref={inputFileRef} accept="application/pdf" onChange={handleInputFileChange}></MDBInput>
                          <MDBBtn size="sm" onClick={handleBtnAnalysClick}>Analisa</MDBBtn>
                     </MDBInputGroup>
                     
@@ -58,7 +70,7 @@ const AddMultipleIncomingMailModal = ()=>{
                </ModalBody> 
                <ModalFooter>
                     <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                    <MDBBtn size='sm' color='primary' >Tambah semua surat</MDBBtn>
+                    <MDBBtn size='sm' color='primary' data-bs-dismiss="modal" onClick={handleBtnPostClick}>Tambah semua surat</MDBBtn>
                </ModalFooter>
           </Modal>
      )

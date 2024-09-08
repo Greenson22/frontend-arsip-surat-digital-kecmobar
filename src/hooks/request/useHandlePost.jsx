@@ -15,9 +15,6 @@ const useHandlePost = (url, token, data, command, dispatch, errorCallBack=defaul
           console.log(response)
           dispatch(setCommand(null))
           useAlert('success')
-
-          const form = document.getElementById(command.form_id)
-          form.reset()
      }, errorCallBack)
 }
 

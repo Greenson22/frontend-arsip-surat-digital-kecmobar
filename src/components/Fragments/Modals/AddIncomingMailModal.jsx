@@ -4,6 +4,7 @@ import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
 import { useDispatch } from 'react-redux';
 import { useHandleBtnAnalysis, useHandleInputFileChange, useHandleSubmit } from '../../../hooks/handle/add_incomingmail_modal';
+import ModalKu from "bootstrap/js/dist/modal"
 
 const AddIncomingMailModal = ()=>{
      const dispatch = useDispatch()
@@ -12,12 +13,16 @@ const AddIncomingMailModal = ()=>{
      const formRef = useRef()
      const [analysis, setAnalysis] = useState(false)
 
-     const handleSubmit = (event)=>{useHandleSubmit(event. dispatch)}
+     const handleSubmit = (event)=>{useHandleSubmit(event, dispatch)}
      const handleInputFileChange = (event)=>{useHandleInputFileChange(event, previewRef)}
      const handleBtnAnalisisClick = (event)=>{useHandleBtnAnalysis(event, inputFileRef, formRef, setAnalysis)}
-
+     const tes = (event)=>{
+          const modal = ModalKu.getOrCreateInstance(document.getElementById('add-mail-modal'))
+          const backdrop = document.querySelector('.modal-backdrop'); 
+          backdrop.remove()
+     }
      return(
-          <Modal id="addMailModal">
+          <Modal id="add-mail-modal">
                <ModalHeader title="Tambah surat masuk"/>
                <ModalBody>
                     <form action="" onSubmit={handleSubmit} id='add-incomingmail-form' ref={formRef}>
@@ -51,7 +56,7 @@ const AddIncomingMailModal = ()=>{
                     <MDBBtn size='sm' data-bs-toggle='modal' data-bs-target="#add-multiple-mail-modal">Surat-surat</MDBBtn>
                     <div className="ms-auto">
                          <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                         <MDBBtn size='sm' color='primary' form='add-incomingmail-form'>Tambah surat</MDBBtn>
+                         <MDBBtn size='sm' color='primary' onClick={tes}>Tambah surat</MDBBtn>
                     </div>
                </ModalFooter>
           </Modal>

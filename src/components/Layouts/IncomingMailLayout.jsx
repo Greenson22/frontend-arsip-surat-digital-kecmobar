@@ -20,7 +20,7 @@ const IncomingMailLayout = (props)=>{
                <TitleBar>Surat masuk</TitleBar>
                <Card>
                     <CardHeader>
-                         <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#addMailModal" button2="Ekspor" button2_target="#exportModal" />
+                         <TableAction title="Daftar surat masuk" button1="Tambah surat" button1_target="#add-mail-modal" button2="Ekspor" button2_target="#exportModal" />
                     </CardHeader>
                     <CardBody>
                          <TableFilter api={api} />

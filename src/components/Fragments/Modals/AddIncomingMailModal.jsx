@@ -4,7 +4,6 @@ import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import AnalisisIndicator from "../AnalisisIndicator"
 import { useDispatch } from 'react-redux';
 import { useHandleBtnAnalysis, useHandleInputFileChange, useHandleSubmit } from '../../../hooks/handle/add_incomingmail_modal';
-import ModalKu from "bootstrap/js/dist/modal"
 
 const AddIncomingMailModal = ()=>{
      const dispatch = useDispatch()
@@ -16,11 +15,6 @@ const AddIncomingMailModal = ()=>{
      const handleSubmit = (event)=>{useHandleSubmit(event, dispatch)}
      const handleInputFileChange = (event)=>{useHandleInputFileChange(event, previewRef)}
      const handleBtnAnalisisClick = (event)=>{useHandleBtnAnalysis(event, inputFileRef, formRef, setAnalysis)}
-     const tes = (event)=>{
-          const modal = ModalKu.getOrCreateInstance(document.getElementById('add-mail-modal'))
-          const backdrop = document.querySelector('.modal-backdrop'); 
-          backdrop.remove()
-     }
      return(
           <Modal id="add-mail-modal">
                <ModalHeader title="Tambah surat masuk"/>
@@ -56,7 +50,7 @@ const AddIncomingMailModal = ()=>{
                     <MDBBtn size='sm' data-bs-toggle='modal' data-bs-target="#add-multiple-mail-modal">Surat-surat</MDBBtn>
                     <div className="ms-auto">
                          <MDBBtn size='sm' color='secondary' data-bs-dismiss="modal">Tutup</MDBBtn>
-                         <MDBBtn size='sm' color='primary' onClick={tes}>Tambah surat</MDBBtn>
+                         <MDBBtn size='sm' color='primary' >Tambah surat</MDBBtn>
                     </div>
                </ModalFooter>
           </Modal>

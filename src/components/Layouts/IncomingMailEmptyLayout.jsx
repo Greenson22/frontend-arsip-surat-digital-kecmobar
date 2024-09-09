@@ -13,7 +13,7 @@ const IncomingMailEmptyLayout = (props)=>{
                <TitleBar>Surat masuk</TitleBar>
                <Card>
                     <CardHeader>
-                         <TableAction title="Daftar surat masuk" button1="Tambah surat" button2="Ekspor" button2_target="#exportModal" button2Disabled={true} buttonAClick={()=>{setAddModal(true)}}/>
+                         <TableAction title="Daftar surat masuk" buttonChildren="Tambah surat" buttonClick={()=>{setAddModal(true)}}/>
                     </CardHeader>
                     <CardBody>
                          <TableFilter />

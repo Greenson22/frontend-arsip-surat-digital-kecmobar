@@ -13,7 +13,7 @@ const AddIncomingMailModalV2 = (props)=>{
      const previewRef = useRef()
      const [analysis, setAnalysis] = useState(false)
 
-     const handleSubmit = (event)=>{useHandleSubmit(event, dispatch)}
+     const handleSubmit = (event)=>{useHandleSubmit(event, setAddModal, dispatch)}
      const handleInputFileChange = (event)=>{useHandleInputFileChange(event, previewRef)}
      const handleBtnAnalisisClick = (event)=>{useHandleBtnAnalysis(event, inputFileRef, formRef, setAnalysis)}
      

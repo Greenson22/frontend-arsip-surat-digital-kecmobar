@@ -16,7 +16,7 @@ const AddMultipleIncomingMailModal = (props) => {
      const handleBtnAnalysClick = (event)=>{useHandleBtnAnalysClick(event, fileNote, fileList, setFileNote)}
      const handleBtnPostClick = (event)=>{useHandleBtnPostClick(event, fileNote, dispatch)}
      return (
-          <ModalV2 open={addMultipleModal} >
+          <ModalV2 open={addMultipleModal} onClose={(event)=>setMultipleModal(!addMultipleModal)} >
                <ModalHeader title='Tambah beberapa surat' />
                <MDBModalBody>
                     <MDBInputGroup className="mb-2">

@@ -22,7 +22,6 @@ const handleBtnAnalysis = (event, inputFileRef, formRef, setAnalysis)=>{
                letterDate.value = data?.letter_date
                destination.value = data?.destination
                subject.value = data?.subject
-               console.log(data)
           })
      }
 }

@@ -1,21 +1,23 @@
+import React, { useState } from "react"
 import { MDBCard, MDBCardHeader, MDBCardBody, MDBTable } from "mdb-react-ui-kit"
-import { TitleBar, TableAction, TableFilter } from "../Fragments"
+import { useDispatch } from "react-redux"
+
 import { TableHead } from "../Elements/Table"
-import { useDispatch, useSelector } from "react-redux"
+import { TitleBar, TableAction, TableFilter } from "../Fragments"
+import { AddOutgoingMailModal } from '../Fragments/Modals'
 
 const OutgoingMailEmptyLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Berkas surat", "Tindakan"]
-     const {data} = props
-     const iData = useSelector(state=>state.dataSlice.iData)
      const api = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
      const dispatch = useDispatch()
+     const [addModal, setAddModal] = useState(false)
 
      return (
           <div>
                <TitleBar>Surat Keluar</TitleBar>
                <MDBCard>
                     <MDBCardHeader>
-                         <TableAction title="Daftar surat keluar" button1="Tambah surat" button1_target="#add-mail-modal" button2="Ekspor" button2_target="#export-modal" />
+                         <TableAction title="Daftar surat keluar" buttonChildren="Tambah surat" buttonClick={()=>{setAddModal(true)}}/>
                     </MDBCardHeader>
                     <MDBCardBody>
                          <TableFilter api={api}/>
@@ -24,6 +26,8 @@ const OutgoingMailEmptyLayout = (props)=>{
                          </MDBTable>
                     </MDBCardBody>
                </MDBCard>
+
+               <AddOutgoingMailModal addModal={addModal} setAddModal={setAddModal}/>
           </div>
      )
 }

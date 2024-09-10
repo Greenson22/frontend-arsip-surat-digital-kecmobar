@@ -8,9 +8,9 @@ const OutgoingMailPage = ()=>{
 
      useLoginValidate()
      usePageEffect(useOutgoingmailAction)
-     return (data && data['count'] > 0) ?
-     (<OutgoingMailLayout data={data}/>) :
-     (<OutgoingMailEmptyLayout />)
+     return (data && data['count'] > 0) ? 
+     <OutgoingMailLayout data={data}/> :
+     <OutgoingMailEmptyLayout />
 }
 
 export default OutgoingMailPage

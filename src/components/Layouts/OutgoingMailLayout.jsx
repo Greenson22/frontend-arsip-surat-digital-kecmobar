@@ -4,6 +4,7 @@ import { AddOutgoingMailModal, ViewMailModal, EditOutgoingMailModal } from '../F
 import { TableHead } from "../Elements/Table"
 import { useDispatch, useSelector } from "react-redux"
 import { useSetPage } from "../../hooks"
+import { useState } from "react"
 
 const OutgoingMailLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Tindakan"]
@@ -11,13 +12,14 @@ const OutgoingMailLayout = (props)=>{
      const iData = useSelector(state=>state.dataSlice.iData)
      const api = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
      const dispatch = useDispatch()
+     const [addModal, setAddModal] = useState(false)
 
      return (
           <div>
                <TitleBar>Surat Keluar</TitleBar>
                <MDBCard>
                     <MDBCardHeader>
-                         <TableAction title="Daftar surat keluar" button1="Tambah surat" button1_target="#add-outgoingmail-modal" button2="Ekspor" button2_target="#export-modal" />
+                    <TableAction title="Daftar surat keluar" buttonChildren="Tambah surat" buttonClick={()=>{setAddModal(true)}}/>
                     </MDBCardHeader>
                     <MDBCardBody>
                          <TableFilter api={api}/>
@@ -30,7 +32,7 @@ const OutgoingMailLayout = (props)=>{
                     </MDBCardBody>
                </MDBCard>
 
-               <AddOutgoingMailModal />
+               <AddOutgoingMailModal addModal={addModal} setAddModal={setAddModal}/>
                <ViewMailModal title='Surat Keluar' api={api}/>
                <EditOutgoingMailModal letter={data['results'][iData]} />
           </div>

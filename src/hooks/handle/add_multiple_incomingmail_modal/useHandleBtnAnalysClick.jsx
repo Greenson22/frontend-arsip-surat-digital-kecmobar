@@ -21,7 +21,6 @@ const handleBtnAnalysClick = (event, fileNote, fileList, setFileNote, outgoingma
                duplicateFileNoteResponse[index].status = 'check'
                setFileNote(duplicateFileNoteResponse)
                console.log('satu proses selesai')
-               console.log(data)
           }, (error)=>{
                const duplicateFileNoteResponse = fileNote.slice()
                duplicateFileNote[index].status = 'fail'

@@ -10,13 +10,18 @@ const useFormDataIncomingmail = (name, entities, outgoingmail=false)=>{
           formData.append('file', file)
           formData.append('letter_number', entities?.letter_number)
           formData.append('source', entities?.source)
+          if (entities?.letter_date != null){
+               formData.append('letter_date', entities?.letter_date)
+          }
           formData.append('received_date', date.toLocaleDateString('en-CA'))
           formData.append('recipient', entities?.recipient)
           formData.append('subject', entities?.subject)
      }else{
           formData.append('file', file)
           formData.append('letter_number', entities?.letter_number)
-          formData.append('letter_date', entities?.letter_date)
+          if (entities?.letter_date != null){
+               formData.append('letter_date', entities?.letter_date)
+          }
           formData.append('destination', entities?.destination)
           formData.append('subject', entities?.subject)
      }

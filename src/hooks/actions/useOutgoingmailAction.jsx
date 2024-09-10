@@ -1,4 +1,4 @@
-import { useFormDataOutgoingmail } from '../form_data'
+import { useFormDataOutgoingmail, useFormDataMultipleIncomingmail } from '../form_data'
 import { useHandlePost, useHandleFetch, useHandleDelete, useHandlePut } from '../request'
 import { usePaginationLocalStorage } from "../pagination"
 import useResponseFormattedString from '../useResponseFormattedString'
@@ -18,6 +18,21 @@ const useOutgoingmailAction = (command, dispatch)=>{
                          useErrorAlert('add_outgoingmail', useResponseFormattedString(error.response.data))
                     })
                     break
+               case 'multiple_post':
+                         const fileNote = command.file_note
+                         fileNote.map((file, index)=>{
+                              if (file.entities != null){
+                                   const newUrl = url.split('?')[0]
+                                   const data = useFormDataMultipleIncomingmail(file.name, file.entities, true)
+                                   data.forEach((v, k)=>{
+                                        console.log(v, k)
+                                   })
+                                   useHandlePost(newUrl, token, data, command, dispatch)
+                              }else{
+                                   console.log(file.name, ' entitiesnya null')
+                              }
+                         })
+                         break
                case 'put':
                     const putData = useFormDataOutgoingmail(command)
                     const newPutUrl = useUrlModifier(url, command)

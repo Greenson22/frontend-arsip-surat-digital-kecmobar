@@ -6,14 +6,14 @@ import { ModalV2, ModalHeader } from "../../Elements/ModalV2"
 import { useHandleBtnAnalysClick, useHandleBtnPostClick, useHandleInputFileChange } from '../../../hooks/handle/add_multiple_incomingmail_modal'
 
 const AddMultipleIncomingMailModal = (props) => {
-     const { addMultipleModal, setMultipleModal } = props
+     const { addMultipleModal, setMultipleModal, outgoingmail=false } = props
      const [fileList, setFileList] = useState(null)
      const [fileNote, setFileNote] = useState(null)
      const inputFileRef = useRef()
      const dispatch = useDispatch()
 
      const handleInputFileChange = (event)=>{useHandleInputFileChange(event, setFileList, setFileNote)}
-     const handleBtnAnalysClick = (event)=>{useHandleBtnAnalysClick(event, fileNote, fileList, setFileNote)}
+     const handleBtnAnalysClick = (event)=>{useHandleBtnAnalysClick(event, fileNote, fileList, setFileNote, outgoingmail)}
      const handleBtnPostClick = (event)=>{useHandleBtnPostClick(event, fileNote, dispatch)}
      return (
           <ModalV2 open={addMultipleModal} onClose={(event)=>setMultipleModal(!addMultipleModal)} >

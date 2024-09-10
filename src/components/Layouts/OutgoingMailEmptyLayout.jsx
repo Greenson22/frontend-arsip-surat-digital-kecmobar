@@ -5,12 +5,14 @@ import { useDispatch } from "react-redux"
 import { TableHead } from "../Elements/Table"
 import { TitleBar, TableAction, TableFilter } from "../Fragments"
 import { AddOutgoingMailModal } from '../Fragments/Modals'
+import AddMultipleIncomingMailModal from "../Fragments/Modals/AddMulitipleIncomingMailModal"
 
 const OutgoingMailEmptyLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Berkas surat", "Tindakan"]
      const api = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
      const dispatch = useDispatch()
      const [addModal, setAddModal] = useState(false)
+     const [addMultipleModal, setMultipleModal] = useState(false)
 
      return (
           <div>
@@ -27,7 +29,8 @@ const OutgoingMailEmptyLayout = (props)=>{
                     </MDBCardBody>
                </MDBCard>
 
-               <AddOutgoingMailModal addModal={addModal} setAddModal={setAddModal}/>
+               <AddOutgoingMailModal addModal={addModal} setAddModal={setAddModal} setMultipleModal={setMultipleModal}/>
+               <AddMultipleIncomingMailModal addMultipleModal={addMultipleModal} setMultipleModal={setMultipleModal} outgoingmail={true}/>
           </div>
      )
 }

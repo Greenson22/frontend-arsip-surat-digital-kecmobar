@@ -10,7 +10,7 @@ import { useHandleInputFileChange } from '../../../hooks/handle/add_incomingmail
 import { useHandleBtnAnalysis } from '../../../hooks/handle/add_outgoingmail_modal';
 
 const AddOutgoingMailModal = (props)=>{
-     const { addModal, setAddModal } = props
+     const { addModal, setAddModal, setMultipleModal } = props
      const dispatch = useDispatch()
      const [analysis, setAnalysis] = useState(false)
      const inputFileRef = useRef()
@@ -23,6 +23,7 @@ const AddOutgoingMailModal = (props)=>{
                'command': 'post',
                'form_id' : 'add-outgoingmail-form'
           }))
+          setAddModal(false)
      }
      const handleBtnAnalisisClick = (event)=>{useHandleBtnAnalysis(event, inputFileRef, formRef, setAnalysis)}
      const handleInputFileChange = (event)=>{useHandleInputFileChange(event, previewRef)}
@@ -56,9 +57,14 @@ const AddOutgoingMailModal = (props)=>{
                     </form>
                 </MDBModalBody>
                 <MDBModalFooter>
-                     <MDBBtn size='sm' color='secondary' onClick={(event)=>setAddModal(false)}>Tutup</MDBBtn>
-                     <MDBBtn size='sm' color='primary' form='add-outgoingmail-form'>Tambah surat</MDBBtn>
-                </MDBModalFooter>
+                    <MDBBtn size='sm' onClick={()=>{
+                         setAddModal(false)
+                         setMultipleModal(true)}}>Surat-surat</MDBBtn>
+                    <div className="ms-auto">
+                         <MDBBtn size='sm' color='secondary' onClick={()=>{setAddModal(!addModal)}}>Tutup</MDBBtn>
+                         <MDBBtn size='sm' color='primary' form="add-outgoingmail-form">Tambah surat</MDBBtn>
+                    </div>
+                </MDBModalFooter> 
           </ModalV2>
      )
 }

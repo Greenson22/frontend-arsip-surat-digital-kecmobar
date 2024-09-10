@@ -1,11 +1,14 @@
 import { usePostData } from "../../request"
 
-const handleBtnAnalysClick = (event, fileNote, fileList, setFileNote) => {
+const handleBtnAnalysClick = (event, fileNote, fileList, setFileNote, outgoingmail) => {
      const duplicateFileNote = fileNote.slice()
 
      fileList.map((file, index) => {
           const formData = new FormData()
           formData.append('file', fileList[index])
+          if(outgoingmail){
+               formData.append('model_type', 'outgoingmail')
+          }
           console.log('sedang menganalisa beberapa file')
 
           duplicateFileNote[index].status = 'loading'
@@ -18,6 +21,7 @@ const handleBtnAnalysClick = (event, fileNote, fileList, setFileNote) => {
                duplicateFileNoteResponse[index].status = 'check'
                setFileNote(duplicateFileNoteResponse)
                console.log('satu proses selesai')
+               console.log(data)
           }, (error)=>{
                const duplicateFileNoteResponse = fileNote.slice()
                duplicateFileNote[index].status = 'fail'

@@ -24,9 +24,6 @@ const useOutgoingmailAction = (command, dispatch)=>{
                               if (file.entities != null){
                                    const newUrl = url.split('?')[0]
                                    const data = useFormDataMultipleIncomingmail(file.name, file.entities, true)
-                                   data.forEach((v, k)=>{
-                                        console.log(v, k)
-                                   })
                                    useHandlePost(newUrl, token, data, command, dispatch)
                               }else{
                                    console.log(file.name, ' entitiesnya null')

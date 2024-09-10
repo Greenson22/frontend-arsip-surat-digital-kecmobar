@@ -1,10 +1,10 @@
-import { usePostData } from "../../request/"
+import { usePostData } from "../../request"
 
 const useHandleBtnAnalysis = (event, inputFileRef, formRef, setAnalysis)=>{
      event.preventDefault()
      const files = inputFileRef.current.files
      
-     if (files.length > 0){
+     if (files.length > 0){ //jika files tidak kosong
           const letterNumber = formRef.current['letter-number']
           const source = formRef.current['source']
           const letterDate = formRef.current['letter-date']
@@ -13,12 +13,7 @@ const useHandleBtnAnalysis = (event, inputFileRef, formRef, setAnalysis)=>{
           const recipient = formRef.current['recipient']
 
           const formData = new FormData()
-          for (let i = 0; i < files.length; i++) {
-               formData.append('file', files[i])
-          }
-          formData.forEach((value, key) => {
-               console.log(`${key}: ${value}`);
-          });
+          formData.append('file', files[0])
 
           console.log('sedang menganalisa!!!')
           setAnalysis(true)
@@ -33,6 +28,7 @@ const useHandleBtnAnalysis = (event, inputFileRef, formRef, setAnalysis)=>{
                console.log(data)
                setAnalysis(false)
           }, (error)=>{
+               setAnalysis(false)
                console.log(error)
           })
      }

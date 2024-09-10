@@ -15,8 +15,12 @@ const AddMultipleIncomingMailModal = (props) => {
      const handleInputFileChange = (event)=>{useHandleInputFileChange(event, setFileList, setFileNote)}
      const handleBtnAnalysClick = (event)=>{useHandleBtnAnalysClick(event, fileNote, fileList, setFileNote, outgoingmail)}
      const handleBtnPostClick = (event)=>{useHandleBtnPostClick(event, fileNote, dispatch)}
+     const handleModalClose = (event)=>{
+          setFileNote(null)
+          setMultipleModal(false)
+     }
      return (
-          <ModalV2 open={addMultipleModal} onClose={(event)=>setMultipleModal(!addMultipleModal)} >
+          <ModalV2 open={addMultipleModal} onClose={handleModalClose} >
                <ModalHeader title='Tambah beberapa surat' />
                <MDBModalBody>
                     <MDBInputGroup className="mb-2">
@@ -27,7 +31,7 @@ const AddMultipleIncomingMailModal = (props) => {
                     {fileNote != null && <ListGroup fileNote={fileNote} />}
                </MDBModalBody>
                <MDBModalFooter>
-                    <MDBBtn size='sm' color='secondary' onClick={()=>setMultipleModal(false)}>Tutup</MDBBtn>
+                    <MDBBtn size='sm' color='secondary' onClick={handleModalClose}>Tutup</MDBBtn>
                     <MDBBtn size='sm' color='primary' onClick={handleBtnPostClick}>Tambah semua surat</MDBBtn>
                </MDBModalFooter>
           </ModalV2>

@@ -6,6 +6,7 @@ import { AddMultipleIncomingmailModal, AddIncomingmailModalV2 } from '../Fragmen
 
 const IncomingMailEmptyLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Penerima", "Tindakan"]
+     const api = import.meta.env.VITE_INCOMINGMAIL_API_KEY
      const [addModal, setAddModal] = useState(false)
      const [addMultipleModal, setMultipleModal] = useState(false)
      return (
@@ -16,7 +17,7 @@ const IncomingMailEmptyLayout = (props)=>{
                          <TableAction title="Daftar surat masuk" buttonChildren="Tambah surat" buttonClick={()=>{setAddModal(true)}}/>
                     </CardHeader>
                     <CardBody>
-                         <TableFilter />
+                         <TableFilter api={api}/>
                          <Table add_class="table-sm">
                               <TableHead columns={columns} />
                          </Table>

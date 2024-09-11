@@ -1,12 +1,13 @@
 import React, { useRef } from "react"
-import { MDBBtn, MDBInput, MDBCheckbox } from "mdb-react-ui-kit"
+import { MDBBtn, MDBInput, MDBCheckbox, MDBModalBody, MDBModalFooter } from "mdb-react-ui-kit"
 
-import {Modal, ModalHeader, ModalBody, ModalFooter} from "../../Elements/Modal"
 import { setCommand } from "../../../redux/slices/commandSlice"
 import { useDispatch } from "react-redux"
 import { useAlert } from "../../../hooks"
+import { ModalV2, ModalHeader } from "../../Elements/ModalV2"
 
-const AddUserModal = ()=>{
+const AddUserModal = (props)=>{
+     const {addModal, setAddModal} = props
      const formRef = useRef()
      const dispatch = useDispatch()
 
@@ -40,9 +41,9 @@ const AddUserModal = ()=>{
      }
      
      return(
-          <Modal id="addUserModal">
+          <ModalV2 open={addModal} onClose={()=>{setAddModal(false)}}>
                <ModalHeader title="Tambah pengguna"/>
-               <ModalBody>
+               <MDBModalBody>
                     <form action="" onSubmit={handleSubmit} ref={formRef} id="add-user-modal">
                          <div>
                               <MDBInput label="username" id="username" type="text" className='mb-2' required/>
@@ -66,12 +67,12 @@ const AddUserModal = ()=>{
                          <label htmlFor="">foto profil</label>
                          <MDBInput type="file" id="file" className='mb-2' required/>
                     </form>
-               </ModalBody>
-               <ModalFooter>
-                    <MDBBtn color="secondary" data-bs-dismiss="modal" size="sm">Tutup</MDBBtn>
+               </MDBModalBody>
+               <MDBModalFooter>
+                    <MDBBtn color="secondary" size="sm" onClick={(event)=>{setAddModal(false)}}>Tutup</MDBBtn>
                     <MDBBtn size='sm' color='primary' form="add-user-modal">Tambah pengguna</MDBBtn>
-               </ModalFooter>
-          </Modal>
+               </MDBModalFooter>
+          </ModalV2>
      )
 }
 

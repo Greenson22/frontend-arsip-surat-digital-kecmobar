@@ -2,21 +2,23 @@ import React from "react"
 import { Card, CardHeader, CardBody } from "../Elements/Card"
 import { Table, TableHead } from "../Elements/Table"
 import { TitleBar, TableFilter, TableAction,
-     AddUserModal, ExportModal, EditUserModal } from '../Fragments'
+     AddUserModal } from '../Fragments'
 
 const UserManagementEmptyLayout = (props)=>{
+     const api = import.meta.env.VITE_USERS_API_KEY
      const {setCommand} = props
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
+     const [addModal, setAddModal] = useState(false)
 
      return (
           <div>
                <TitleBar>Pengaturan pengguna</TitleBar>
                <Card>
                     <CardHeader>
-                         <TableAction title="Daftar pengguna" button1="Tambah Pengguna" button1_target="#addUserModal" button2="Ekspor" button2_target="#exportModal" button2Disabled={true}/>
+                         <TableAction title="Daftar surat masuk" buttonChildren="Tambah surat" buttonClick={()=>{setAddModal(true)}}/>
                     </CardHeader>
                     <CardBody>
-                         <TableFilter setCommand={setCommand}/>
+                         <TableFilter api={api}/>
                          <Table add_class="table-sm">
                               <TableHead columns = {columns}/>
                          </Table>
@@ -24,7 +26,7 @@ const UserManagementEmptyLayout = (props)=>{
                </Card>
 
                {/* Modal */}
-               <AddUserModal setCommand={setCommand}/>
+               <AddUserModal addModal={addModal} setAddModal={setAddModal}/>
           </div>
      )
 }

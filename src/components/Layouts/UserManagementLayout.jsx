@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { MDBBtn } from "mdb-react-ui-kit"
 import { Card, CardHeader, CardBody } from "../Elements/Card"
 import { Table, TableHead } from "../Elements/Table"
@@ -15,13 +15,14 @@ const UserManagementLayout = (props)=>{
      const iData = useSelector(state => state.dataSlice.iData)
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
      const dispatch = useDispatch()
+     const [addModal, setAddModal] = useState(false)
      
      return (
           <div>
                <TitleBar>Pengaturan pengguna</TitleBar>
                <Card>
                     <CardHeader>
-                         <TableAction title="Daftar pengguna" button1="Tambah Pengguna" button1_target="#addUserModal" button2="Ekspor" button2_target="#exportModal"/>
+                    <TableAction title="Tambah pengguna baru" buttonChildren="Tambah Pengguna" buttonClick={()=>{setAddModal(true)}}/>
                     </CardHeader>
                     <CardBody>
                          <TableFilter api={api}/>
@@ -35,7 +36,7 @@ const UserManagementLayout = (props)=>{
                </Card>
 
                {/* Modal */}
-               <AddUserModal />
+               <AddUserModal addModal={addModal} setAddModal={setAddModal}/>
                <EditUserModal user={data['results'][iData]}/>
                <ViewProfileModal user={data['results'][iData]}/>
                {/* <ExportModal title="Ekspor daftar pengguna"/> */}

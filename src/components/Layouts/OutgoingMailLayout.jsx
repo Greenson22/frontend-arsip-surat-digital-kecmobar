@@ -34,7 +34,7 @@ const OutgoingMailLayout = (props)=>{
                     </MDBCardBody>
                </MDBCard>
 
-               <AddOutgoingMailModal addModal={addModal} setAddModal={setAddModal}/>
+               <AddOutgoingMailModal addModal={addModal} setAddModal={setAddModal} setMultipleModal={setMultipleModal} />
                <AddMultipleIncomingmailModal addMultipleModal={addMultipleModal} setMultipleModal={setMultipleModal} outgoingmail={true}/>
                <ViewMailModal title='Surat Keluar' api={api}/>
                <EditOutgoingMailModal letter={data['results'][iData]} />

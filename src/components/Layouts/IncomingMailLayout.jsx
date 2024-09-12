@@ -3,10 +3,9 @@ import { MDBBtn } from "mdb-react-ui-kit"
 import { Card , CardHeader, CardBody} from "../Elements/Card"
 import {Table, TableHead} from '../Elements/Table'
 import {TitleBar, TableFilter, TableAction, IncomingMailTableBody, ExportModal} from '../Fragments'
-import { AddIncomingmailModalV2, EditIncomingMailModal, ViewMailModal} from '../Fragments/Modals'
+import { AddMultipleIncomingmailModal, AddIncomingmailModalV2, EditIncomingMailModal, ViewMailModal} from '../Fragments/Modals'
 import { useSetPage } from "../../hooks"
 import { useDispatch, useSelector } from "react-redux"
-import AddMultipleIncomingMailModal from "../Fragments/Modals/AddMulitipleIncomingMailModal"
 import { useState } from "react"
 
 const IncomingMailLayout = (props)=>{
@@ -39,8 +38,8 @@ const IncomingMailLayout = (props)=>{
                <EditIncomingMailModal letter={data['results'][iData]} />
                <ViewMailModal title='Surat masuk' api={api}/>
                
-               <AddIncomingmailModalV2 addModal={addModal} setAddModal={setAddModal} />
-               <AddMultipleIncomingMailModal addMultipleModal={addMultipleModal} setMultipleModal={setMultipleModal} />
+               <AddIncomingmailModalV2 addModal={addModal} setAddModal={setAddModal} setMultipleModal={setMultipleModal} />
+               <AddMultipleIncomingmailModal addMultipleModal={addMultipleModal} setMultipleModal={setMultipleModal} />
                <ExportModal title="Ekspor daftar surat masuk" />
           </div>
      )

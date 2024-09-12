@@ -14,12 +14,12 @@ const useIncomingmailActions = (command, dispatch)=>{
      
      if (command){
           switch(command.command){
-               case 'post':
+               case 'post': // pengangan untuk menambahkan data
                     const newUrl = url.split('?')[0]
                     const data = useFormDataIncomingmail(command)
                     useHandlePost(newUrl, token, data, command, dispatch)
                     break
-               case 'multiple_post':
+               case 'multiple_post': // pengangan untuk analisa beberapa surat
                     const fileNote = command.file_note
                     fileNote.map((file, index)=>{
                          if (file.entities != null){
@@ -31,26 +31,26 @@ const useIncomingmailActions = (command, dispatch)=>{
                          }
                     })
                     break
-               case 'put':
+               case 'put': // pengangan untuk mengubah data
                     const putData = useFormDataIncomingmail(command)
                     const newPutUrl = useUrlModifier(url, command)
                     useHandlePut(newPutUrl, token, putData, dispatch)
                     break
-               case 'delete':
+               case 'delete': // pengangan untuk menghapus data
                     useHandleDelete(url, token, command, dispatch)
                     break
-               case 'view_data':
+               case 'view_data': // pengangan untuk melihat data
                     dispatch(setIData(command.index))
                     break
-               case 'navigation':
+               case 'navigation': // pengangan untuk navigasi halaman
                     useHandleFetch(command.navigation_link, token, dispatch)
                     usePaginationLocalStorage(command.navigation_link)
                     break
-               case 'page_size':
-                    useHandleFetch(command.url, token, dispatch)
-                    usePaginationLocalStorage(command.url)
+               case 'page_size': // penangangan untuk ukuran halaman
+                    useHandleFetch(command.url, token, dispatch) // melakukan request dengan url
+                    usePaginationLocalStorage(command.url) // menyimpan ke dalam session storage
                     break
-               case 'search':
+               case 'search': // pengangan untuk pencarian data
                     const urlSyn = useUrlSyn(url, 'pagination')
                     const searchUrl = urlSyn+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)

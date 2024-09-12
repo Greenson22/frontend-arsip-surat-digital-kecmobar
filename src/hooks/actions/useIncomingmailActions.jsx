@@ -58,7 +58,7 @@ const useIncomingmailActions = (command, dispatch)=>{
           }
      }else{
           const pagination = JSON.parse(sessionStorage.getItem('pagination'))
-          const newUrl = url+'?page='+pagination.page+'&page_size'+pagination.page_size
+          const newUrl = url+'?page='+pagination.page+'&page_size='+pagination.page_size
           useHandleFetch(newUrl, token, dispatch)
           usePaginationLocalStorage(newUrl)
      }

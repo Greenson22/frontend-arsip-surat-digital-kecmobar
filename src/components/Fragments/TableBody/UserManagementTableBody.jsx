@@ -4,7 +4,7 @@ import { useFormattedDate } from "../../../hooks"
 
 const UserManagementTableBody = (props)=>{
      const {data} = props
-     const pagination = JSON.parse(localStorage.getItem('pagination'))
+     const pagination = JSON.parse(sessionStorage.getItem('pagination'))
      
      return (
           <TableBody>

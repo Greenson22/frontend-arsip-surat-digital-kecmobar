@@ -10,7 +10,7 @@ const usePaginationLocalStorage = (url)=>{
           'page_size': urlParams.get('page_size'),
      }
 
-     localStorage.setItem('pagination', JSON.stringify(dataDict))
+     sessionStorage.setItem('pagination', JSON.stringify(dataDict))
 }
 
 export default usePaginationLocalStorage

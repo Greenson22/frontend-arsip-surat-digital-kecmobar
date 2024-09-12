@@ -12,7 +12,6 @@ const defaultErrorCallback = (error)=>{
 const useHandlePost = (url, token, data, command, dispatch, errorCallBack=defaultErrorCallback)=>{
      usePostData(url, data, token, 
      (response)=>{
-          console.log(response)
           dispatch(setCommand(null))
           useAlert('success')
      }, errorCallBack)

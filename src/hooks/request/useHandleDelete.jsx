@@ -17,7 +17,6 @@ const useHandleDelete = (url, token, command, dispatch, errorCallBack=defaultErr
                const newUrl = useUrlModifier(url, command)
                useDeleteData(newUrl, token, 
                (response)=>{
-                    console.log(response)
                     dispatch(setCommand(null))
                     useAlert('success_delete')
                }, errorCallBack

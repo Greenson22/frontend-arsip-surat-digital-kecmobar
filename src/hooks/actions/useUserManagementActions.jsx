@@ -7,6 +7,7 @@ import { setIData } from '../../redux/slices/dataSlice'
 import { useFormDataUser } from '../form_data'
 import { useUrlModifier, useUrlSyn } from '../url'
 import { useAlert } from '../alert'
+import { setCommand } from '../../redux/slices/commandSlice'
 
 const useUserManagementActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_USERS_API_KEY
@@ -42,13 +43,25 @@ const useUserManagementActions = (command, dispatch)=>{
                     break
                case 'search':
                     const urlSyn = useUrlSyn(url, 'pagination')
-                    const searchUrl = urlSyn+'&search='+command.words
+                    const searchUrl = url+'?page=1&page_size=5+'+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
                     break
           }
      }else{
-          useHandleFetch(url, token, dispatch)
-          usePaginationLocalStorage(url)
+          const pagination = JSON.parse(sessionStorage.getItem('pagination'))
+
+          if (!pagination){
+               sessionStorage.setItem('pagination', JSON.stringify({page: 1, page_size: 5}))
+               dispatch(setCommand(null))
+          }else{
+               let newUrl = url+'?page='+pagination.page+'&page_size='+pagination.page_size
+               useHandleFetch(newUrl, token, dispatch, error=>{
+                    newUrl = url+'?page='+(pagination.page-1)+'&page_size='+pagination.page_size
+                    usePaginationLocalStorage(newUrl)
+                    window.location.reload()
+               })
+               usePaginationLocalStorage(newUrl)
+          }
      }
 }
 

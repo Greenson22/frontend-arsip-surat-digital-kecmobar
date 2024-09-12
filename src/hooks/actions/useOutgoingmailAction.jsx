@@ -5,6 +5,7 @@ import useResponseFormattedString from '../useResponseFormattedString'
 import useErrorAlert from '../alert/useErrorAlert'
 import { useUrlSyn, useUrlModifier } from '../url'
 import { setIData } from '../../redux/slices/dataSlice'
+import { setCommand } from '../../redux/slices/commandSlice'
 
 const useOutgoingmailAction = (command, dispatch)=>{
      const url = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
@@ -51,13 +52,25 @@ const useOutgoingmailAction = (command, dispatch)=>{
                     break
                case 'search':
                     const urlSyn = useUrlSyn(url, 'pagination')
-                    const searchUrl = urlSyn+'&search='+command.words
+                    const searchUrl = url+'?page=1&page_size=5+'+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
                     break
           }
      }else{
-          useHandleFetch(url, token, dispatch)
-          usePaginationLocalStorage(url)
+          const pagination = JSON.parse(sessionStorage.getItem('pagination'))
+
+          if (!pagination){
+               sessionStorage.setItem('pagination', JSON.stringify({page: 1, page_size: 5}))
+               dispatch(setCommand(null))
+          }else{
+               let newUrl = url+'?page='+pagination.page+'&page_size='+pagination.page_size
+               useHandleFetch(newUrl, token, dispatch, error=>{
+                    newUrl = url+'?page='+(pagination.page-1)+'&page_size='+pagination.page_size
+                    usePaginationLocalStorage(newUrl)
+                    window.location.reload()
+               })
+               usePaginationLocalStorage(newUrl)
+          }
      }
 }
 

@@ -7,6 +7,7 @@ import useUrlSyn from '../url/useUrlSyn'
 import useUrlModifier from '../url/useUrlModifier'
 import { setIData } from '../../redux/slices/dataSlice'
 import { useFormDataIncomingmail, useFormDataMultipleIncomingmail } from '../form_data'
+import { setCommand } from '../../redux/slices/commandSlice'
 
 const useIncomingmailActions = (command, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
@@ -52,15 +53,26 @@ const useIncomingmailActions = (command, dispatch)=>{
                     break
                case 'search': // pengangan untuk pencarian data
                     const urlSyn = useUrlSyn(url, 'pagination')
-                    const searchUrl = urlSyn+'&search='+command.words
+                    const searchUrl = url+'?page=1&page_size=5+'+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
                     break
           }
      }else{
           const pagination = JSON.parse(sessionStorage.getItem('pagination'))
-          const newUrl = url+'?page='+pagination.page+'&page_size='+pagination.page_size
-          useHandleFetch(newUrl, token, dispatch)
-          usePaginationLocalStorage(newUrl)
+
+          if (!pagination){
+               sessionStorage.setItem('pagination', JSON.stringify({page: 1, page_size: 5}))
+               dispatch(setCommand(null))
+          }else{
+               let newUrl = url+'?page='+pagination.page+'&page_size='+pagination.page_size
+               useHandleFetch(newUrl, token, dispatch, error=>{
+                    newUrl = url+'?page='+(pagination.page-1)+'&page_size='+pagination.page_size
+                    usePaginationLocalStorage(newUrl)
+                    window.location.reload()
+               })
+               usePaginationLocalStorage(newUrl)
+          }
+
      }
 }
 

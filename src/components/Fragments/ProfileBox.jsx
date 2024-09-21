@@ -28,7 +28,7 @@ const ProfileBox = (props)=>{
                {/* <h5>{data[0].id}</h5> */}
             </CardHeader>
             <CardBody>
-               <img className="mx-auto d-block w-50" alt="" ref={profileImgRef}/>
+               <img className="mx-auto d-block w-25" alt="" ref={profileImgRef}/>
                <Table add_class="table-sm">
                   <TableHead columns={columns} datas={datas} rotate={true}></TableHead>
                </Table>

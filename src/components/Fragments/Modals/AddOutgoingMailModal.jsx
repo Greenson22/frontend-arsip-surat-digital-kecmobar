@@ -45,7 +45,7 @@ const AddOutgoingMailModal = (props)=>{
 
                          <div className="row">
                               <div className="col-6">
-                                   <MDBInput id="agenda-number" label="Nomor agenda" type="text" className='mb-2'/>
+                                   <MDBInput id="agenda-number" label="Nomor agenda" type="text" className='mb-2' defaultValue={' '}/>
                                    <MDBInput id="letter-number" label="Nomor surat" type="text" className='mb-2' required defaultValue={' '}/>
                               </div>
                               <div className="col-6">

@@ -65,7 +65,7 @@ const useOutgoingmailAction = (command, dispatch)=>{
           }else{
                let newUrl = url+'?page='+pagination.page+'&page_size='+pagination.page_size
                useHandleFetch(newUrl, token, dispatch, error=>{
-                    console.log(erro)
+                    console.log(error)
                })
                usePaginationLocalStorage(newUrl)
           }

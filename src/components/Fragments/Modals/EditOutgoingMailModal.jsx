@@ -33,7 +33,7 @@ const EditOutgoingMailModal = (props)=>{
                                    <MDBInput id='agenda-number-edit' label="Nomor agenda" type="text" className='mb-2' defaultValue={' '}/>
                               </div>
                               <div className="col-6">
-                                   <MDBInput id="letter-date-edit" label='Tanggal surat' type="text" className='mb-2' defaultValue={' '}/>
+                                   <MDBInput id="letter-date-edit" label='Tanggal surat' type="date" className='mb-2' defaultValue={' '}/>
                               </div>
                          </div>
                          <MDBInput id="letter-number-edit" label='Nomor surat' type="text" className='mb-2' defaultValue={' '}/>

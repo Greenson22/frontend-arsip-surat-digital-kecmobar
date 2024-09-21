@@ -7,6 +7,7 @@ const ContainerLayout = (props) => {
   const {render} = props
   const navRef = useRef()
   
+  sessionStorage.setItem('pagination', null)
   useContainerLayoutEffect(navRef)
 
   return(

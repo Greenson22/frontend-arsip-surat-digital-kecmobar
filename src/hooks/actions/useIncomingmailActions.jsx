@@ -3,12 +3,10 @@ import useHandlePost from '../request/useHandlePost'
 import useHandleDelete from '../request/useHandleDelete'
 import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
-import useUrlSyn from '../url/useUrlSyn'
 import useUrlModifier from '../url/useUrlModifier'
-import { setIData } from '../../redux/slices/dataSlice'
 import { useFormDataIncomingmail, useFormDataMultipleIncomingmail } from '../form_data'
-import { setCommand } from '../../redux/slices/commandSlice'
-import { setPage, setPageSize } from '../../redux/slices/paginationSlice'
+import { setIData } from '../../redux/slices/dataSlice'
+import { setPage } from '../../redux/slices/paginationSlice'
 
 const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY

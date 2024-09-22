@@ -5,9 +5,9 @@ import useHandleFetch from '../request/useHandleFetch'
 import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import { setIData } from '../../redux/slices/dataSlice'
 import { useFormDataUser } from '../form_data'
-import { useUrlModifier, useUrlSyn } from '../url'
+import { useUrlModifier } from '../url'
 import { useAlert } from '../alert'
-import { setCommand } from '../../redux/slices/commandSlice'
+import { setPage } from '../../redux/slices/paginationSlice'
 
 const useUserManagementActions = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_USERS_API_KEY

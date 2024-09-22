@@ -6,7 +6,6 @@ import usePaginationLocalStorage from '../pagination/usePaginationLocalStorage'
 import useFormDataUserProfile from '../form_data/useFormDataUserProfile'
 import useFormDataPasswordChange from '../form_data/useFormDataPasswordChange'
 import useAlert from '../alert/useAlert'
-import useErrorAlert from '../alert/useErrorAlert'
 
 const useHomeActions = (command, page, pageSize, dispatch)=>{
      const token = localStorage.getItem('accessToken')

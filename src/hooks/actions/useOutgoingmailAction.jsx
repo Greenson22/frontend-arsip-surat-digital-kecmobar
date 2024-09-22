@@ -3,8 +3,8 @@ import { useHandlePost, useHandleFetch, useHandleDelete, useHandlePut } from '..
 import { usePaginationLocalStorage } from "../pagination"
 import useResponseFormattedString from '../useResponseFormattedString'
 import useErrorAlert from '../alert/useErrorAlert'
-import { useUrlSyn, useUrlModifier } from '../url'
 import { setIData } from '../../redux/slices/dataSlice'
+import { setPage } from '../../redux/slices/paginationSlice'
 
 const useOutgoingmailAction = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_OUTGOINGMAIL_API_KEY

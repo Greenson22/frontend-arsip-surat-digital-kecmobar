@@ -8,8 +8,9 @@ import useUrlModifier from '../url/useUrlModifier'
 import { setIData } from '../../redux/slices/dataSlice'
 import { useFormDataIncomingmail, useFormDataMultipleIncomingmail } from '../form_data'
 import { setCommand } from '../../redux/slices/commandSlice'
+import { setPage, setPageSize } from '../../redux/slices/paginationSlice'
 
-const useIncomingmailActions = (command, dispatch)=>{
+const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
      const token = localStorage.getItem('accessToken')
      
@@ -45,33 +46,27 @@ const useIncomingmailActions = (command, dispatch)=>{
                     break
                case 'navigation': // pengangan untuk navigasi halaman
                     useHandleFetch(command.navigation_link, token, dispatch)
-                    usePaginationLocalStorage(command.navigation_link)
+                    usePaginationLocalStorage(command.navigation_link, dispatch)
                     break
                case 'page_size': // penangangan untuk ukuran halaman
                     useHandleFetch(command.url, token, dispatch) // melakukan request dengan url
-                    usePaginationLocalStorage(command.url) // menyimpan ke dalam session storage
+                    usePaginationLocalStorage(command.url, dispatch) // menyimpan ke dalam session storage
                     break
                case 'search': // pengangan untuk pencarian data
-                    const urlSyn = useUrlSyn(url, 'pagination')
-                    const searchUrl = url+'?page=1&page_size=5+'+'&search='+command.words
+                    const searchUrl = url+'?page='+page+'&page_size='+pageSize+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
                     break
           }
      }else{
-          const pagination = JSON.parse(sessionStorage.getItem('pagination'))
-
-          if (!pagination){
-               sessionStorage.setItem('pagination', JSON.stringify({page: 1, page_size: 5}))
-               dispatch(setCommand(null))
-          }else{
-               let newUrl = url+'?page='+pagination.page+'&page_size='+pagination.page_size
-               useHandleFetch(newUrl, token, dispatch, error=>{
-                    console.log(error)
-               })
-               usePaginationLocalStorage(newUrl)
-          }
-
+          let newUrl = url+'?page='+page+'&page_size='+pageSize
+          useHandleFetch(newUrl, token, dispatch, error=>{
+               if (error) {
+                    dispatch(setPage(page-1))
+               }
+          })
+          usePaginationLocalStorage(newUrl, dispatch)
      }
 }
+   
 
 export default useIncomingmailActions

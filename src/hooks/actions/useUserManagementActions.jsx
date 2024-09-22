@@ -9,7 +9,7 @@ import { useUrlModifier, useUrlSyn } from '../url'
 import { useAlert } from '../alert'
 import { setCommand } from '../../redux/slices/commandSlice'
 
-const useUserManagementActions = (command, dispatch)=>{
+const useUserManagementActions = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_USERS_API_KEY
      const token = localStorage.getItem('accessToken')
      
@@ -42,24 +42,18 @@ const useUserManagementActions = (command, dispatch)=>{
                     usePaginationLocalStorage(command.url)
                     break
                case 'search':
-                    const urlSyn = useUrlSyn(url, 'pagination')
-                    const searchUrl = url+'?page=1&page_size=5+'+'&search='+command.words
+                    const searchUrl = url+'?page='+page+'&page_size='+pageSize+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
                     break
           }
      }else{
-          const pagination = JSON.parse(sessionStorage.getItem('pagination'))
-
-          if (!pagination){
-               sessionStorage.setItem('pagination', JSON.stringify({page: 1, page_size: 5}))
-               dispatch(setCommand(null))
-          }else{
-               let newUrl = url+'?page='+pagination.page+'&page_size='+pagination.page_size
-               useHandleFetch(newUrl, token, dispatch, error=>{
-                    console.log(error)
-               })
-               usePaginationLocalStorage(newUrl)
-          }
+          let newUrl = url+'?page='+page+'&page_size='+pageSize
+          useHandleFetch(newUrl, token, dispatch, error=>{
+               if (error) {
+                    dispatch(setPage(page-1))
+               }
+          })
+          usePaginationLocalStorage(newUrl, dispatch)
      }
 }
 

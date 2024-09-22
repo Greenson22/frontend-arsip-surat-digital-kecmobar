@@ -1,16 +1,18 @@
 import React from 'react'
 import {TableBody, RowAction} from '../../Elements/Table'
+import { useSelector } from 'react-redux'
 
 const OutgoingMailTableBody = (props)=>{
      const {data} = props
-     const pagination = JSON.parse(sessionStorage.getItem('pagination'))
+     const page = useSelector(state=>state.paginationSlice.page)
+     const pageSize = useSelector(state=>state.paginationSlice.pageSize)
 
      return(
           <TableBody>
                {data.map((surat, index)=>{
                          return(
                               <tr key={surat.id}>
-                                   <td>{index+1+((pagination['page']-1)*pagination['page_size'])}</td>
+                                   <td>{index+1+((page-1)*pageSize)}</td>
                                    <td>{surat.agenda_number}</td>
                                    <td>{surat.letter_date}</td>
                                    <td>{surat.destination}</td>

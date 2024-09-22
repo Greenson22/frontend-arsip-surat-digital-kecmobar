@@ -8,7 +8,7 @@ import useFormDataPasswordChange from '../form_data/useFormDataPasswordChange'
 import useAlert from '../alert/useAlert'
 import useErrorAlert from '../alert/useErrorAlert'
 
-const useHomeActions = (command, dispatch)=>{
+const useHomeActions = (command, page, pageSize, dispatch)=>{
      const token = localStorage.getItem('accessToken')
      const userId = jwtDecode(token).user_id
      const url = import.meta.env.VITE_USERS_API_KEY

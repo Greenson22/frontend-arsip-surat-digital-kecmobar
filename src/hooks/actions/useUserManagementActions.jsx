@@ -42,7 +42,7 @@ const useUserManagementActions = (command, page, pageSize, dispatch)=>{
                     usePaginationLocalStorage(command.url)
                     break
                case 'search':
-                    const searchUrl = url+'?page='+page+'&page_size='+pageSize+'&search='+command.words
+                    const searchUrl = url+'?page='+1+'&page_size='+pageSize+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
                     break
           }

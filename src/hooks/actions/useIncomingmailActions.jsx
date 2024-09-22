@@ -53,7 +53,7 @@ const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
                     usePaginationLocalStorage(command.url, dispatch) // menyimpan ke dalam session storage
                     break
                case 'search': // pengangan untuk pencarian data
-                    const searchUrl = url+'?page='+page+'&page_size='+pageSize+'&search='+command.words
+                    const searchUrl = url+'?page='+1+'&page_size='+pageSize+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
                     break
           }

@@ -13,7 +13,7 @@ const useHomeActions = (command, page, pageSize, dispatch)=>{
      const userId = jwtDecode(token).user_id
      const url = import.meta.env.VITE_USERS_API_KEY
      const apiUserId = import.meta.env.VITE_USERS_API_KEY.split('?')[0]+userId+'/'
-     // console.log(command)
+     
      if (command){
           switch(command.command){
                case 'put':
@@ -29,7 +29,7 @@ const useHomeActions = (command, page, pageSize, dispatch)=>{
           }
      }else{
           useHandleFetch(apiUserId, token, dispatch)
-          usePaginationLocalStorage(url)
+          usePaginationLocalStorage(url, dispatch)
      }
 }
 

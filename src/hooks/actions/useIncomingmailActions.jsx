@@ -59,7 +59,7 @@ const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
           let newUrl = url+'?page='+page+'&page_size='+pageSize
           useHandleFetch(newUrl, token, dispatch, error=>{
                if (error) {
-                    if (page < 0)page = 0
+                    if (page < 0)page = 1
                     dispatch(setPage(page-1))
                }
           })

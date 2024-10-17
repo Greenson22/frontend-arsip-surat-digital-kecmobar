@@ -5,6 +5,7 @@ import useResponseFormattedString from '../useResponseFormattedString'
 import useErrorAlert from '../alert/useErrorAlert'
 import { setIData } from '../../redux/slices/dataSlice'
 import { setPage } from '../../redux/slices/paginationSlice'
+import { useUrlModifier } from '../url'
 
 const useOutgoingmailAction = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
@@ -58,7 +59,7 @@ const useOutgoingmailAction = (command, page, pageSize, dispatch)=>{
           let newUrl = url+'?page='+page+'&page_size='+pageSize
           useHandleFetch(newUrl, token, dispatch, error=>{
                if (error) {
-                    if (page < 0)page = 0
+                    if (page < 0)page = 1
                     dispatch(setPage(page-1))
                }
           })

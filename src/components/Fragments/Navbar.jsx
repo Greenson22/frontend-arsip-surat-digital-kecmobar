@@ -1,7 +1,5 @@
-import React, { forwardRef, useRef } from "react"
+import React, { forwardRef } from "react"
 import { MDBBtn } from "mdb-react-ui-kit"
-
-import profile_photo from "../../assets/images/avatar_female.jpeg"
 
 const Navbar = forwardRef((props, ref)=> {
   const {} = props

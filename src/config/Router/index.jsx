@@ -33,7 +33,7 @@ const router = createBrowserRouter([
      },
      {
           path: "/classify",
-          element: <ClassifyLetterPage/>
+          element: <ContainerLayout render={<ClassifyLetterPage/>} />,
      }
 ])
 

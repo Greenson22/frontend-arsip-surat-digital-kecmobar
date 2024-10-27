@@ -8,9 +8,12 @@ import { useFormDataIncomingmail, useFormDataMultipleIncomingmail } from '../for
 import { setIData } from '../../redux/slices/dataSlice'
 import { setPage } from '../../redux/slices/paginationSlice'
 import useConfirmAlert from '../alert/useConfirmAlert'
+import { usePostData } from '../request'
+import { setCommand } from '../../redux/slices/commandSlice'
 
 const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
+     const classify_url = import.meta.env.VITE_CLASSIFY_LETTER_API_KEY
      const token = localStorage.getItem('accessToken')
      
      if (command){
@@ -58,9 +61,11 @@ const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
                case 'classify':
                     useConfirmAlert(result=>{
                          if (result.isConfirmed){
-                              alert("hei bego")
+                              usePostData(classify_url, {'id':command.id}, token, response=>{
+                                   dispatch(setCommand(null))
+                              })
                          }
-                    }, "Mengklasifikasikan surat", 
+                    }, "Mengklasifikasikan surat",
                     "Jika kamu mau, maka surat akan langsung di klasifikasikan", 
                     "Ya", "Tidak")
                     break

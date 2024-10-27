@@ -7,6 +7,7 @@ import useUrlModifier from '../url/useUrlModifier'
 import { useFormDataIncomingmail, useFormDataMultipleIncomingmail } from '../form_data'
 import { setIData } from '../../redux/slices/dataSlice'
 import { setPage } from '../../redux/slices/paginationSlice'
+import useConfirmAlert from '../alert/useConfirmAlert'
 
 const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
@@ -53,6 +54,15 @@ const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
                case 'search': // pengangan untuk pencarian data
                     const searchUrl = url+'?page='+1+'&page_size='+pageSize+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
+                    break
+               case 'classify':
+                    useConfirmAlert(result=>{
+                         if (result.isConfirmed){
+                              alert("hei bego")
+                         }
+                    }, "Mengklasifikasikan surat", 
+                    "Jika kamu mau, maka surat akan langsung di klasifikasikan", 
+                    "Ya", "Tidak")
                     break
           }
      }else{

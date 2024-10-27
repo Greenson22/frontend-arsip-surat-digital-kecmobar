@@ -9,7 +9,8 @@ const ClassifyLetterTableBody = (props)=>{
      const page = useSelector(state=>state.paginationSlice.page)
      const pageSize = useSelector(state=>state.paginationSlice.pageSize)
      const dispatch = useDispatch()
-
+     const category = {1: 'Surat Perintah', 4: 'Surat Undangan', 0: 'Surat Edaran', 2: 'Surat Permohonan', 3: 'Surat Tugas'}
+     
      return(
           <TableBody>
                {data.map((surat, index)=>{
@@ -23,7 +24,7 @@ const ClassifyLetterTableBody = (props)=>{
                                    <td >{surat.source}</td>
                                    <td >{surat.subject}</td>
                                    <td >{surat.recipient}</td>
-                                   <td >{surat.classify}</td>
+                                   <td >{category[surat.clasify]}</td>
                                    <td>
                                         <MDBBtn size='sm' color='warning' outline onClick={()=>{
                                              dispatch(setCommand({

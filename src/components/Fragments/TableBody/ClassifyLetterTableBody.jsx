@@ -1,15 +1,27 @@
-import React, { useState } from 'react'
-import { MDBBtn } from 'mdb-react-ui-kit'
-import { TableBody, RowAction } from '../../Elements/Table'
-import { useDispatch, useSelector } from 'react-redux'
-import { setCommand } from '../../../redux/slices/commandSlice'
+import React, { useEffect, useState } from 'react'
+import { TableBody } from '../../Elements/Table'
+import { useSelector } from 'react-redux'
+import { ActionButton } from '../../Fragments'
 
 const ClassifyLetterTableBody = (props)=>{
      const {data} = props
      const page = useSelector(state=>state.paginationSlice.page)
      const pageSize = useSelector(state=>state.paginationSlice.pageSize)
-     const dispatch = useDispatch()
      const category = {1: 'Surat Perintah', 4: 'Surat Undangan', 0: 'Surat Edaran', 2: 'Surat Permohonan', 3: 'Surat Tugas'}
+     const [note, setNote] = useState(null)
+
+     useEffect(()=>{
+          // membuat penyimpanan sementara untuk note
+          const tempNote = []
+          data.map((letter, index)=>{
+               tempNote.push({
+                    'id':letter.id,
+                    'status':null
+               })
+          })
+          // memasukan note sementara ke note sebenarnya
+          setNote(tempNote)
+     }, [])
      
      return(
           <TableBody>
@@ -26,18 +38,13 @@ const ClassifyLetterTableBody = (props)=>{
                                    <td >{surat.recipient}</td>
                                    <td >{category[surat.clasify]}</td>
                                    <td>
-                                        <MDBBtn size='sm' color='warning' outline onClick={()=>{
-                                             dispatch(setCommand({
-                                                  'id':surat.id,
-                                                  'command':'classify'
-                                             }))
-                                        }}>Klasifikasi</MDBBtn>
+                                        {note && <ActionButton note={note} index={index} setNote={setNote}/>}
                                    </td>
                               </tr>
                          )
                     })}               
           </TableBody>
      )
-} 
+}
 
 export default ClassifyLetterTableBody

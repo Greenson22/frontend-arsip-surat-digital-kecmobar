@@ -21,7 +21,7 @@ const ClassifyLetterTableBody = (props)=>{
           })
           // memasukan note sementara ke note sebenarnya
           setNote(tempNote)
-     }, [])
+     }, [data])
      
      return(
           <TableBody>
@@ -38,7 +38,7 @@ const ClassifyLetterTableBody = (props)=>{
                                    <td >{surat.recipient}</td>
                                    <td >{category[surat.clasify]}</td>
                                    <td>
-                                        {note && <ActionButton note={note} index={index} setNote={setNote}/>}
+                                        {note && index < note.length && <ActionButton note={note} index={index} setNote={setNote} />}
                                    </td>
                               </tr>
                          )

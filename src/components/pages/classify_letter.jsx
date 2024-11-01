@@ -1,17 +1,17 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useLoginValidate } from '../../hooks'
+import { useIncomingmailActions, useLoginValidate, usePageEffect } from '../../hooks'
+import { ClassifyLetterLayout } from '../Layouts/'
 
 function ClassifyLetterPage(){
      const data = useSelector(state=>state.dataSlice.data)
 
      useLoginValidate()
+     usePageEffect(useIncomingmailActions)
 
-     return (
-          <div>
-               <h1>hello dunia tipu tipu</h1>
-          </div>
-     )
+     return (data && data['count'] > 0) ?
+     (<ClassifyLetterLayout data={data}/>) :
+     (<div> kosong bro</div>)
 }
 
 export default ClassifyLetterPage

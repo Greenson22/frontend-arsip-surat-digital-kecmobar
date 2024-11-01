@@ -59,15 +59,7 @@ const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
                     useHandleFetch(searchUrl, token, dispatch)
                     break
                case 'classify':
-                    useConfirmAlert(result=>{
-                         if (result.isConfirmed){
-                              usePostData(classify_url, {'id':command.id}, token, response=>{
-                                   dispatch(setCommand(null))
-                              })
-                         }
-                    }, "Mengklasifikasikan surat",
-                    "Jika kamu mau, maka surat akan langsung di klasifikasikan", 
-                    "Ya", "Tidak")
+                    dispatch(setCommand(null))
                     break
           }
      }else{

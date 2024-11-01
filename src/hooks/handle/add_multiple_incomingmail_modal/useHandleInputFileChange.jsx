@@ -1,4 +1,4 @@
-const useHandleInputFileChange = (even, setFileList, setFileNote) => {
+const useHandleInputFileChange = (event, setFileList, setFileNote) => {
      const files = Array.from(event.target.files)
      const notes = []
      files.map((file, index) => {

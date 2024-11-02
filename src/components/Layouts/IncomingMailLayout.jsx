@@ -16,13 +16,15 @@ const IncomingMailLayout = (props)=>{
      const dispatch = useDispatch()
      const [addModal, setAddModal] = useState(false)
      const [addMultipleModal, setMultipleModal] = useState(false)
-
+     // tombol di bagian bar action
+     const buttonPrimary = {children:'Tambah surat', click: ()=>{setAddModal(true)}}
+     const buttonSecondary = {children:'Klasifikasi surat', click: console.log('button secondary')}
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>
                <Card>
                     <CardHeader>
-                         <TableAction title="Daftar surat masuk" buttonChildren="Tambah surat" buttonClick={()=>{setAddModal(true)}}/>
+                         <TableAction title="Daftar surat masuk" buttonPrimary={buttonPrimary} buttonSecondary={buttonSecondary}/>
                     </CardHeader>
                     <CardBody>
                          <TableFilter api={api} />

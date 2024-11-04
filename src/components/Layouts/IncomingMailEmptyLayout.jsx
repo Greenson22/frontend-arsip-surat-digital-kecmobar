@@ -9,12 +9,15 @@ const IncomingMailEmptyLayout = (props)=>{
      const api = import.meta.env.VITE_INCOMINGMAIL_API_KEY
      const [addModal, setAddModal] = useState(false)
      const [addMultipleModal, setMultipleModal] = useState(false)
+     // tombol di bagian table action
+     const buttonPrimary = {children:'Tambah surat', click: ()=>{setAddModal(true)}}
+
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>
                <Card>
                     <CardHeader>
-                         <TableAction title="Daftar surat masuk" buttonChildren="Tambah surat" buttonClick={()=>{setAddModal(true)}}/>
+                         <TableAction title="Daftar surat masuk" buttonPrimary={buttonPrimary}/>
                     </CardHeader>
                     <CardBody>
                          <TableFilter api={api}/>

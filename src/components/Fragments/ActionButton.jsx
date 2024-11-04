@@ -7,10 +7,11 @@ import { setCommand } from '../../redux/slices/commandSlice'
 
 // tombol klasifikasi
 const ActionButton = (props)=>{
-     const {note, index, setNote} = props
+     const {note, notes, setNotes} = props
      const dispatch = useDispatch()
-
-     if (note[index].status === 'loading'){
+     // console.log(notex)
+     
+     if (note.status === 'loading'){
           // status loading
           return <List status={'spinner'}></List>
      }else{
@@ -18,9 +19,11 @@ const ActionButton = (props)=>{
           return <MDBBtn size='sm' color='warning' outline onClick={()=>{
                useConfirmAlert(result=>{
                     if (result.isConfirmed){
-                         setNoteStatus('loading', index, note, setNote)
-                         usePostData(import.meta.env.VITE_CLASSIFY_LETTER_API_KEY, {'id':note[index].id}, localStorage.getItem('accessToken'), response=>{
-                              setNoteStatus(null, index, note, setNote)
+                         // mengubah status note
+                         setNoteStatus('loading', note, notes, setNotes)
+                         // mengirim permintaan ke api untuk klasifikasi surat
+                         usePostData(import.meta.env.VITE_CLASSIFY_LETTER_API_KEY, {'id':note.id}, localStorage.getItem('accessToken'), response=>{
+                              setNoteStatus(null, note, notes, setNotes)
                               console.log(response)
                               // mengirim permintaan ke action untuk melakukan reset terhadap data
                               dispatch(setCommand({
@@ -29,15 +32,20 @@ const ActionButton = (props)=>{
                          })
                     }
                }, "Mengklasifikasikan surat", "Jika kamu mau, maka surat akan langsung di klasifikasikan", "Ya", "Tidak")
-          }}>Klasifikasi</MDBBtn>
+          }}>{note.id}</MDBBtn>
      }
 }
 
 // mengubah status note
-const setNoteStatus = (status, index, note, setNote)=>{
-     const tempNote = note.slice()
-     tempNote[index].status = status
-     setNote(tempNote)
+const setNoteStatus = (status, note, notes, setNotes)=>{
+     const tempNote = notes.slice()
+     tempNote.map(item=>{
+          if (item.id === note.id){
+               item.status = status
+          }
+     })
+     console.log(tempNote)
+     setNotes(tempNote)
 }
 
 export default ActionButton

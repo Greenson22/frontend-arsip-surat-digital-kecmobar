@@ -18,7 +18,7 @@ const IncomingMailLayout = (props)=>{
      const [addMultipleModal, setMultipleModal] = useState(false)
      // tombol di bagian bar action
      const buttonPrimary = {children:'Tambah surat', click: ()=>{setAddModal(true)}}
-     const buttonSecondary = {children:'Klasifikasi surat', click: console.log('button secondary')}
+     const buttonSecondary = {children:'Klasifikasi surat', click: ()=>{}, href:'/classify'}
      return (
           <div>
                <TitleBar>Surat masuk</TitleBar>

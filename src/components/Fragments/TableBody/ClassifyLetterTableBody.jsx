@@ -3,29 +3,33 @@ import { TableBody } from '../../Elements/Table'
 import { useSelector } from 'react-redux'
 import { ActionButton } from '../../Fragments'
 
+const tempNote = []
 const ClassifyLetterTableBody = (props)=>{
      const {data} = props
      const page = useSelector(state=>state.paginationSlice.page)
      const pageSize = useSelector(state=>state.paginationSlice.pageSize)
      const category = {1: 'Surat Perintah', 4: 'Surat Undangan', 0: 'Surat Edaran', 2: 'Surat Permohonan', 3: 'Surat Tugas'}
-     const [note, setNote] = useState(null)
-
+     const [notes, setNotes] = useState(null)
+     
      useEffect(()=>{
           // membuat penyimpanan sementara untuk note
-          const tempNote = []
           data.map((letter, index)=>{
-               tempNote.push({
-                    'id':letter.id,
-                    'status':null
-               })
+               const idExists = tempNote.some(item => item.id === letter.id)
+               if (!idExists){
+                    tempNote.push({
+                         'id':letter.id,
+                         'status':null
+                    })
+               }
           })
           // memasukan note sementara ke note sebenarnya
-          setNote(tempNote)
+          setNotes(tempNote)
      }, [data])
      
      return(
           <TableBody>
-               {data.map((surat, index)=>{
+               {notes && data.map((surat, index)=>{
+                         const note = notes.find(item=>item.id === surat.id)
                          return(
                               <tr key={surat.id}>
                                    <td>{index+1+((page-1)*pageSize)}</td>
@@ -38,7 +42,7 @@ const ClassifyLetterTableBody = (props)=>{
                                    <td >{surat.recipient}</td>
                                    <td >{category[surat.clasify]}</td>
                                    <td>
-                                        {note && index < note.length && <ActionButton note={note} index={index} setNote={setNote} />}
+                                        {note && <ActionButton note={note} notes={notes} setNotes={setNotes} />}
                                    </td>
                               </tr>
                          )

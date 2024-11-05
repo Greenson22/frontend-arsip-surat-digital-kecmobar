@@ -1,51 +1,49 @@
 import React from 'react'
 import { MDBBtn } from 'mdb-react-ui-kit'
-import { useConfirmAlert, usePostData } from '../../hooks'
+import { useConfirmAlert } from '../../hooks'
 import { List } from './List'
+import useHandleConfirmed from '../../hooks/handle/classify_letter_page/useHandleConfirmed'
 import { useDispatch } from 'react-redux'
-import { setCommand } from '../../redux/slices/commandSlice'
 
 // tombol klasifikasi
 const ActionButton = (props)=>{
      const {note, notes, setNotes} = props
      const dispatch = useDispatch()
-     // console.log(notex)
      
      if (note.status === 'loading'){
-          // status loading
-          return <List status={'spinner'}></List>
+          setTableRow(note, 'loading') // merubah row dari table
+          return <div>Tunggu sebentar...</div> // status loading
      }else{
           // tombol klasifikasi
           return <MDBBtn size='sm' color='warning' outline onClick={()=>{
                useConfirmAlert(result=>{
                     if (result.isConfirmed){
-                         // mengubah status note
-                         setNoteStatus('loading', note, notes, setNotes)
-                         // mengirim permintaan ke api untuk klasifikasi surat
-                         usePostData(import.meta.env.VITE_CLASSIFY_LETTER_API_KEY, {'id':note.id}, localStorage.getItem('accessToken'), response=>{
-                              setNoteStatus(null, note, notes, setNotes)
-                              console.log(response)
-                              // mengirim permintaan ke action untuk melakukan reset terhadap data
-                              dispatch(setCommand({
-                                   'command':'classify'
-                              }))
-                         })
+                         useHandleConfirmed(note, notes, setNotes, dispatch, setTableRow)
                     }
                }, "Mengklasifikasikan surat", "Jika kamu mau, maka surat akan langsung di klasifikasikan", "Ya", "Tidak")
-          }}>{note.id}</MDBBtn>
+          }}>klasifikasi</MDBBtn>
      }
 }
 
-// mengubah status note
-const setNoteStatus = (status, note, notes, setNotes)=>{
-     const tempNote = notes.slice()
-     tempNote.map(item=>{
-          if (item.id === note.id){
-               item.status = status
+// merubah table row
+const setTableRow = (note, status)=>{
+     // merubah class dari row di table
+     const tRow = document.getElementById(note.id)
+     const cRow = document.getElementById('category-'+note.id)
+     if (tRow && cRow){
+          if (status === 'success'){
+               console.log('success')
+               tRow.className = 'success'
+               cRow.className = 'success-text'
+          }else if(status === 'loading'){
+               tRow.className = 'loading'
+               cRow.className = ''
+          }else{
+               tRow.className = 'fail'
+               cRow.className = ''
           }
-     })
-     console.log(tempNote)
-     setNotes(tempNote)
+     }
 }
+
 
 export default ActionButton

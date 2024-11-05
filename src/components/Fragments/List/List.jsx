@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDownload, faCheck, faCloud, faX } from "@fortawesome/free-solid-svg-icons"
 
 const List = (props)=>{
-     const {children, status} = props
+     const {children, status, spinnerSize='spinner-border-sm'} = props
      let statusElement = <p></p>
      switch(status){
           case 'download':
@@ -14,7 +14,7 @@ const List = (props)=>{
                statusElement = <FontAwesomeIcon icon={faCheck} style={{color: "#74C0FC",}}/>
                break
           case 'spinner':
-               statusElement = <div className="spinner-border spinner-border-sm text-primary"></div>
+               statusElement = <div className={"spinner-border text-primary "+spinnerSize}></div>
                break
           case 'cloud':
                statusElement = <FontAwesomeIcon icon={faCloud} style={{color: "#74C0FC",}}/>

@@ -31,7 +31,7 @@ const ClassifyLetterTableBody = (props)=>{
                {notes && data.map((surat, index)=>{
                          const note = notes.find(item=>item.id === surat.id)
                          return(
-                              <tr key={surat.id}>
+                              <tr key={surat.id} id={surat.id}>
                                    <td>{index+1+((page-1)*pageSize)}</td>
                                    <td >{surat.agenda_number}</td>
                                    <td >{surat.letter_number}</td>
@@ -40,7 +40,7 @@ const ClassifyLetterTableBody = (props)=>{
                                    <td >{surat.source}</td>
                                    <td >{surat.subject}</td>
                                    <td >{surat.recipient}</td>
-                                   <td >{category[surat.clasify]}</td>
+                                   <td id={'category-'+surat.id}>{category[surat.clasify]}</td>
                                    <td>
                                         {note && <ActionButton note={note} notes={notes} setNotes={setNotes} />}
                                    </td>

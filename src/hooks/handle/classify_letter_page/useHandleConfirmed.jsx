@@ -10,7 +10,6 @@ const useHandleConfirmed = (note, notes, setNotes, dispatch, setTableRow)=>{
      // mengirim permintaan ke api untuk klasifikasi surat
      usePostData(clasify_url, {'id':note.id}, token, response=>{
           setNoteStatus(null, note, notes, setNotes)
-          console.log(response)
           // mengirim permintaan ke action untuk melakukan reset terhadap data
           dispatch(setCommand({
                'command':'classify'
@@ -19,7 +18,6 @@ const useHandleConfirmed = (note, notes, setNotes, dispatch, setTableRow)=>{
           setTableRow(note, 'success')
      }, error=>{
           setNoteStatus(null, note, notes, setNotes)
-          console.log(error)
           // merubah class dari row di table
           setTableRow(note, 'fail')
      })
@@ -33,7 +31,6 @@ const setNoteStatus = (status, note, notes, setNotes)=>{
                item.status = status
           }
      })
-     console.log(tempNote)
      setNotes(tempNote)
 }
 

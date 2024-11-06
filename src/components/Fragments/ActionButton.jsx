@@ -1,7 +1,6 @@
 import React from 'react'
 import { MDBBtn } from 'mdb-react-ui-kit'
 import { useConfirmAlert } from '../../hooks'
-import { List } from './List'
 import useHandleConfirmed from '../../hooks/handle/classify_letter_page/useHandleConfirmed'
 import { useDispatch } from 'react-redux'
 
@@ -10,18 +9,30 @@ const ActionButton = (props)=>{
      const {note, notes, setNotes} = props
      const dispatch = useDispatch()
      
+     const handleClassifyBtn = ()=>{
+          useConfirmAlert(result=>{
+               if (result.isConfirmed){
+                    useHandleConfirmed(note, notes, setNotes, dispatch, setTableRow)
+               }
+          }, "Mengklasifikasikan surat", "Jika kamu mau, maka surat akan langsung di klasifikasikan", "Ya", "Tidak")
+     }
+     const handleClassifyHiddenBtn = ()=>{
+          useHandleConfirmed(note, notes, setNotes, dispatch, setTableRow)
+     }
+     
      if (note.status === 'loading'){
           setTableRow(note, 'loading') // merubah row dari table
           return <div>Tunggu sebentar...</div> // status loading
      }else{
           // tombol klasifikasi
-          return <MDBBtn size='sm' color='warning' outline onClick={()=>{
-               useConfirmAlert(result=>{
-                    if (result.isConfirmed){
-                         useHandleConfirmed(note, notes, setNotes, dispatch, setTableRow)
-                    }
-               }, "Mengklasifikasikan surat", "Jika kamu mau, maka surat akan langsung di klasifikasikan", "Ya", "Tidak")
-          }}>klasifikasi</MDBBtn>
+          return <div>
+               {/* tombol klasifikasi */}
+               <MDBBtn size='sm' color='warning' outline onClick={handleClassifyBtn}>
+                    klasifikasi
+               </MDBBtn>
+               {/* tombol hidden untuk multiple classify */}
+               <button id={'btn-'+note.id} onClick={handleClassifyHiddenBtn} hidden>tes button</button> 
+          </div>
      }
 }
 
@@ -32,7 +43,6 @@ const setTableRow = (note, status)=>{
      const cRow = document.getElementById('category-'+note.id)
      if (tRow && cRow){
           if (status === 'success'){
-               console.log('success')
                tRow.className = 'success'
                cRow.className = 'success-text'
           }else if(status === 'loading'){

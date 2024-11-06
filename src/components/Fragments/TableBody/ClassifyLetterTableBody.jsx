@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { TableBody } from '../../Elements/Table'
 import { useSelector } from 'react-redux'
 import { ActionButton } from '../../Fragments'
 
 const tempNote = []
 const ClassifyLetterTableBody = (props)=>{
-     const {data} = props
+     const {data, notes, setNotes} = props
      const page = useSelector(state=>state.paginationSlice.page)
      const pageSize = useSelector(state=>state.paginationSlice.pageSize)
      const category = {1: 'Surat Perintah', 4: 'Surat Undangan', 0: 'Surat Edaran', 2: 'Surat Permohonan', 3: 'Surat Tugas'}
-     const [notes, setNotes] = useState(null)
      
      useEffect(()=>{
           // membuat penyimpanan sementara untuk note
@@ -22,8 +21,7 @@ const ClassifyLetterTableBody = (props)=>{
                     })
                }
           })
-          // memasukan note sementara ke note sebenarnya
-          setNotes(tempNote)
+          setNotes(tempNote)// memasukan note sementara ke note sebenarnya
      }, [data])
      
      return(

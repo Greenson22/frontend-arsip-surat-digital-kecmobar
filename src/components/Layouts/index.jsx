@@ -7,3 +7,4 @@ export { default as UserManagementEmptyLayout } from './UserManagementEmptyLayou
 export { default as OutgoingMailLayout } from './OutgoingMailLayout'
 export { default as OutgoingMailEmptyLayout } from './OutgoingMailEmptyLayout'
 export { default as ClassifyLetterLayout } from './ClassifyLetterLayout'
+export { default as ClassifyOutgoingLetterLayout } from './ClassifyOutgoingLetterLayout'

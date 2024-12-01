@@ -8,6 +8,7 @@ import { TitleBar, TableFilter, TableAction, UserManagementTableBody,
 import ViewProfileModal from "../Fragments/Modals/ViewProfileModal"
 import { useSetPage } from "../../hooks"
 import { useDispatch, useSelector } from "react-redux"
+import { jwtDecode } from "jwt-decode"
 
 const UserManagementLayout = (props)=>{
      const api = import.meta.env.VITE_USERS_API_KEY
@@ -16,13 +17,19 @@ const UserManagementLayout = (props)=>{
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
      const dispatch = useDispatch()
      const [addModal, setAddModal] = useState(false)
+     const jwt = jwtDecode(localStorage.getItem('accessToken'))
+
+
+     const buttonPrimary = {children:'Tambah User', click: ()=>{setAddModal(true)}}
      
      return (
           <div>
                <TitleBar>Pengaturan pengguna</TitleBar>
                <Card>
                     <CardHeader>
-                    <TableAction title="Tambah pengguna baru" buttonChildren="Tambah Pengguna" buttonClick={()=>{setAddModal(true)}}/>
+                         {jwt.is_superuser && (
+                              <TableAction title="Tambah pengguna baru" buttonPrimary={buttonPrimary}/>)                         
+                              }
                     </CardHeader>
                     <CardBody>
                          <TableFilter api={api}/>

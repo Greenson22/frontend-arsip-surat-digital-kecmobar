@@ -8,7 +8,7 @@ import { useSetPage } from "../../hooks"
 import { useState } from "react"
 
 const OutgoingMailLayout = (props)=>{
-     const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Tindakan"]
+     const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Kategori", "Tindakan"]
      const {data} = props
      const iData = useSelector(state=>state.dataSlice.iData)
      const api = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
@@ -18,13 +18,14 @@ const OutgoingMailLayout = (props)=>{
 
      //tombol aksi di table action
      const addBtn = {children:'Tambah surat', click: ()=>{setAddModal(true)}} 
+     const buttonSecondary = {children:'Klasifikasi surat', click: ()=>{}, href:'/outgoing_classify'}
 
      return (
           <div>
                <TitleBar>Surat Keluar</TitleBar>
                <MDBCard>
                     <MDBCardHeader>
-                    <TableAction title="Daftar surat keluar" buttonPrimary={addBtn}/>
+                    <TableAction title="Daftar surat keluar" buttonPrimary={addBtn} buttonSecondary={buttonSecondary}/>
                     </MDBCardHeader>
                     <MDBCardBody>
                          <TableFilter api={api}/>

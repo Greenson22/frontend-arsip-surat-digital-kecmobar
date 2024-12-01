@@ -7,36 +7,34 @@ import { TitleBar, TableFilter, TableAction } from '../Fragments'
 import { useSetPage } from "../../hooks"
 import ClassifyLetterTableBody from '../Fragments/TableBody/ClassifyLetterTableBody'
 
-const ClassifyLetterLayout = (props)=>{
-     const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Penerima", "Kategori","Tindakan"]
+const ClassifyOutgoingLetterLayout = (props)=>{
+     const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Tindakan"]
      const {data} = props
-     const api = import.meta.env.VITE_INCOMINGMAIL_API_KEY
+     const api = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
      const dispatch = useDispatch()
-     const backButton = {children:'Kembali', click: ()=>{}, href:'/incoming_mail'}
+     const backButton = {children:'Kembali', click: ()=>{}, href:'/outgoing_mail'}
      const [notes, setNotes] = useState(null)
      
      const classifyALl = ()=>{
           notes.map((letter, index)=>{
                const classifyBtn = document.getElementById('btn-'+letter.id)
                classifyBtn.click()
-               // console.log(classifyBtn)
           })
      }
 
      const buttonPrimary = {children:'Klasifikasi Semua', click: classifyALl}
-
      return (
           <div>
-               <TitleBar>Klasifikasi Surat masuk</TitleBar>
+               <TitleBar>Klasifikasi Surat Kaluar</TitleBar>
                <Card>
                     <CardHeader>
-                         <TableAction title="Daftar Surat Masuk" buttonPrimary={buttonPrimary} buttonSecondary={backButton}></TableAction>
+                         <TableAction title="Daftar Surat Keluar" buttonPrimary={buttonPrimary} buttonSecondary={backButton}></TableAction>
                     </CardHeader>
                     <CardBody>
                          <TableFilter api={api} />
                          <Table add_class="table-sm">
                               <TableHead columns={columns} />
-                              <ClassifyLetterTableBody data={data['results']} notes={notes} setNotes={setNotes} ></ClassifyLetterTableBody>
+                              <ClassifyLetterTableBody data={data['results']} notes={notes} setNotes={setNotes} type='outgoingmail'></ClassifyLetterTableBody>
                          </Table>
                          <MDBBtn onClick={() => { useSetPage(data['previous'], dispatch) } }>prev</MDBBtn>
                          <MDBBtn onClick={() => { useSetPage(data['next'], dispatch) } }>next</MDBBtn>
@@ -46,4 +44,4 @@ const ClassifyLetterLayout = (props)=>{
      )
 }
 
-export default ClassifyLetterLayout
+export default ClassifyOutgoingLetterLayout

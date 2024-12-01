@@ -4,6 +4,7 @@ export { default as useContainerLayoutEffect } from './effects/useContainerLayou
 export { default as useEditIncomingMailModalEffect } from './effects/useEditIncomingMailModalEffect'
 
 export { default as useIncomingmailActions } from './actions/useIncomingmailActions'
+export { default as useOutgoingmailAction } from './actions/useOutgoingmailAction'
 export { default as useUserManagementActions } from './actions/useUserManagementActions'
 export { default as useHomeActions } from './actions/useHomeActions'
 

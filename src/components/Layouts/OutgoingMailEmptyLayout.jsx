@@ -14,12 +14,15 @@ const OutgoingMailEmptyLayout = (props)=>{
      const [addModal, setAddModal] = useState(false)
      const [addMultipleModal, setMultipleModal] = useState(false)
 
+     //tombol aksi di table action
+     const addBtn = {children:'Tambah surat', click: ()=>{setAddModal(true)}} 
+
      return (
           <div>
                <TitleBar>Surat Keluar</TitleBar>
                <MDBCard>
                     <MDBCardHeader>
-                         <TableAction title="Daftar surat keluar" buttonChildren="Tambah surat" buttonClick={()=>{setAddModal(true)}}/>
+                         <TableAction title="Daftar surat keluar" buttonPrimary={addBtn}/>
                     </MDBCardHeader>
                     <MDBCardBody>
                          <TableFilter api={api}/>

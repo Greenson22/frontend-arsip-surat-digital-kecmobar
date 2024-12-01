@@ -6,18 +6,18 @@ import { useDispatch } from 'react-redux'
 
 // tombol klasifikasi
 const ActionButton = (props)=>{
-     const {note, notes, setNotes} = props
+     const {note, notes, setNotes, type} = props
      const dispatch = useDispatch()
      
      const handleClassifyBtn = ()=>{
           useConfirmAlert(result=>{
                if (result.isConfirmed){
-                    useHandleConfirmed(note, notes, setNotes, dispatch, setTableRow)
+                    useHandleConfirmed(note, notes, setNotes, dispatch, setTableRow, type)
                }
           }, "Mengklasifikasikan surat", "Jika kamu mau, maka surat akan langsung di klasifikasikan", "Ya", "Tidak")
      }
      const handleClassifyHiddenBtn = ()=>{
-          useHandleConfirmed(note, notes, setNotes, dispatch, setTableRow)
+          useHandleConfirmed(note, notes, setNotes, dispatch, setTableRow, type)
      }
      
      if (note.status === 'loading'){

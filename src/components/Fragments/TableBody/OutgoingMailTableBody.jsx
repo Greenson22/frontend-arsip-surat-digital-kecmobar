@@ -6,6 +6,7 @@ const OutgoingMailTableBody = (props)=>{
      const {data} = props
      const page = useSelector(state=>state.paginationSlice.page)
      const pageSize = useSelector(state=>state.paginationSlice.pageSize)
+     const category = {1: 'Surat Perintah', 4: 'Surat Undangan', 0: 'Surat Edaran', 2: 'Surat Permohonan', 3: 'Surat Tugas'}
 
      return(
           <TableBody>
@@ -18,6 +19,7 @@ const OutgoingMailTableBody = (props)=>{
                                    <td>{surat.destination}</td>
                                    <td>{surat.letter_number}</td>
                                    <td>{surat.subject}</td>
+                                   <td >{category[surat.clasify]}</td>
                                    <td>
                                         <RowAction view_target='#view-mail-modal' 
                                                        edit_target='#edit-outgoingmail-modal' 

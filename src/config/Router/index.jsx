@@ -7,6 +7,7 @@ import IncomingMailPage from './../../components/pages/incoming_mail.jsx'
 import OutgoingMailPage from './../../components/pages/outgoing_mail.jsx'
 import UserManagementPage from './../../components/pages/user_management.jsx'
 import ClassifyLetterPage from './../../components/pages/classify_letter.jsx'
+import ClassifyOutgoingLetterPage from '../../components/pages/classify_outgoing_letter.jsx'
 
 import ContainerLayout from '../../components/Layouts/ContainerLayout.jsx'
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
      {
           path: "/classify",
           element: <ContainerLayout render={<ClassifyLetterPage/>} />,
+     },
+     {
+          path: "/outgoing_classify",
+          element: <ContainerLayout render={<ClassifyOutgoingLetterPage/>} />,
      }
 ])
 

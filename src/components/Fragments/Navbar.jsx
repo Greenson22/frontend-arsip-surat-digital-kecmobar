@@ -9,7 +9,7 @@ const Navbar = forwardRef((props, ref)=> {
       <div className="container-fluid" id="tes">
         <div className="d-flex d-inline">
             <MDBBtn id="sidebarCollapse" color="primary" outline><i className="fa-solid fa-bars"></i></MDBBtn>
-            <p className="m-2" id="date">date kosong</p>
+            <p className="m-2" id="date"></p>
         </div>
 
         <div className="w-25 d-flex justify-content-end">

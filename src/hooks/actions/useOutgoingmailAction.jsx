@@ -6,6 +6,7 @@ import useErrorAlert from '../alert/useErrorAlert'
 import { setIData } from '../../redux/slices/dataSlice'
 import { setPage } from '../../redux/slices/paginationSlice'
 import { useUrlModifier } from '../url'
+import { setCommand } from '../../redux/slices/commandSlice'
 
 const useOutgoingmailAction = (command, page, pageSize, dispatch)=>{
      const url = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
@@ -53,6 +54,9 @@ const useOutgoingmailAction = (command, page, pageSize, dispatch)=>{
                case 'search':
                     const searchUrl = url+'?page='+1+'&page_size='+pageSize+'&search='+command.words
                     useHandleFetch(searchUrl, token, dispatch)
+                    break
+               case 'classify':
+                    dispatch(setCommand(null))
                     break
           }
      }else{

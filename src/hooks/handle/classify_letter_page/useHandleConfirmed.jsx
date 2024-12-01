@@ -1,14 +1,14 @@
 import { setCommand } from '../../../redux/slices/commandSlice'
 import { usePostData } from '../../../hooks'
 
-const useHandleConfirmed = (note, notes, setNotes, dispatch, setTableRow)=>{
+const useHandleConfirmed = (note, notes, setNotes, dispatch, setTableRow, type='incomingmail')=>{
      const clasify_url = import.meta.env.VITE_CLASSIFY_LETTER_API_KEY
      const token = localStorage.getItem('accessToken')
 
      // mengubah status note
      setNoteStatus('loading', note, notes, setNotes)
      // mengirim permintaan ke api untuk klasifikasi surat
-     usePostData(clasify_url, {'id':note.id}, token, response=>{
+     usePostData(clasify_url, {'id':note.id, 'type':type}, token, response=>{
           setNoteStatus(null, note, notes, setNotes)
           // mengirim permintaan ke action untuk melakukan reset terhadap data
           dispatch(setCommand({

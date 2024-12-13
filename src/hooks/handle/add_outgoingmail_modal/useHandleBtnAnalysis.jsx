@@ -12,6 +12,7 @@ const handleBtnAnalysis = (event, inputFileRef, formRef, setAnalysis)=>{
           const formData = new FormData()
           formData.append('file', files[0])
           formData.append('model_type', 'outgoingmail')
+          formData.append('genai_type', localStorage.getItem('genai'))
 
           console.log('sedang menganalisa!!!')
           setAnalysis(true)

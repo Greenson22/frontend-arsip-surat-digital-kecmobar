@@ -7,6 +7,8 @@ const handleBtnAnalysClick = (event, fileNote, fileList, setFileNote, outgoingma
           if(fileNote[index].status !== 'check'){
                const formData = new FormData()
                formData.append('file', fileList[index])
+               formData.append('genai_type', localStorage.getItem('genai'))
+
                if(outgoingmail){
                     formData.append('model_type', 'outgoingmail')
                }

@@ -8,7 +8,7 @@ const useHandleConfirmed = (note, notes, setNotes, dispatch, setTableRow, type='
      // mengubah status note
      setNoteStatus('loading', note, notes, setNotes)
      // mengirim permintaan ke api untuk klasifikasi surat
-     usePostData(clasify_url, {'id':note.id, 'type':type}, token, response=>{
+     usePostData(clasify_url, {'id':note.id, 'type':type, 'genai_type':localStorage.getItem('genai')}, token, response=>{
           setNoteStatus(null, note, notes, setNotes)
           // mengirim permintaan ke action untuk melakukan reset terhadap data
           dispatch(setCommand({

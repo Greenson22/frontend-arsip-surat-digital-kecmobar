@@ -1,4 +1,4 @@
-import { TitleBar, ProfileBox } from '../Fragments'
+import { TitleBar, ProfileBox, AdvanceSettingBox } from '../Fragments'
 import { useLoginValidate, usePageEffect, useHomeActions } from '../../hooks'
 import { useSelector } from 'react-redux'
 
@@ -14,6 +14,7 @@ const HomePage = () => {
          {/* Profil */}
          <div className="row mt-4">
             {data && <ProfileBox user={data}/>}
+            <AdvanceSettingBox/>
          </div>
       </div>
    )

@@ -7,6 +7,7 @@ export { default as UserManagementTableBody } from './TableBody/UserManagementTa
 export { default as ProfileBox } from './ProfileBox'
 export { default as UserBox } from './UserBox'
 export { default as InfoBox } from './InfoBox'
+export { default as AdvanceSettingBox } from './AdvanceSettingBox'
 export { default as PageSize } from './TableFilter/PageSize'
 
 export { default as ExportModal } from './Modals/ExportModal'

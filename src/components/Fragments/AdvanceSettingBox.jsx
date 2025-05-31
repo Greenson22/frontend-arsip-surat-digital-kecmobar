@@ -7,7 +7,7 @@ const AdvanceSettingBox = (props)=>{
     // menetapkan genai select default
     const genai_select = localStorage.getItem('genai')
     if (!genai_select){
-        localStorage.setItem('genai', 'experimental')
+        localStorage.setItem('genai', 'flash')
     }
     
     return (

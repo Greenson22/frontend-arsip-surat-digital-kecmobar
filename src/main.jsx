@@ -18,7 +18,7 @@ import './animation_style.css'
 // 1. Cek apakah 'hostname' sudah ada di localStorage
 if (!localStorage.getItem('hostname')) {
   // 2. Jika tidak ada, buat item baru dengan nilai dari environment variable
-  localStorage.setItem('hostname', import.meta.env.VITE_HOSTNAME_LOCAL);
+  localStorage.setItem('hostname', import.meta.env.VITE_HOSTNAME_PUBLIC);
 }
 // --- LOGIKA PENAMBAHAN HOSTNAME SELESAI ---
 

@@ -12,8 +12,8 @@ import { usePostData } from '../request'
 import { setCommand } from '../../redux/slices/commandSlice'
 
 const useIncomingmailActions = (command, page, pageSize, dispatch)=>{
-     const url = import.meta.env.VITE_INCOMINGMAIL_API_KEY
-     const classify_url = import.meta.env.VITE_CLASSIFY_LETTER_API_KEY
+     const url = localStorage.getItem('hostname')+import.meta.env.VITE_INCOMINGMAIL_API_KEY
+     const classify_url = localStorage.getItem('hostname')+import.meta.env.VITE_CLASSIFY_LETTER_API_KEY
      const token = localStorage.getItem('accessToken')
      
      if (command){

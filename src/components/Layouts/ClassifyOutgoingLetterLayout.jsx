@@ -10,7 +10,7 @@ import ClassifyLetterTableBody from '../Fragments/TableBody/ClassifyLetterTableB
 const ClassifyOutgoingLetterLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Tindakan"]
      const {data} = props
-     const api = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
+     const api = localStorage.getItem('hostname')+import.meta.env.VITE_OUTGOINGMAIL_API_KEY
      const dispatch = useDispatch()
      const backButton = {children:'Kembali', click: ()=>{}, href:'/outgoing_mail'}
      const [notes, setNotes] = useState(null)

@@ -5,7 +5,7 @@ import { TitleBar, TableFilter, TableAction,
      AddUserModal } from '../Fragments'
 
 const UserManagementEmptyLayout = (props)=>{
-     const api = import.meta.env.VITE_USERS_API_KEY
+     const api = localStorage.getItem('hostname')+import.meta.env.VITE_USERS_API_KEY
      const {setCommand} = props
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]
      const [addModal, setAddModal] = useState(false)

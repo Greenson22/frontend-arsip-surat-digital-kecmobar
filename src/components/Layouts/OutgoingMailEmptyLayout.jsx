@@ -9,7 +9,7 @@ import AddMultipleIncomingMailModal from "../Fragments/Modals/AddMulitipleIncomi
 
 const OutgoingMailEmptyLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Berkas surat", "Tindakan"]
-     const api = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
+     const api = localStorage.getItem('hostname')+import.meta.env.VITE_OUTGOINGMAIL_API_KEY
      const dispatch = useDispatch()
      const [addModal, setAddModal] = useState(false)
      const [addMultipleModal, setMultipleModal] = useState(false)

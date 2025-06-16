@@ -11,7 +11,7 @@ const OutgoingMailLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Tanggal surat", "Tujuan surat", "Nomor surat", "Perihal", "Kategori", "Tindakan"]
      const {data} = props
      const iData = useSelector(state=>state.dataSlice.iData)
-     const api = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
+     const api = localStorage.getItem('hostname')+mport.meta.env.VITE_OUTGOINGMAIL_API_KEY
      const dispatch = useDispatch()
      const [addModal, setAddModal] = useState(false)
      const [addMultipleModal, setMultipleModal] = useState(false)

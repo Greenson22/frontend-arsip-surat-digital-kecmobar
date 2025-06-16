@@ -2,7 +2,7 @@ import { setCommand } from '../../../redux/slices/commandSlice'
 import { usePostData } from '../../../hooks'
 
 const useHandleConfirmed = (note, notes, setNotes, dispatch, setTableRow, type='incomingmail')=>{
-     const clasify_url = import.meta.env.VITE_CLASSIFY_LETTER_API_KEY
+     const clasify_url = localStorage.getItem('hostname')+import.meta.env.VITE_CLASSIFY_LETTER_API_KEY
      const token = localStorage.getItem('accessToken')
 
      // mengubah status note

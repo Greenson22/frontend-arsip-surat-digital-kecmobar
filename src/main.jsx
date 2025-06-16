@@ -14,6 +14,14 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import './style.css'
 import './animation_style.css'
 
+// --- LOGIKA PENAMBAHAN HOSTNAME DIMULAI DI SINI ---
+// 1. Cek apakah 'hostname' sudah ada di localStorage
+if (!localStorage.getItem('hostname')) {
+  // 2. Jika tidak ada, buat item baru dengan nilai dari environment variable
+  localStorage.setItem('hostname', import.meta.env.VITE_HOSTNAME_LOCAL);
+}
+// --- LOGIKA PENAMBAHAN HOSTNAME SELESAI ---
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>

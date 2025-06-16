@@ -12,7 +12,7 @@ const useLoginValidate = ()=>{
      if (!accessToken){
           useAlert('loading')
           
-          axios.post(import.meta.env.VITE_REFRESH_TOKEN_API_KEY, {'refresh': refrestToken})
+          axios.post(localStorage.getItem('hostname')+import.meta.env.VITE_REFRESH_TOKEN_API_KEY, {'refresh': refrestToken})
           .then((response)=>{
                localStorage.setItem('accessToken', response.data.access)
                location.reload()

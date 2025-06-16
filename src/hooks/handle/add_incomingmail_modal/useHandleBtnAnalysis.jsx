@@ -18,7 +18,7 @@ const useHandleBtnAnalysis = (event, inputFileRef, formRef, setAnalysis)=>{
 
           console.log('sedang menganalisa!!!')
           setAnalysis(true)
-          usePostData(import.meta.env.VITE_GENAI_API_KEY, formData, localStorage.getItem('accessToken'), (response)=>{
+          usePostData(localStorage.getItem('hostname')+import.meta.env.VITE_GENAI_API_KEY, formData, localStorage.getItem('accessToken'), (response)=>{
                const data = response.data.entities
                letterNumber.value = data?.letter_number
                source.value = data?.source

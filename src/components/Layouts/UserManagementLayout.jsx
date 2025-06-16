@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { jwtDecode } from "jwt-decode"
 
 const UserManagementLayout = (props)=>{
-     const api = import.meta.env.VITE_USERS_API_KEY
+     const api = localStorage.getItem('hostname')+import.meta.env.VITE_USERS_API_KEY
      const {data} = props
      const iData = useSelector(state => state.dataSlice.iData)
      const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Registrasi", "Tindakan"]

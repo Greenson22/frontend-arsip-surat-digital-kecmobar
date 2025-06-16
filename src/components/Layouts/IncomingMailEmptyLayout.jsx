@@ -6,7 +6,7 @@ import { AddMultipleIncomingmailModal, AddIncomingmailModalV2 } from '../Fragmen
 
 const IncomingMailEmptyLayout = (props)=>{
      const columns = ["No", "Nomor agenda", "Nomor surat", "Tanggal surat", "Tanggal terima", "Asal surat", "Perihal", "Penerima", "Tindakan"]
-     const api = import.meta.env.VITE_INCOMINGMAIL_API_KEY
+     const api = localStorage.getItem('hostname')+import.meta.env.VITE_INCOMINGMAIL_API_KEY
      const [addModal, setAddModal] = useState(false)
      const [addMultipleModal, setMultipleModal] = useState(false)
      // tombol di bagian table action

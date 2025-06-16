@@ -26,7 +26,7 @@ function LoginPage() {
 
           useAlert('loading')
           
-          axios.post(import.meta.env.VITE_ACCESS_TOKEN_API_KEY, formData)
+          axios.post(localStorage.getItem('hostname')+import.meta.env.VITE_ACCESS_TOKEN_API_KEY, formData)
           .then((response)=>{
                const data = response.data
                localStorage.setItem('accessToken', data.access)

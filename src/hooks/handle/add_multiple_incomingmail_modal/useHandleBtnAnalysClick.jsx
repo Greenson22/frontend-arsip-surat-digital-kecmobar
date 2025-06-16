@@ -17,7 +17,7 @@ const handleBtnAnalysClick = (event, fileNote, fileList, setFileNote, outgoingma
                duplicateFileNote[index].status = 'loading'
                setFileNote(duplicateFileNote)
 
-               usePostData(import.meta.env.VITE_GENAI_API_KEY, formData, localStorage.getItem('accessToken'), (response) => {
+               usePostData(localStorage.getItem('hostname')+import.meta.env.VITE_GENAI_API_KEY, formData, localStorage.getItem('accessToken'), (response) => {
                     const duplicateFileNoteResponse = fileNote.slice()
                     const data = response.data
                     duplicateFileNoteResponse[index].entities = data.entities

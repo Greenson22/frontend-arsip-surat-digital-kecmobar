@@ -9,7 +9,7 @@ import { useUrlModifier } from '../url'
 import { setCommand } from '../../redux/slices/commandSlice'
 
 const useOutgoingmailAction = (command, page, pageSize, dispatch)=>{
-     const url = import.meta.env.VITE_OUTGOINGMAIL_API_KEY
+     const url = localStorage.getItem('hostname')+import.meta.env.VITE_OUTGOINGMAIL_API_KEY
      const token = localStorage.getItem('accessToken')
      if (command){
           switch(command.command){

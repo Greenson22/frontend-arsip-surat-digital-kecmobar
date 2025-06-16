@@ -10,8 +10,8 @@ import useAlert from '../alert/useAlert'
 const useHomeActions = (command, page, pageSize, dispatch)=>{
      const token = localStorage.getItem('accessToken')
      const userId = jwtDecode(token).user_id
-     const url = import.meta.env.VITE_USERS_API_KEY
-     const apiUserId = import.meta.env.VITE_USERS_API_KEY.split('?')[0]+userId+'/'
+     const url = localStorage.getItem('hostname')+import.meta.env.VITE_USERS_API_KEY
+     const apiUserId = localStorage.getItem('hostname')+import.meta.env.VITE_USERS_API_KEY.split('?')[0]+userId+'/'
      
      if (command){
           switch(command.command){

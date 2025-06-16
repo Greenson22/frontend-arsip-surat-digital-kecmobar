@@ -10,7 +10,7 @@ import { useAlert } from '../alert'
 import { setPage } from '../../redux/slices/paginationSlice'
 
 const useUserManagementActions = (command, page, pageSize, dispatch)=>{
-     const url = import.meta.env.VITE_USERS_API_KEY
+     const url = localStorage.getItem('hostname')+import.meta.env.VITE_USERS_API_KEY
      const token = localStorage.getItem('accessToken')
      
      if (command){

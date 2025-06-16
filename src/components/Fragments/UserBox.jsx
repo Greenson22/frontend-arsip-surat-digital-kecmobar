@@ -10,7 +10,7 @@ const columns = ["No", "Nama", "Pengguna", "Tingkat", "Status", "Tanggal Registr
 
 const UserBox = ()=>{
      const [data, setData] = useState([])
-     const api = import.meta.env.VITE_USERS_API_KEY
+     const api = localStorage.getItem('hostname')+import.meta.env.VITE_USERS_API_KEY
 
      useEffect(()=>{
           useFetchData(api, localStorage.getItem('accessToken'), (response)=>{
